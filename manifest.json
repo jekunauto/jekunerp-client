@@ -1,0 +1,129 @@
+{
+	"_version": "1.3.0",
+	"sap.app": {
+		"_version": "1.3.0",
+		"id": "jekunauto.ui.erp",
+		"type": "application",
+		"title": "OpenUI5 SDK - Demo Kit v2.0",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui": {
+		"_version": "1.3.0",
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://detail-view",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": ["sap_belize", "sap_belize_plus", "sap_belize_hcb", "sap_belize_hcw"]
+	},
+	"sap.ui5": {
+		"_version": "1.2.0",
+		"rootView": {
+			"viewName": "jekunauto.ui.erp.view.App",
+			"type": "XML",
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.46.0",
+			"libs": {
+				"sap.ui.core": {
+					"minVersion": "1.46.0"
+				},
+				"sap.m": {
+					"minVersion": "1.46.0"
+				},
+				"sap.ui.layout": {
+					"minVersion": "1.46.0"
+				},
+				"sap.f": {
+					"minVersion": "1.46.0"
+				},
+				"sap.uxap": {
+					"minVersion": "1.46.0"
+				},
+				"sap.tnt": {
+					"minVersion": "1.46.0"
+				},
+				"sap.ui.codeeditor": {
+					"minVersion": "1.46.0"
+				}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"config": {
+			"docuPath": "./docs/topics/",
+			"exploredURI": "./",
+			"topicHtmlMainDivId": "d4h5-main-container"
+		},
+		"routing": {
+			"config": {
+				"routerClass": "jekunauto.ui.erp.util.DocumentationRouter",
+				"viewType": "XML",
+				"viewPath": "jekunauto.ui.erp.view",
+				"controlId": "splitApp",
+				"controlAggregation": "detailPages",
+				"bypassed": {
+					"target": ["welcome"]
+				},
+				"async": true,
+				"clearTarget": false
+			},
+			"routes": [{
+				"pattern": "welcome",
+				"name": "welcome",
+				"target": ["welcome"]
+			}, {
+				"pattern": "",
+				"name": "api",
+				"target": ["apiMaster", "apiDetailInitial"]
+			}, {
+				"pattern": "api/{id}/:entityType:/:entityId:",
+				"name": "apiId",
+				"target": ["apiMaster", "apiDetail"]
+			}],
+			"targets": {
+				"empty": {
+					"viewName": "Empty",
+					"viewLevel": 1,
+					"viewId": "empty",
+					"controlAggregation": "masterPages"
+				},
+				"welcome": {
+					"viewName": "Welcome",
+					"viewLevel": 2,
+					"viewId": "welcome"
+				},
+				"apiMaster": {
+					"viewName": "ApiMaster",
+					"viewLevel": 1,
+					"viewId": "apiMaster",
+					"controlAggregation": "masterPages"
+				},
+				"apiDetailInitial": {
+					"viewName": "ApiDetailInitial",
+					"viewId": "apiDetailInitial",
+					"viewLevel": 2
+				},
+				"apiDetail": {
+					"viewName": "ApiDetail",
+					"viewId": "apiDetail",
+					"viewLevel": 2
+				}
+			}
+		}
+	}
+}
