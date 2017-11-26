@@ -10,9 +10,7 @@ sap.ui.define([
 		"sap/ui/model/json/JSONModel"
 	], function (MasterTreeBaseController, JSONModel) {
 		"use strict";
-
-
-
+		
 		return MasterTreeBaseController.extend("jekunauto.ui.erp.controller.ApiMaster", {
 
 			/**
@@ -23,7 +21,7 @@ sap.ui.define([
 				var oComponent = this.getOwnerComponent();
 
 				oComponent.loadVersionInfo()
-					.then(oComponent.fetchAPIInfoAndBindModels.bind(oComponent))
+					.then(oComponent.fetchMenuInfoAndBindModels.bind(oComponent))
 					.then(function () {
 						this._expandTreeToNode(this._topicId, this.getOwnerComponent().getModel("treeData"));
 					}.bind(this));

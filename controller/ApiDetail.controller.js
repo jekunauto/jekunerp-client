@@ -171,7 +171,7 @@ sap.ui.define([
 				this._sEntityId = oEvent.getParameter("arguments").entityId;
 
 				oComponent.loadVersionInfo()
-					.then(oComponent.fetchAPIInfoAndBindModels.bind(oComponent))
+					.then(oComponent.fetchMenuInfoAndBindModels.bind(oComponent))
 					.then(function () {
 						oApiDetailObjectPage._suppressLayoutCalculations();
 						this._bindData(this._sTopicid);

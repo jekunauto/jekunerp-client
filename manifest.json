@@ -96,12 +96,6 @@
 				"target": ["apiMaster", "apiDetail"]
 			}],
 			"targets": {
-				"empty": {
-					"viewName": "Empty",
-					"viewLevel": 1,
-					"viewId": "empty",
-					"controlAggregation": "masterPages"
-				},
 				"welcome": {
 					"viewName": "Welcome",
 					"viewLevel": 2,
