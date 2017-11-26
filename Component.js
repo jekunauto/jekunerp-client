@@ -111,12 +111,10 @@ sap.ui.define([
 		},
 		
 		 hasLogin: function () {
-				if (!this._oLoginInfoPromise) {
-					this._oVersionInfoPromise = sap.ui.getVersionInfo({async: true})
-						.then(this._bindVersionModel.bind(this));
-				}
-
-				return this._oVersionInfoPromise;
+				return new Promise(function (resolve) {
+					 //do something
+					resolve(true);
+				}.bind(this));
 			},
 
 		fetchMenuInfoAndBindModels: function () {

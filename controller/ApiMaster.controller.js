@@ -20,7 +20,7 @@ sap.ui.define([
 			onInit : function () {
 				var oComponent = this.getOwnerComponent();
 
-				oComponent.loadVersionInfo()
+				oComponent.hasLogin()
 					.then(oComponent.fetchMenuInfoAndBindModels.bind(oComponent))
 					.then(function () {
 						this._expandTreeToNode(this._topicId, this.getOwnerComponent().getModel("treeData"));
