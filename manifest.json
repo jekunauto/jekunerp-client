@@ -30,6 +30,11 @@
 	},
 	"sap.ui5": {
 		"_version": "1.2.0",
+		"config": {
+		    "appServerUrl": "http://127.0.0.1:8080",
+		    "appKey":"00001",
+		    "appSecret":"abcdeabcdeabcdeabcdeabcde"
+		},
 		"rootView": {
 			"viewName": "apestech.ui.erp.view.App",
 			"type": "XML",
@@ -64,11 +69,6 @@
 		"contentDensities": {
 			"compact": true,
 			"cozy": true
-		},
-		"config": {
-			"docuPath": "./docs/topics/",
-			"exploredURI": "./",
-			"topicHtmlMainDivId": "d4h5-main-container"
 		},
 		"models": {
 			"i18n": {

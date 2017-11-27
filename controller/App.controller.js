@@ -21,6 +21,15 @@ sap.ui.define([
 		return BaseController.extend("apestech.ui.erp.controller.App", {
 			onInit : function () {
 				BaseController.prototype.onInit.call(this);
+				
+				this.post("/router",{"body":'{"hello":"eeewe"}'}).done(function (resp) {
+					// 当result为true的回调
+					console.log(resp);
+					
+				}).fail(function (err) {
+				   // 当result为false的回调
+					console.error(err);
+				});
 
 				var oViewModel = new JSONModel({
 					busy : false,

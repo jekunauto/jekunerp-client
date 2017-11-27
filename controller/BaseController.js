@@ -6,13 +6,11 @@
 
 /*global history */
 sap.ui.define([
-		"sap/ui/documentation/library",
 		"sap/ui/core/mvc/Controller",
 		"sap/ui/core/routing/History",
-		"apestech/ui/erp/controller/util/ControlsInfo",
-		"apestech/ui/erp/controller/util/JSDocUtil",
-		"sap/ui/Device"
-	], function (library, Controller, History, ControlsInfo, JSDocUtil, Device) {
+		"sap/ui/Device",
+		"./../thirdparty/encoding/jquery.encoding"
+	], function (Controller, History, Device) {
 		"use strict";
 
 		return Controller.extend("apestech.ui.erp.controller.BaseController", {
@@ -123,56 +121,6 @@ sap.ui.define([
 			},
 
 			/**
-			 * Retrieves the actual component for the control.
-			 * @param {string} sControlName
-			 * @return {string} the actual component
-			 */
-			_getControlComponent: function (sControlName, oControlsData) {
-				var oLibComponentModel = oControlsData.libComponentInfos,
-					oLibInfo = library._getLibraryInfoSingleton();
-				return oLibInfo._getActualComponent(oLibComponentModel, sControlName);
-			},
-
-			/**
-			 * This function wraps a text in a span tag so that it can be represented in an HTML control.
-			 * @param {string} sText
-			 * @returns {string}
-			 * @private
-			 */
-			_wrapInSpanTag: function (sText) {
-
-				var sFormattedTextBlock = JSDocUtil.formatTextBlock(sText, {
-					linkFormatter: function (target, text) {
-
-						var p;
-
-						text = text || target; // keep the full target in the fallback text
-
-						// If the link has a protocol, do not modify, but open in a new window
-						if (target.match("://")) {
-							return '<a target="_blank" href="' + target + '">' + text + '</a>';
-						}
-
-						target = target.trim().replace(/\.prototype\./g, "#");
-						p = target.indexOf("#");
-						if ( p === 0 ) {
-							// a relative reference - we can't support that
-							return "<code>" + target.slice(1) + "</code>";
-						}
-
-						if ( p > 0 ) {
-							target = target.slice(0, p);
-						}
-
-						return "<a class=\"jsdoclink\" href=\"javascript:void(0);\" data-sap-ui-target=\"" + target + "\">" + text + "</a>";
-
-					}
-				});
-
-				return '<span class="sapUiDocumentationJsDoc">' + sFormattedTextBlock + '</span>';
-			},
-
-			/**
 			 * Switches the maximum height of the phone image for optimal display in landscape mode
 			 * @param {sap.ui.base.Event} oEvent Device orientation change event
 			 * @private
@@ -205,7 +153,95 @@ sap.ui.define([
 			 */
 			handleLandingImageLoad: function () {
 				this.getView().byId("landingImageHeadline").setVisible(true);
-			}
+			},
+			
+			/**
+			 * 功能：url转换.
+			 * @public
+			 * @param {string} url 输入url
+			 * @returns {string} 输出url
+			 */
+			formatUrl: function (url) {
+				if (url.indexOf('http://') === -1 && url.indexOf('https://') === -1) {
+					url = this.getConfig().appServerUrl + url;
+				}
+				var index = url.indexOf('//') + 2;
+				return url.substring(0, index) + url.substring(index).replace(/\/\//g, '/');
+			},
+			
+			/**
+			 * 功能：签名.
+			 * @public
+			 * @param {Object} param 输入param
+			 * @param {String} secret 输入secret
+			 * @returns {string} 输出url
+			 */
+			sign: function (param, secret) {
+				// 对参数名进行字典排序    
+				var array = new Array();
+				for (var key in param) {
+					array.push(key);
+				}
+				array.sort();
+				// 拼接有序的参数名-值串    
+				var paramArray = new Array();
+				paramArray.push(secret);
+				for (var index in array) {
+					var key = array[index];
+					paramArray.push(key + param[key]);
+				}
+				paramArray.push(secret);
+				// SHA-1编码，并转换成大写，即可获得签名    
+				var shaSource = paramArray.join("");
+				var sign = $.encoding.digests.hexSha1Str(shaSource).toUpperCase();
+				return sign;
+			},
+			
+			ajax: function (url, data, async, type, dataType) {
+				// 利用了jquery延迟对象回调的方式对ajax封装，使用done()，fail()，always()等方法进行链式回调操作
+				// 如果需要的参数更多，比如有跨域dataType需要设置为'jsonp'等等，可以考虑参数设置为对象
+				return $.ajax({
+					url: this.formatUrl(url),
+					data: data || {},
+					type: type || "GET", //请求类型
+					dataType: dataType || "json", //接收数据类型
+					async: async || true, //异步请求
+					crossDomain: true,  //跨域
+					cache: true
+				});
+			},
+		
+			request: function (url, data, async, type) {
+				data = data || {};
+				// 定义申请获得的appKey和appSecret    
+				var appKey = this.getConfig().appKey;
+				var secret = this.getConfig().appSecret;
+				data["appKey"] = appKey;
+				data["method"] = "user.save";
+				data["messageFormat"] = "json";
+				data["version"] = "1.0";
+				data["sign"] = this.sign(data, secret);
+		
+				return this.ajax(url, data, async, type).then(function (resp) {
+					// 成功回调
+					if (resp.header.code === "success") {
+						return resp.body; // 直接返回要处理的数据，作为默认参数传入之后done()方法的回调
+					} else {
+						return $.Deferred().reject(resp); // 返回一个失败状态的deferred对象，把错误代码作为默认参数传入之后fail()方法的回调
+					}
+				}, function (err) {
+					// 失败回调
+					console.error(err); // 打印状态码
+				});
+			},
+		
+			post: function (url, data, async) {
+				return this.request(url, data, async || true, "POST");
+			},
+		
+			get: function (url, data, async) {
+				return this.request(url, data, async || true, "GET");
+			}			
 		});
 
 	}
