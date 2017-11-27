@@ -53,17 +53,6 @@ sap.ui.define([
 				ResizeHandler.register(this.oHeader, this.onHeaderResize.bind(this));
 				this.oRouter.attachRouteMatched(this.onRouteChange.bind(this));
 
-				// this.getRouter().getRoute("topicIdLegacyRoute").attachPatternMatched(this._onTopicOldRouteMatched, this);
-				// this.getRouter().getRoute("apiIdLegacyRoute").attachPatternMatched(this._onApiOldRouteMatched, this);
-				
-				// this.oRouter.getRoute("entitySamplesLegacyRoute").attachPatternMatched(this._onEntityOldRouteMatched, this);
-				// this.oRouter.getRoute("entityAboutLegacyRoute").attachPatternMatched(this._onEntityOldRouteMatched, this);
-				// this.oRouter.getRoute("entityPropertiesLegacyRoute").attachPatternMatched({entityType: "properties"}, this._forwardToAPIRef, this);
-				// this.oRouter.getRoute("entityAggregationsLegacyRoute").attachPatternMatched({entityType: "aggregations"}, this._forwardToAPIRef, this);
-				// this.oRouter.getRoute("entityAssociationsLegacyRoute").attachPatternMatched({entityType: "associations"}, this._forwardToAPIRef, this);
-				// this.oRouter.getRoute("entityEventsLegacyRoute").attachPatternMatched({entityType:"events"}, this._forwardToAPIRef, this);
-				// this.oRouter.getRoute("entityMethodsLegacyRoute").attachPatternMatched({entityType:"methods"}, this._forwardToAPIRef, this);
-
 				// apply content density mode to root view
 				this._oView.addStyleClass(this.getOwnerComponent().getContentDensityClass());
 
@@ -81,65 +70,6 @@ sap.ui.define([
 
 			onExit: function() {
 				Device.orientation.detachHandler(this._onOrientationChange, this);
-			},
-
-			_onTopicOldRouteMatched: function(oEvent) {
-
-				var sId = oEvent.getParameter("arguments").id;
-				if (sId) {
-					sId = this._trimOldDocSuffix(sId);
-				}
-				this.getRouter().navTo("topicId", {id: sId});
-			},
-
-			_onApiOldRouteMatched: function(oEvent) {
-
-				var sId = oEvent.getParameter("arguments").id,
-					sEntityType,
-					sEntityId,
-					aSplit;
-
-				if (sId) {
-
-					aSplit = sId.split("#");
-					if (aSplit.length === 2) {
-						sId = aSplit[0];
-						sEntityType = aSplit[1];
-
-						aSplit = sEntityType.split(":");
-						if (aSplit.length === 2) {
-							sEntityType = aSplit[0];
-							sEntityId = aSplit[1];
-						}
-					}
-
-					sId = this._trimOldDocSuffix(sId);
-
-					if (sEntityType === 'event') { // legacy keyword is singular
-						sEntityType = "events";
-					}
-				}
-
-				this.getRouter().navTo("apiId", {id: sId, entityType: sEntityType, entityId: sEntityId});
-			},
-
-			_trimOldDocSuffix: function(sLink) {
-				if (sLink && sLink.endsWith(this.OLD_DOC_LINK_SUFFIX)) {
-					sLink = sLink.slice(0, -this.OLD_DOC_LINK_SUFFIX.length);
-				}
-				return sLink;
-			},
-
-			_forwardToAPIRef: function(oEvent, oData) {
-				oData || (oData = {});
-				oData['id'] = oEvent.getParameter("arguments").id;
-				this.oRouter.navTo("apiId", oData);
-			},
-
-			_onEntityOldRouteMatched: function(oEvent) {
-				this.oRouter.navTo("entity", {
-					id: oEvent.getParameter("arguments").id
-				});
 			},
 
 			onRouteChange: function (oEvent) {

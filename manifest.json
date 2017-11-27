@@ -89,11 +89,15 @@
 			}, {
 				"pattern": "",
 				"name": "api",
-				"target": ["apiMaster", "apiDetailInitial"]
+				"target": ["apiMaster", "welcome"]
 			}, {
-				"pattern": "api/{id}/:entityType:/:entityId:",
+				"pattern": "api/{id}",
 				"name": "apiId",
-				"target": ["apiMaster", "apiDetail"]
+				"target": ["apiMaster", "home"]
+			}, {
+				"pattern": "home",
+				"name": "home",
+				"target": ["apiMaster", "home"]
 			}],
 			"targets": {
 				"welcome": {
@@ -115,6 +119,11 @@
 				"apiDetail": {
 					"viewName": "ApiDetail",
 					"viewId": "apiDetail",
+					"viewLevel": 2
+				},
+				"home": {
+					"viewName": "Home",
+					"viewId": "home",
 					"viewLevel": 2
 				}
 			}
