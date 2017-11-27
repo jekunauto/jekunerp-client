@@ -22,7 +22,7 @@ sap.ui.define([
 			onInit : function () {
 				BaseController.prototype.onInit.call(this);
 				
-				this.post("/router",{"body":'{"hello":"eeewe"}'}).done(function (resp) {
+				this.post("user.save", {"body":'{"hello":"eeewe"}'}).done(function (resp) {
 					// 当result为true的回调
 					console.log(resp);
 					

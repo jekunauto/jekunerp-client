@@ -94,9 +94,9 @@ sap.ui.define([
 				} else {
 					var sCurrentHash = window.location.hash;
 
-					if (sCurrentHash.indexOf("#/topic/") == 0) {
+					if (sCurrentHash.indexOf("#/topic/") === 0) {
 						this.getRouter().navTo("topic", {}, true);
-					} else if (sCurrentHash.indexOf("#/api/") == 0) {
+					} else if (sCurrentHash.indexOf("#/api/") === 0) {
 						this.getRouter().navTo("api", {}, true);
 					}
 				}
@@ -187,8 +187,8 @@ sap.ui.define([
 				var paramArray = new Array();
 				paramArray.push(secret);
 				for (var index in array) {
-					var key = array[index];
-					paramArray.push(key + param[key]);
+					var key1 = array[index];
+					paramArray.push(key1 + param[key1]);
 				}
 				paramArray.push(secret);
 				// SHA-1编码，并转换成大写，即可获得签名    
@@ -216,11 +216,10 @@ sap.ui.define([
 				// 定义申请获得的appKey和appSecret    
 				var appKey = this.getConfig().appKey;
 				var secret = this.getConfig().appSecret;
-				data["appKey"] = appKey;
-				data["method"] = "user.save";
-				data["messageFormat"] = "json";
-				data["version"] = "1.0";
-				data["sign"] = this.sign(data, secret);
+				data.appKey = appKey;
+				data.messageFormat = "json";
+				data.version = "1.0";
+				data.sign = this.sign(data, secret);
 		
 				return this.ajax(url, data, async, type).then(function (resp) {
 					// 成功回调
@@ -235,13 +234,27 @@ sap.ui.define([
 				});
 			},
 		
-			post: function (url, data, async) {
+			httpPost: function (url, data, async) {
 				return this.request(url, data, async || true, "POST");
 			},
-		
-			get: function (url, data, async) {
+			
+			post: function (method, data, async) {
+				var url = "/router";
+				data = data || {};
+				data.method = method;
+				return this.httpPost(url, data, async || true);
+			},
+			
+			httpGet: function (url, data, async) {
 				return this.request(url, data, async || true, "GET");
-			}			
+			},
+			
+			get: function (method, data, async) {
+				var url = "/router";
+				data = data || {};
+				data.method = method;
+				return this.httpGet(url, data, async || true);
+			}
 		});
 
 	}
