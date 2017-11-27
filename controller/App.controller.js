@@ -22,14 +22,14 @@ sap.ui.define([
 			onInit : function () {
 				BaseController.prototype.onInit.call(this);
 				
-				this.post("user.save", {"body":'{"hello":"eeewe"}'}).done(function (resp) {
-					// 当result为true的回调
-					console.log(resp);
+				// this.post("user.save", {"body":'{"hello":"eeewe"}'}).done(function (resp) {
+				// 	// 当result为true的回调
+				// 	console.log(resp);
 					
-				}).fail(function (err) {
-				   // 当result为false的回调
-					console.error(err);
-				});
+				// }).fail(function (err) {
+				//   // 当result为false的回调
+				// 	console.error(err);
+				// });
 
 				var oViewModel = new JSONModel({
 					busy : false,
