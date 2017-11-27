@@ -10,7 +10,7 @@ sap.ui.define([
 ], function (BaseObject) {
 	"use strict";
 
-	return BaseObject.extend("jekunauto.ui.erp.controller.util.ConfigUtil", {
+	return BaseObject.extend("apestech.ui.erp.controller.util.ConfigUtil", {
 
 		constructor : function (oComponent) {
 			this._oComponent = oComponent;
@@ -27,7 +27,7 @@ sap.ui.define([
 				sTargetConfig = this._getTargetConfig(sMasterTargetName),
 				sViewName = sTargetConfig.viewName;
 
-				sViewName = "jekunauto.ui.erp.view." + jQuery.sap.charToUpperCase(sViewName, 0);
+				sViewName = "apestech.ui.erp.view." + jQuery.sap.charToUpperCase(sViewName, 0);
 
 				return this._oComponent.getRouter().getView(sViewName);
 		},

@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
  */
 
-// Provides implementation of jekunauto.ui.erp.util.jsanalyzer.Doclet
+// Provides implementation of apestech.ui.erp.util.jsanalyzer.Doclet
 sap.ui.define(['jquery.sap.global'],
 	function (jQuery) {
 

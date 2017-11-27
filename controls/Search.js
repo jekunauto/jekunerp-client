@@ -8,7 +8,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control', 'sap/m/Button', 'sap/
     "use strict";
 
 
-        var Search = sap.ui.core.Control.extend("jekunauto.ui.erp.controls.Search", {
+        var Search = sap.ui.core.Control.extend("apestech.ui.erp.controls.Search", {
             metadata : {
                 properties : {
                     isOpen : {type : "boolean", group : "Appearance", defaultValue : false},

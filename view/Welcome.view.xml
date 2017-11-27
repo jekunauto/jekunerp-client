@@ -1,10 +1,10 @@
 <mvc:View
-		controllerName="jekunauto.ui.erp.controller.Welcome"
+		controllerName="apestech.ui.erp.controller.Welcome"
 		xmlns="sap.m"
 		xmlns:l="sap.ui.layout"
 		xmlns:core="sap.ui.core"
 		xmlns:mvc="sap.ui.core.mvc"
-		xmlns:custom="jekunauto.ui.erp.controls">
+		xmlns:custom="apestech.ui.erp.controls">
 
 	<Page showHeader="false">
 		<l:BlockLayout>
@@ -12,14 +12,14 @@
 				<l:BlockLayoutCell class="sapUiNoContentPadding sapUiDemokitLandingImageCell welcomeImageCell">
 					<Image
 						id="phoneImage"
-						src="./resources/jekunauto/ui/erp/images/Home_S_cropped.jpg"
+						src="./resources/apestech/ui/erp/images/Home_S_cropped.jpg"
 						width="100%"
 						class="welcomeImage"
 						densityAware="false"
 						load="handleLandingImageLoad"
 						visible="{device>/system/phone}"/>
 					<Image
-						src="./resources/jekunauto/ui/erp/images/Home_M_and_L_cropped.jpg"
+						src="./resources/apestech/ui/erp/images/Home_M_and_L_cropped.jpg"
 						width="100%"
 						densityAware="false"
 						class="welcomeImage"
@@ -71,7 +71,7 @@
 									class="demokitInitialPagesWhiteText"/>
 						</l:VerticalLayout>
 						<Image
-								src="./resources/jekunauto/ui/erp/images/Fiori_guidelines_image.png"
+								src="./resources/apestech/ui/erp/images/Fiori_guidelines_image.png"
 								width="100%">
 							<layoutData>
 								<l:GridData span="L6 M12 S12"/>
@@ -189,7 +189,7 @@
 									class="sapUiSmallMarginBottom"/>
 						</l:VerticalLayout>
 						<Image
-								src="./resources/jekunauto/ui/erp/images/Fiori_design_examples.png"
+								src="./resources/apestech/ui/erp/images/Fiori_design_examples.png"
 								class="sapUiSmallmarginBeginEnd"
 								width="100%">
 							<layoutData>
@@ -373,7 +373,7 @@
 						class="sapUiBlockCenteredCell demokitInitialPagesColorPatternC communityLinkCell">
 					<l:HorizontalLayout>
 						<Image
-								src="./resources/jekunauto/ui/erp/images/logo_stackoverflow.png"
+								src="./resources/apestech/ui/erp/images/logo_stackoverflow.png"
 								width="2.5rem"
 								class="sapUiTinyMarginTop"/>
 						<custom:TitleLink
@@ -390,7 +390,7 @@
 						class="sapUiBlockCenteredCell demokitInitialPagesColorPatternD communityLinkCell">
 					<l:HorizontalLayout>
 						<Image
-								src="./resources/jekunauto/ui/erp/images/logo_youtube.png"
+								src="./resources/apestech/ui/erp/images/logo_youtube.png"
 								width="2.5rem"
 								class="sapUiTinyMarginTop"/>
 						<custom:TitleLink
@@ -407,7 +407,7 @@
 						class="sapUiBlockCenteredCell demokitInitialPagesColorPatternE communityLinkCell">
 					<l:HorizontalLayout>
 						<Image
-								src="./resources/jekunauto/ui/erp/images/logo_twitter.png"
+								src="./resources/apestech/ui/erp/images/logo_twitter.png"
 								width="2.5rem"
 								class="sapUiTinyMarginTop"/>
 						<custom:TitleLink
@@ -424,7 +424,7 @@
 
 
 			<l:BlockLayoutRow>
-				<core:Fragment id="footerFragment" fragmentName="jekunauto.ui.erp.view.Footer" type="XML" />
+				<core:Fragment id="footerFragment" fragmentName="apestech.ui.erp.view.Footer" type="XML" />
 			</l:BlockLayoutRow>
 
 		</l:BlockLayout>

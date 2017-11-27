@@ -4,8 +4,8 @@
  * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
  */
 
-// Provides implementation of jekunauto.ui.erp.thirdparty.jsanalyzer.ASTUtils
-sap.ui.define(['jquery.sap.global', 'jekunauto/ui/erp/thirdparty/esprima'],
+// Provides implementation of apestech.ui.erp.thirdparty.jsanalyzer.ASTUtils
+sap.ui.define(['jquery.sap.global', 'apestech/ui/erp/thirdparty/esprima'],
 	function(jQuery, esprima_) {
 	"use strict";
 

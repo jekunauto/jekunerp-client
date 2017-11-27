@@ -1,5 +1,5 @@
 <mvc:View
-		controllerName="jekunauto.ui.erp.controller.ApiMaster"
+		controllerName="apestech.ui.erp.controller.ApiMaster"
 		xmlns:mvc="sap.ui.core.mvc"
 		xmlns="sap.m"
 		xmlns:core="sap.ui.core"

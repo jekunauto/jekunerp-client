@@ -10,7 +10,7 @@
 				width="100%">
 			<items>
 				<Image
-						src="./resources/jekunauto/ui/erp/images/logo_sap.png"
+						src="./resources/apestech/ui/erp/images/logo_sap.png"
 						densityAware="false"
 						height="2.5rem">
 				</Image>

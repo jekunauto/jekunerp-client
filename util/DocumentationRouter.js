@@ -12,7 +12,7 @@ sap.ui.define([
 ], function (jQuery, Router, History) {
 	"use strict";
 
-	var DocumentationRouter = Router.extend("jekunauto.ui.erp.util.DocumentationRouter", {
+	var DocumentationRouter = Router.extend("apestech.ui.erp.util.DocumentationRouter", {
 
 		/**
 		 * mobile nav back handling

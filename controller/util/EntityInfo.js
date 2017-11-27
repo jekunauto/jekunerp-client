@@ -5,7 +5,7 @@
  */
 
 // Provides reuse functionality for reading documentation from metamodel entities
-sap.ui.define(['jquery.sap.global', 'jekunauto/ui/erp/thirdparty/jsanalyzer/ModuleAnalyzer', './APIInfo'],
+sap.ui.define(['jquery.sap.global', 'apestech/ui/erp/thirdparty/jsanalyzer/ModuleAnalyzer', './APIInfo'],
 	function(jQuery, analyzer, APIInfo) {
 	"use strict";
 

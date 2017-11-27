@@ -4,9 +4,9 @@
  * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
  */
 
-// Provides implementation of jekunauto.ui.erp.thirdparty.jsanalyzer.EntityParser
+// Provides implementation of apestech.ui.erp.thirdparty.jsanalyzer.EntityParser
 sap.ui.define(['jquery.sap.global', 'sap/ui/base/ManagedObjectMetadata', './ASTUtils', './Doclet',
-	'jekunauto/ui/erp/thirdparty/esprima'],
+	'apestech/ui/erp/thirdparty/esprima'],
 	function (jQuery, MOMetadata, ASTUtils, Doclet, esprima_) {
 
 		"use strict";

@@ -9,13 +9,13 @@ sap.ui.define([
 		"sap/ui/documentation/library",
 		"sap/ui/core/mvc/Controller",
 		"sap/ui/core/routing/History",
-		"jekunauto/ui/erp/controller/util/ControlsInfo",
-		"jekunauto/ui/erp/controller/util/JSDocUtil",
+		"apestech/ui/erp/controller/util/ControlsInfo",
+		"apestech/ui/erp/controller/util/JSDocUtil",
 		"sap/ui/Device"
 	], function (library, Controller, History, ControlsInfo, JSDocUtil, Device) {
 		"use strict";
 
-		return Controller.extend("jekunauto.ui.erp.controller.BaseController", {
+		return Controller.extend("apestech.ui.erp.controller.BaseController", {
 
 			// Prerequisites
 			_oCore: sap.ui.getCore(),

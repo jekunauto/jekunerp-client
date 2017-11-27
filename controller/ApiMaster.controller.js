@@ -6,12 +6,12 @@
 
 /*global history */
 sap.ui.define([
-		"jekunauto/ui/erp/controller/MasterTreeBaseController",
+		"apestech/ui/erp/controller/MasterTreeBaseController",
 		"sap/ui/model/json/JSONModel"
 	], function (MasterTreeBaseController, JSONModel) {
 		"use strict";
 		
-		return MasterTreeBaseController.extend("jekunauto.ui.erp.controller.ApiMaster", {
+		return MasterTreeBaseController.extend("apestech.ui.erp.controller.ApiMaster", {
 
 			/**
 			 * Called when the master list controller is instantiated. It sets up the event handling for the master/detail communication and other lifecycle tasks.

@@ -18,7 +18,7 @@ sap.ui.define([
 
 		var TREE_SCROLL_DURATION = 300; // The time in "ms" to scroll the tree in order to move an element to view
 
-		var MasterTreeBaseController = BaseController.extend("jekunauto.ui.erp.controller.MasterTreeBaseController", {
+		var MasterTreeBaseController = BaseController.extend("apestech.ui.erp.controller.MasterTreeBaseController", {
 
 			/**
 			 * This method tells the utility class that walks the model what are the names of the fields in the model

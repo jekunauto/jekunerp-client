@@ -5,7 +5,7 @@
  */
 
 sap.ui.define([
-		"jekunauto/ui/erp/controller/BaseController",
+		"apestech/ui/erp/controller/BaseController",
 		"sap/ui/model/json/JSONModel",
 		"sap/ui/core/ResizeHandler",
 		"sap/ui/Device",
@@ -18,7 +18,7 @@ sap.ui.define([
 	], function (BaseController, JSONModel, ResizeHandler, Device, Component, Fragment, library, IconPool, SplitAppMode, MessageBox) {
 		"use strict";
 
-		return BaseController.extend("jekunauto.ui.erp.controller.App", {
+		return BaseController.extend("apestech.ui.erp.controller.App", {
 			onInit : function () {
 				BaseController.prototype.onInit.call(this);
 
@@ -157,7 +157,7 @@ sap.ui.define([
 
 			aboutDialogOpen: function () {
 				if (!this._oAboutDialog) {
-					this._oAboutDialog = new sap.ui.xmlfragment("aboutDialogFragment", "jekunauto.ui.erp.view.AboutDialog", this);
+					this._oAboutDialog = new sap.ui.xmlfragment("aboutDialogFragment", "apestech.ui.erp.view.AboutDialog", this);
 					this._oView.addDependent(this._oAboutDialog);
 				}
 				this._oAboutDialog.open();
@@ -244,12 +244,12 @@ sap.ui.define([
 					that = this;
 
 				if (!this._oReleaseDialog) {
-					this._oReleaseDialog = new sap.ui.xmlfragment("releaseDialogFragment", "jekunauto.ui.erp.view.ReleaseDialog", this);
+					this._oReleaseDialog = new sap.ui.xmlfragment("releaseDialogFragment", "apestech.ui.erp.view.ReleaseDialog", this);
 					this._oView.addDependent(this._oReleaseDialog);
 				}
 
 				if (!this._oNotesView) {
-					this._oNotesView = sap.ui.view({id:"notesView", viewName:"jekunauto.ui.erp.view.ReleaseNotesView", type:"Template"});
+					this._oNotesView = sap.ui.view({id:"notesView", viewName:"apestech.ui.erp.view.ReleaseNotesView", type:"Template"});
 					this._oNotesView.setModel(oNotesModel);
 				}
 
@@ -287,7 +287,7 @@ sap.ui.define([
 				var that = this;
 
 				if (!this._oFeedbackDialog) {
-					this._oFeedbackDialog = new sap.ui.xmlfragment("feedbackDialogFragment", "jekunauto.ui.erp.view.FeedbackDialog", this);
+					this._oFeedbackDialog = new sap.ui.xmlfragment("feedbackDialogFragment", "apestech.ui.erp.view.FeedbackDialog", this);
 					this._oView.addDependent(this._oFeedbackDialog);
 
 					this._oFeedbackDialog.textInput = Fragment.byId("feedbackDialogFragment", "feedbackInput");

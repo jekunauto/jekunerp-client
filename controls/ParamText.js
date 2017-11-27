@@ -13,7 +13,7 @@ sap.ui.define([
 	 * Provides the parameters texts in the API Reference with a custom CSS class so that the texts are displayed indented.
 	 * @extends sap.m.Text
 	 */
-	var ParamText = Text.extend("jekunauto.ui.erp.controls.ParamText", {
+	var ParamText = Text.extend("apestech.ui.erp.controls.ParamText", {
 		metadata: {
 			properties: {
 				/**

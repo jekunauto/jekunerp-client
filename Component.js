@@ -8,18 +8,18 @@ sap.ui.define([
 	"jquery.sap.global",
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
-	"jekunauto/ui/erp/model/models",
-	"jekunauto/ui/erp/controller/ErrorHandler",
+	"apestech/ui/erp/model/models",
+	"apestech/ui/erp/controller/ErrorHandler",
 	"sap/ui/model/json/JSONModel",
-	"jekunauto/ui/erp/util/DocumentationRouter",
-	"jekunauto/ui/erp/controller/util/ConfigUtil"
+	"apestech/ui/erp/util/DocumentationRouter",
+	"apestech/ui/erp/controller/util/ConfigUtil"
 ], function (jQuery, UIComponent, Device, models, ErrorHandler, JSONModel, DocumentationRouter, ConfigUtil) {
 	"use strict";
 
 	var aTreeContent = [],
 		iTreeModelLimit = 1000000;
 
-	return UIComponent.extend("jekunauto.ui.erp.Component", {
+	return UIComponent.extend("apestech.ui.erp.Component", {
 
 		metadata: {
 			manifest: "json",
@@ -101,7 +101,7 @@ sap.ui.define([
 		/**
 		 * 配置工具 .
 		 * @public
-		 * @return {jekunauto.ui.erp.controller.util.ConfigUtil} 
+		 * @return {apestech.ui.erp.controller.util.ConfigUtil} 
 		 */
 		getConfigUtil: function () {
 			if (!this._oConfigUtil) {

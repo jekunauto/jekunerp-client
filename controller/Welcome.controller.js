@@ -6,13 +6,13 @@
 
 /*global history */
 sap.ui.define([
-		"jekunauto/ui/erp/controller/BaseController",
+		"apestech/ui/erp/controller/BaseController",
 		"sap/m/library",
 		"sap/ui/Device"
 	], function (BaseController, mobileLibrary, Device) {
 		"use strict";
 
-		return BaseController.extend("jekunauto.ui.erp.controller.Welcome", {
+		return BaseController.extend("apestech.ui.erp.controller.Welcome", {
 
 			/**
 			 * Called when the controller is instantiated.

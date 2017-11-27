@@ -16,7 +16,7 @@ sap.ui.define([
 	 * Adds link functionality and wrapping to the existing title control for display in the demo kit application
 	 * @extends sap.m.Title
 	 */
-	var TitleLink = Title.extend("jekunauto.ui.erp.controls.TitleLink", {
+	var TitleLink = Title.extend("apestech.ui.erp.controls.TitleLink", {
 		metadata: {
 			properties: {
 				/**
