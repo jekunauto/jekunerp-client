@@ -12,14 +12,14 @@
 				<l:BlockLayoutCell class="sapUiNoContentPadding sapUiDemokitLandingImageCell welcomeImageCell">
 					<Image
 						id="phoneImage"
-						src="./resources/apestech/ui/erp/images/Home_S_cropped.jpg"
+						src="images/Home_S_cropped.jpg"
 						width="100%"
 						class="welcomeImage"
 						densityAware="false"
 						load="handleLandingImageLoad"
 						visible="{device>/system/phone}"/>
 					<Image
-						src="./resources/apestech/ui/erp/images/Home_M_and_L_cropped.jpg"
+						src="images/Home_M_and_L_cropped.jpg"
 						width="100%"
 						densityAware="false"
 						class="welcomeImage"
@@ -71,7 +71,7 @@
 									class="demokitInitialPagesWhiteText"/>
 						</l:VerticalLayout>
 						<Image
-								src="./resources/apestech/ui/erp/images/Fiori_guidelines_image.png"
+								src="images/Fiori_guidelines_image.png"
 								width="100%">
 							<layoutData>
 								<l:GridData span="L6 M12 S12"/>
@@ -189,7 +189,7 @@
 									class="sapUiSmallMarginBottom"/>
 						</l:VerticalLayout>
 						<Image
-								src="./resources/apestech/ui/erp/images/Fiori_design_examples.png"
+								src="images/Fiori_design_examples.png"
 								class="sapUiSmallmarginBeginEnd"
 								width="100%">
 							<layoutData>

@@ -111,16 +111,6 @@
 					"viewId": "apiMaster",
 					"controlAggregation": "masterPages"
 				},
-				"apiDetailInitial": {
-					"viewName": "ApiDetailInitial",
-					"viewId": "apiDetailInitial",
-					"viewLevel": 2
-				},
-				"apiDetail": {
-					"viewName": "ApiDetail",
-					"viewId": "apiDetail",
-					"viewLevel": 2
-				},
 				"home": {
 					"viewName": "Home",
 					"viewId": "home",
