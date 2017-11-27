@@ -41,8 +41,8 @@
 					<items>
 						<!--<IconTabFilter id="welcomeTab" text="Home" key="home" visible="{=${appView>/bPhoneSize}}">-->
 						<!--</IconTabFilter>-->
-						<!--<IconTabFilter id="topicMasterTab" text="Documentation" key="topic">-->
-						<!--</IconTabFilter>-->
+						<IconTabFilter id="topicMasterTab" text="{i18n>Documentation}" key="topic">
+						</IconTabFilter>
 						<!--<IconTabFilter id="apiMasterTab" text="API Reference" key="api">-->
 						<!--</IconTabFilter>-->
 						<!--<IconTabFilter id="controlsMasterTab" text="Samples" key="controls">-->

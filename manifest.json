@@ -4,7 +4,8 @@
 		"_version": "1.3.0",
 		"id": "apestech.ui.erp",
 		"type": "application",
-		"title": "OpenUI5 SDK - Demo Kit v2.0",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
 		"applicationVersion": {
 			"version": "1.0.0"
 		}
@@ -69,6 +70,14 @@
 			"exploredURI": "./",
 			"topicHtmlMainDivId": "d4h5-main-container"
 		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "apestech.ui.erp.i18n.i18n"
+				}
+			}
+        },
 		"routing": {
 			"config": {
 				"routerClass": "apestech.ui.erp.util.DocumentationRouter",
