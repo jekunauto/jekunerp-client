@@ -136,6 +136,36 @@ sap.ui.define([
 							text: "Deprecated APIs"
 						});
 				}
+
+			aTreeContent = [ {
+    "text": "零售管理",
+    "name": "零售管理",
+    "ref": "#/api/jQuery",
+    "isSelected": false,
+    "nodes": [
+      {
+        "text": "收银台",
+        "name": "收银台",
+        "ref": "#/api/jQuery.Event",
+        "isSelected": false
+      }
+    ]
+  },
+  {
+    "text": "采购管理",
+    "name": "采购管理",
+    "ref": "#/api/jQuery",
+    "isSelected": false,
+    "nodes": [
+      {
+        "text": "订货单",
+        "name": "订货单",
+        "ref": "#/api/jQuery.Event",
+        "isSelected": false
+      }
+    ]
+  }];
+
 				this._bindTreeModel(aTreeContent);
 				resolve();
 			}.bind(this));
