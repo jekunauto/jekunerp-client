@@ -531,7 +531,7 @@ sap.ui.define([
 			 * @private
 			 */
 			_registerFeedbackRatingIcons: function () {
-				IconPool.addIcon("icon-face-very-bad", "FeedbackRatingFaces", {
+				/*IconPool.addIcon("icon-face-very-bad", "FeedbackRatingFaces", {
 					fontFamily: "FeedbackRatingFaces",
 					content: "E086",
 					suppressMirroring: true
@@ -555,7 +555,7 @@ sap.ui.define([
 					fontFamily: "FeedbackRatingFaces",
 					content: "E08C",
 					suppressMirroring: true
-				});
+				}); */
 			},
 
 			_getUI5Version: function () {
