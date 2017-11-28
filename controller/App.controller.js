@@ -11,7 +11,6 @@ sap.ui.define([
 		"sap/ui/Device",
 		"sap/ui/core/Component",
 		"sap/ui/core/Fragment",
-		"sap/ui/documentation/library",
 		"sap/ui/core/IconPool",
 		"sap/m/SplitAppMode",
 		"sap/m/MessageBox"
