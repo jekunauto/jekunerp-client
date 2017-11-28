@@ -9,7 +9,7 @@ sap.ui.define([
 		"sap/ui/core/mvc/Controller",
 		"sap/ui/core/routing/History",
 		"sap/ui/Device",
-		"./../thirdparty/encoding/jquery.encoding"
+		"apestech/ui/erp/thirdparty/encoding/jquery.encoding"
 	], function (Controller, History, Device) {
 		"use strict";
 
@@ -230,7 +230,8 @@ sap.ui.define([
 					}
 				}, function (err) {
 					// 失败回调
-					console.error(err); // 打印状态码
+					return $.Deferred().reject(err);
+					//console.error(err); // 打印状态码
 				});
 			},
 		
