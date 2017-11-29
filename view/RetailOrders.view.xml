@@ -1,0 +1,67 @@
+<core:View controllerName="apestech.ui.erp.controller.retailOrders"
+		   xmlns:core="sap.ui.core"
+		   xmlns="sap.uxap"
+		   xmlns:layout="sap.ui.layout"
+		   xmlns:m="sap.m"
+		   xmlns:main="apestech.ui.erp.controller.retailOrders"
+		   height="100%">
+
+	<ObjectPageLayout id="ObjectPageLayout" enableLazyLoading="true">
+		<!--<headerTitle>-->
+		<!--	<ObjectPageHeader objectTitle="Denise Smith"></ObjectPageHeader>-->
+		<!--</headerTitle>-->
+		
+		<headerTitle>
+			<ObjectPageHeader objectTitle="零售单" objectSubtitle="零售单`s title">
+				<actions>
+					<ObjectPageHeaderActionButton icon="sap-icon://pull-down" text="show section" type="Emphasized"/>
+					<ObjectPageHeaderActionButton icon="sap-icon://show" text="show state" type="Emphasized"/>
+				</actions>
+				<breadCrumbsLinks>
+					<m:Link text="零售管理" press="handleLink1Press"/>
+					<m:Link text="零售单" press="handleLink2Press"/>
+				</breadCrumbsLinks>
+			</ObjectPageHeader>
+		</headerTitle>
+
+		<headerContent>
+			<layout:VerticalLayout>
+				<m:Label text="请在这边添加对于零售单的描述"/>
+				<!--<m:VBox height="10px">-->
+				<!--	<m:Label text="Achieved goals"/>-->
+				<!--</m:VBox>-->
+			</layout:VerticalLayout>
+		</headerContent>
+
+		<sections>
+			<ObjectPageSection title="Personal">
+				<subSections>
+					<ObjectPageSubSection title="Personal">
+						<blocks>
+							<main:Main id="ordersInfo" columnLayout="4"/>
+							<!--<blockcolor:BlockBlue id="bbt1"/>-->
+							<!--<blockcolor:BlockBlue id="bbt2"/>-->
+							<!--<blockcolor:BlockBlue id="bbt3"/>-->
+							<!--<blockcolor:BlockBlue id="bbt4"/>-->
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection title="Employment">
+				<subSections>
+					<ObjectPageSubSection title="Employment">
+						<blocks>
+							<main:Main id="OrdersInfo" columnLayout="3"/>
+							<!--<blockcolor:BlockBlue id="bbt5"/>-->
+							<!--<blockcolor:BlockBlue id="bbt6"/>-->
+							<!--<blockcolor:BlockBlue id="bbt7"/>-->
+							<!--<blockcolor:BlockBlue id="bbt8"/>-->
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+		
+	</ObjectPageLayout>
+</core:View>

@@ -62,7 +62,8 @@
 
 				<custom:Search id="searchControl" toggle="onToggleSearchMode" search="onSearch" width="{= (${appView>/bPhoneSize} &amp;&amp; ${appView>/bSearchMode}) ? '100%' : ''}"/>
 
-				<Button press="feedbackDialogOpen" icon="sap-icon://comment" type="Transparent" visible="{=!${appView>/bPhoneSize} &amp;&amp; !${appView>/bSearchMode}}">
+				<!-- press="feedbackDialogOpen" -->
+				<Button  icon="sap-icon://comment" type="Transparent" visible="{=!${appView>/bPhoneSize} &amp;&amp; !${appView>/bSearchMode}}">
 
 					<layoutData>
 						<OverflowToolbarLayoutData priority="NeverOverflow" />
