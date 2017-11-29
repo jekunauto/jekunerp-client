@@ -78,7 +78,7 @@
 				}
 			}
         }, 
-		"routing": {  
+		"routing": { 
 			"config": {
 				"routerClass": "apestech.ui.erp.util.ModuleRouter",
 				"viewType": "XML",

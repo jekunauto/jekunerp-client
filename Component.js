@@ -17,7 +17,7 @@ sap.ui.define([
 	"use strict";
 
 	var aTreeContent = [],
-		iTreeModelLimit = 1000000;
+		iTreeModelLimit = 1000000; 
 
 	return UIComponent.extend("apestech.ui.erp.Component", {
 
