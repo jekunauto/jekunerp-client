@@ -3,7 +3,6 @@
 	<forms:SimpleForm>
 		<forms:content>
 			<core:Title text="日期控件"/>
-			
 			<Label text="simple DatePicker" labelFor="DP1" class=""/>
 			<DatePicker id="DP1" placeholder="Enter Date ..." valueFormat="yyyy-MM-dd" displayFormat="long" change="handleChange" class="sapUiSmallMarginBottom" value="{/DP1}"/>
 			<TimePicker id="TP1" valueFormat="HH:mm" displayFormat="HH:mm" placeholder="Enter Time ..." change="handleChange" class="sapUiSmallMarginBottom" value="{/TP1}"/>

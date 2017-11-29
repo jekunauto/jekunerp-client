@@ -25,7 +25,6 @@ sap.ui.define([
 			}
 		},
 		onSubmit:function(){
-			console.log("提交"); 
 			console.log(this.getView().getModel().oData);
 		}
 	});
