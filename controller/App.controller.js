@@ -11,6 +11,7 @@ sap.ui.define([
 		"sap/ui/Device",
 		"sap/ui/core/Component",
 		"sap/ui/core/Fragment",
+		"sap/ui/documentation/library",
 		"sap/ui/core/IconPool",
 		"sap/m/SplitAppMode",
 		"sap/m/MessageBox"
@@ -530,7 +531,7 @@ sap.ui.define([
 			 * @private
 			 */
 			_registerFeedbackRatingIcons: function () {
-				/*IconPool.addIcon("icon-face-very-bad", "FeedbackRatingFaces", {
+				IconPool.addIcon("icon-face-very-bad", "FeedbackRatingFaces", {
 					fontFamily: "FeedbackRatingFaces",
 					content: "E086",
 					suppressMirroring: true
@@ -554,7 +555,7 @@ sap.ui.define([
 					fontFamily: "FeedbackRatingFaces",
 					content: "E08C",
 					suppressMirroring: true
-				}); */
+				});
 			},
 
 			_getUI5Version: function () {
