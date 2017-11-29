@@ -19,8 +19,7 @@
 				</contentRight>
 			</Bar>
 		</subHeader>
-	<context>
-	<f:Form id="FormToolbar"
+        <f:Form id="FormToolbar"
 					editable="true"
 					ariaLabelledBy="Title1">
 					<f:layout>
@@ -125,7 +124,6 @@
 			 	        </f:FormContainer>
 				   </f:formContainers>
 				</f:Form>
-	    </context>
 		<footer>
 			<Bar>
 				<contentLeft>
