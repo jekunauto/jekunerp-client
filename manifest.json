@@ -77,7 +77,7 @@
 					"bundleName": "apestech.ui.erp.i18n.i18n"
 				}
 			}
-        },
+        }, 
 		"routing": {
 			"config": {
 				"routerClass": "apestech.ui.erp.util.ModuleRouter",

@@ -5,7 +5,7 @@
  */
 
 sap.ui.define([
-	"jquery.sap.global",
+	"jquery.sap.global", 
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
 	"apestech/ui/erp/model/models",
