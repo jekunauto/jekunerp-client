@@ -22,7 +22,7 @@
         <f:Form id="FormToolbar"
 					editable="true"
 					ariaLabelledBy="Title1">
-					<f:layout>
+					<f:layout> 
 						<f:ResponsiveGridLayout
 							labelSpanXL="3"
 							labelSpanL="3"
