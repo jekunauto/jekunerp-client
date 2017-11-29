@@ -80,7 +80,7 @@
         },
 		"routing": {
 			"config": {
-				"routerClass": "apestech.ui.erp.util.DocumentationRouter",
+				"routerClass": "apestech.ui.erp.util.ModuleRouter",
 				"viewType": "XML",
 				"viewPath": "apestech.ui.erp.view",
 				"controlId": "splitApp",
