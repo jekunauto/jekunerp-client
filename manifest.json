@@ -80,7 +80,7 @@
         },
 		"routing": {
 			"config": {
-				"routerClass": "apestech.ui.erp.util.ModuleRouter",
+				"routerClass": "apestech.ui.erp.util.DocumentationRouter",
 				"viewType": "XML",
 				"viewPath": "apestech.ui.erp.view",
 				"controlId": "splitApp",
@@ -102,7 +102,7 @@
 			}, {
 				"pattern": "api/{id}",
 				"name": "apiId",
-				"target": ["apiMaster", "home"]
+				"target": ["apiMaster", "retailOrders"]
 			}, {
 				"pattern": "home",
 				"name": "home",
@@ -123,6 +123,11 @@
 				"home": {
 					"viewName": "Home",
 					"viewId": "home",
+					"viewLevel": 2
+				},
+				"retailOrders": {
+					"viewName": "RetailOrders",
+					"viewId": "retailOrders",
 					"viewLevel": 2
 				}
 			}
