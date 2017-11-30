@@ -16,6 +16,10 @@ sap.ui.define([
 					this._oSplitContainer.backToPage = this._back.bind(this._oSplitContainer);
 				}
 			}
+			
+			var oData = {};
+			var oModel = new JSONModel(oData);
+        	this.getView().setModel(oModel);
 		},
 		onBeforeRendering: function () {
 			if (Device.system.desktop && this._oSplitContainer) {
@@ -33,6 +37,9 @@ sap.ui.define([
 			this.setMode("ShowHideMode");
 			this.showMaster();
 			SplitContainer.prototype.backToPage.apply(this, arguments);
+		},
+		onSubmit: function(){
+			console.log(this.getView().getModel().oData);
 		}
 	});
 }, true);

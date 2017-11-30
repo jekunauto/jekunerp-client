@@ -1,10 +1,11 @@
-<core:View xmlns:m="sap.m" xmlns="sap.uxap" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:main="apestech.ui.erp.controller.retailOrders" controllerName="apestech.ui.erp.controller.retailOrders" height="100%">
+<core:View xmlns:m="sap.m" xmlns="sap.uxap" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	controllerName="apestech.ui.erp.controller.retailOrders" height="100%">
 
 	<ObjectPageLayout id="ObjectPageLayout" enableLazyLoading="true" showFooter="true">
 		<headerTitle>
 			<ObjectPageHeader objectTitle="零售单" objectSubtitle="零售单`s title">
 				<actions>
-					<ObjectPageHeaderActionButton text="save" icon="sap-icon://save" title="保存"/>
+					<ObjectPageHeaderActionButton text="save" icon="sap-icon://save" title="保存" press="onSubmit"/>
 				</actions>
 				<breadCrumbsLinks>
 					<m:Link text="零售管理" press="handleLink1Press"/>
@@ -12,7 +13,6 @@
 				</breadCrumbsLinks>
 			</ObjectPageHeader>
 		</headerTitle>
-
 		<headerContent>
 			<layout:VerticalLayout>
 				<m:Label text="请在这边添加对于零售单的描述"/>
@@ -21,32 +21,165 @@
 				<!--</m:VBox>-->
 			</layout:VerticalLayout>
 		</headerContent>
-
+		
 		<sections>
-			<ObjectPageSection title="Personal">
+			<ObjectPageSection title="my section">
 				<subSections>
-					<ObjectPageSubSection title="Personal">
+					<ObjectPageSubSection title="Section 1" mode="Expanded" id="Section1">
 						<blocks>
-							<main:Main id="ordersInfo" columnLayout="4"/>
-							<!--<blockcolor:BlockBlue id="bbt1"/>-->
-							<!--<blockcolor:BlockBlue id="bbt2"/>-->
-							<!--<blockcolor:BlockBlue id="bbt3"/>-->
-							<!--<blockcolor:BlockBlue id="bbt4"/>-->
+							<ObjectPageLazyLoader stashed="true" id="Section1stashed">
+								<m:VBox class="sapUiSmallMargin">
+									<f:Form id="FormToolbar" editable="true" ariaLabelledBy="Title1">
+										<f:layout>
+											<f:ResponsiveGridLayout adjustLabelSpan="false" 
+												labelSpanXL="2" labelSpanL="2" labelSpanM="2" labelSpanS="2" 
+												emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" 
+												columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"/>
+										</f:layout>
+										<f:formContainers>
+											<f:FormContainer name="testOne">
+												<f:formElements>
+													<f:FormElement label="Name">
+														<f:fields>
+															<m:Input value="{/SupplierName}"/>
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement label="Street">
+														<m:Input value="{/Street}"/>
+													</f:FormElement>
+													<f:FormElement label="ZIP Code/City">
+														<m:Input value="{/ZIPCode}"/>
+													</f:FormElement>
+													<f:FormElement label="Country">
+														<f:fields>
+															<m:Select width="100%" selectedKey="{/Country}">
+																<m:items>
+																	<core:Item text="Germany" key="Germany"/>
+																	<core:Item text="USA" key="USA"/>
+																	<core:Item text="England" key="England"/>
+																</m:items>
+															</m:Select>
+														</f:fields>
+													</f:FormElement>
+												</f:formElements>
+											</f:FormContainer>
+											<f:FormContainer name="testOne">
+												<f:formElements>
+													<f:FormElement label="Name">
+														<f:fields>
+															<m:Input value="{/SupplierName}"/>
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement label="Street">
+														<m:Input value="{/Street}"/>
+													</f:FormElement>
+													<f:FormElement label="ZIP Code/City">
+														<m:Input value="{/ZIPCode}"/>
+													</f:FormElement>
+													<f:FormElement label="Country">
+														<f:fields>
+															<m:Select width="100%" selectedKey="{/Country}"></m:Select>
+														</f:fields>
+													</f:FormElement>
+												</f:formElements>
+											</f:FormContainer>
+										</f:formContainers>
+									</f:Form>
+								</m:VBox>
+							</ObjectPageLazyLoader>
 						</blocks>
+						
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
-
-			<ObjectPageSection title="Employment">
+			
+			<ObjectPageSection title="my section">
 				<subSections>
-					<ObjectPageSubSection title="Employment">
+					<ObjectPageSubSection title="Section 2" mode="Expanded" id="Section2">
 						<blocks>
-							<main:Main id="OrdersInfo" columnLayout="3"/>
-							<!--<blockcolor:BlockBlue id="bbt5"/>-->
-							<!--<blockcolor:BlockBlue id="bbt6"/>-->
-							<!--<blockcolor:BlockBlue id="bbt7"/>-->
-							<!--<blockcolor:BlockBlue id="bbt8"/>-->
+							<ObjectPageLazyLoader stashed="true" id="Section2stashed">
+								<m:VBox class="sapUiSmallMargin">
+									<f:Form id="FormToolbar2" editable="true" ariaLabelledBy="Title1">
+										<f:layout>
+											<f:ResponsiveGridLayout adjustLabelSpan="false" 
+												labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="3" 
+												emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" 
+												columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+										</f:layout>
+										<f:formContainers>
+											<f:FormContainer>
+												<f:formElements>
+													<f:FormElement label="Name">
+														<f:fields>
+															<m:Input value="{/SupplierName}"/>
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement label="Street">
+														<m:Input value="{/Street}"/>
+													</f:FormElement>
+													<f:FormElement label="ZIP Code/City">
+														<m:Input value="{/ZIPCode}"/>
+													</f:FormElement>
+													<f:FormElement label="Country">
+														<f:fields>
+															<m:Select width="100%" selectedKey="{/Country}">
+																<m:items>
+																	<core:Item text="Germany" key="Germany"/>
+																	<core:Item text="USA" key="USA"/>
+																	<core:Item text="England" key="England"/>
+																</m:items>
+															</m:Select>
+														</f:fields>
+													</f:FormElement>
+												</f:formElements>
+											</f:FormContainer>
+											<f:FormContainer>
+												<f:formElements>
+													<f:FormElement label="Name">
+														<f:fields>
+															<m:Input value="{/SupplierName}"/>
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement label="Street">
+														<m:Input value="{/Street}"/>
+													</f:FormElement>
+													<f:FormElement label="ZIP Code/City">
+														<m:Input value="{/ZIPCode}"/>
+													</f:FormElement>
+													<f:FormElement label="Country">
+														<f:fields>
+															<m:Select width="100%" selectedKey="{/Country}"></m:Select>
+														</f:fields>
+													</f:FormElement>
+												</f:formElements>
+											</f:FormContainer>
+											
+											<f:FormContainer>
+												<f:formElements>
+													<f:FormElement label="Name">
+														<f:fields>
+															<m:Input value="{/SupplierName}"/>
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement label="Street">
+														<m:Input value="{/Street}"/>
+													</f:FormElement>
+													<f:FormElement label="ZIP Code/City">
+														<m:Input value="{/ZIPCode}"/>
+													</f:FormElement>
+													<f:FormElement label="Country">
+														<f:fields>
+															<m:Select width="100%" selectedKey="{/Country}"></m:Select>
+														</f:fields>
+													</f:FormElement>
+												</f:formElements>
+											</f:FormContainer>
+										</f:formContainers>
+									</f:Form>
+								</m:VBox>
+							</ObjectPageLazyLoader>
 						</blocks>
+						
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
