@@ -39,9 +39,10 @@
 										<f:formContainers>
 											<f:FormContainer name="testOne">
 												<f:formElements>
-													<f:FormElement label="Name">
+													<f:FormElement label="Date">
 														<f:fields>
-															<m:Input value="{/SupplierName}"/>
+															<m:DatePicker id="DP1" placeholder="Enter Date ..." valueFormat="yyyy-MM-dd" displayFormat="long" change="handleChange"  value="{/DP1}"/>
+															<m:TimePicker id="TP1" valueFormat="HH:mm" displayFormat="HH:mm" placeholder="Enter Time ..." change="handleChange" value="{/TP1}"/>
 														</f:fields>
 													</f:FormElement>
 													<f:FormElement label="Street">
@@ -184,5 +185,22 @@
 				</subSections>
 			</ObjectPageSection>
 		</sections>
+		
+		<footer>
+			<m:OverflowToolbar id="otbFooter">
+				<m:ToolbarSpacer/>
+				<m:Button type="Accept" text="Accept">
+					<m:layoutData><m:OverflowToolbarLayoutData moveToOverflow="false" /></m:layoutData>
+				</m:Button>
+				<m:Button type="Reject" text="Reject">
+					<m:layoutData><m:OverflowToolbarLayoutData moveToOverflow="false" /></m:layoutData>
+				</m:Button>
+				<m:OverflowToolbarButton text="Delete" icon="sap-icon://delete"/>
+				<m:OverflowToolbarButton text="Edit" icon="sap-icon://edit"/>
+				<m:OverflowToolbarButton text="Add" icon="sap-icon://add"/>
+				<m:Button id="save" icon="sap-icon://save" text="Save" type="Emphasized" visible="true" press="onSubmit" /> 
+
+			</m:OverflowToolbar>
+		</footer>
 	</ObjectPageLayout>
 </core:View>
