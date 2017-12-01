@@ -77,6 +77,10 @@ sap.ui.define([
 			getConfig : function () {
 				return this.getOwnerComponent().getMetadata().getConfig();
 			},
+			
+			getMessagesBox : function(){
+				return this.getOwnerComponent().getMessageUtils();
+			},
 
 			/**
 			 * Event handler  for navigating back.

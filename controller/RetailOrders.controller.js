@@ -70,7 +70,7 @@ sap.ui.define([
 			}
 		},
 		handleLink1Press: function (oEvent) {
-			MessageToast.show("Page 1 a very long link clicked");
+			 this.getMessagesBox().showDefaultMessage("Page 1 a very long link clicked");
 		},
 		handleLink2Press: function (oEvent) {
 			MessageToast.show("Page 2 long link clicked");
@@ -92,8 +92,7 @@ sap.ui.define([
 		},
 		handleDetailsPress : function(oEvent) {
 			MessageToast.show("Details for product with id " + this.getView().getModel().getProperty("ProductId", oEvent.getSource().getBindingContext()));
-		},
-		
+		}
 
 	});
 }, true);

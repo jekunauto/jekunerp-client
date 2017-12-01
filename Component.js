@@ -12,8 +12,9 @@ sap.ui.define([
 	"apestech/ui/erp/controller/ErrorHandler",
 	"sap/ui/model/json/JSONModel",
 	"apestech/ui/erp/util/ModuleRouter",
-	"apestech/ui/erp/controller/util/ConfigUtil"
-], function (jQuery, UIComponent, Device, models, ErrorHandler, JSONModel, DocumentationRouter, ConfigUtil) {
+	"apestech/ui/erp/controller/util/ConfigUtil",
+	"apestech/ui/erp/controller/MessageUtils"
+], function (jQuery, UIComponent, Device, models, ErrorHandler, JSONModel, DocumentationRouter, ConfigUtil, MessageUtils) {
 	"use strict";
 
 	var aTreeContent = [],
@@ -43,6 +44,8 @@ sap.ui.define([
 			this._modelsPromise = null;
 
 			this._oErrorHandler = new ErrorHandler(this);
+			
+			this._MessageUtils = new MessageUtils(this);
 
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
@@ -74,6 +77,7 @@ sap.ui.define([
 		 */
 		destroy: function () {
 			this._oErrorHandler.destroy();
+			this._MessageUtils.destroy();
 			this._oConfigUtil.destroy();
 			this._oConfigUtil = null;
 			// call the base component's destroy function
@@ -96,6 +100,16 @@ sap.ui.define([
 				this._sContentDensityClass = "sapUiSizeCompact";
 			}
 			return this._sContentDensityClass;
+		},
+		
+		/**
+		 * 消息
+		 */
+		getMessageUtils: function(){
+			if (!this._MessageUtils) {
+				this._MessageUtils = new MessageUtils(this);
+			}
+			return this._MessageUtils;
 		},
 
 		/**
