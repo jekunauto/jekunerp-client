@@ -201,7 +201,7 @@ sap.ui.define([
 				// 利用了jquery延迟对象回调的方式对ajax封装，使用done()，fail()，always()等方法进行链式回调操作
 				// 如果需要的参数更多，比如有跨域dataType需要设置为'jsonp'等等，可以考虑参数设置为对象
 				return $.ajax({
-					url: this.formatUrl(url),
+					url: url,
 					data: data || {},
 					type: type || "GET", //请求类型
 					dataType: dataType || "json", //接收数据类型
@@ -241,6 +241,7 @@ sap.ui.define([
 			
 			post: function (method, data, async) {
 				var url = "/router";
+				url = this.formatUrl(url);
 				data = data || {};
 				data.method = method;
 				return this.httpPost(url, data, async || true);
@@ -252,6 +253,7 @@ sap.ui.define([
 			
 			get: function (method, data, async) {
 				var url = "/router";
+				url = this.formatUrl(url);
 				data = data || {};
 				data.method = method;
 				return this.httpGet(url, data, async || true);
