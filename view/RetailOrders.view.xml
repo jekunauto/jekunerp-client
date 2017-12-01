@@ -1,4 +1,10 @@
-<core:View xmlns:m="sap.m" xmlns="sap.uxap" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+<core:View xmlns:m="sap.m" 
+		   xmlns="sap.uxap" 
+		   xmlns:core="sap.ui.core" 
+		   xmlns:layout="sap.ui.layout" 
+		   xmlns:f="sap.ui.layout.form" 
+		   xmlns:table="sap.ui.table" 
+		   xmlns:u="sap.ui.unified"
 	controllerName="apestech.ui.erp.controller.retailOrders" height="100%">
 
 	<ObjectPageLayout id="ObjectPageLayout" enableLazyLoading="true" showFooter="true">
@@ -89,7 +95,6 @@
 								</m:VBox>
 							</ObjectPageLazyLoader>
 						</blocks>
-						
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
@@ -181,6 +186,106 @@
 							</ObjectPageLazyLoader>
 						</blocks>
 						
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			
+			<ObjectPageSection title="my section">
+				<subSections>
+					<ObjectPageSubSection title="Section 3" mode="Expanded" id="Section3">
+						<blocks>
+							<table:Table
+								rows="{/ProductCollection}"
+								title="Products"
+								selectionMode="MultiToggle"
+								visibleRowCount="7">
+								<table:columns>
+									<table:Column width="11rem">
+										<m:Label text="Product Name" />
+										<table:template>
+											<m:Text text="{Name}" wrapping="false" />
+										</table:template>
+									</table:Column>
+									<table:Column width="11rem">
+										<m:Label text="Product Id" />
+										<table:template>
+											<m:Input value="{ProductId}"/>
+										</table:template>
+									</table:Column>
+									<table:Column width="6rem" hAlign="End">
+										<m:Label text="Quantity" />
+										<table:template>
+											<m:Label text="{Quantity}" />
+										</table:template>
+									</table:Column>
+									<table:Column width="9rem">
+										<m:Label text="Status" />
+										<table:template>
+											<m:ObjectStatus text="{Status}" state="{path: 'Available', formatter: '.formatAvailableToObjectState'}"/>
+										</table:template>
+									</table:Column>
+									<table:Column width="9rem">
+										<m:Label text="Price" />
+										<table:template>
+											<u:Currency value="{Price}" currency="{CurrencyCode}"/>
+										</table:template>
+									</table:Column>
+									<table:Column width="12rem">
+										<m:Label text="Supplier" />
+										<table:template>
+											<m:ComboBox value="{SupplierName}" items="{/Suppliers}">
+												<core:Item text="{Name}"/>
+											</m:ComboBox>
+										</table:template>
+									</table:Column>
+									<table:Column width="9rem">
+										<m:Label text="Image" />
+										<table:template>
+											<m:Link text="Show Image" href="{ProductPicUrl}" target="_blank"/>
+										</table:template>
+									</table:Column>
+									<table:Column width="9rem">
+										<m:Label text="Details" />
+										<table:template>
+											<m:Button text="Show Details" press="handleDetailsPress"/>
+										</table:template>
+									</table:Column>
+									<table:Column width="7rem">
+										<m:Label text="Heavy Weight" />
+										<table:template>
+											<m:CheckBox selected="{
+												path: 'Heavy',
+												type: 'sap.ui.model.type.String'
+											}"/>
+										</table:template>
+									</table:Column>
+									<table:Column width="12rem">
+										<m:Label text="Category" />
+										<table:template>
+											<m:Select selectedKey="{Category}" items="{/Categories}">
+												<core:Item text="{Name}" key="{Name}"/>
+											</m:Select>
+										</table:template>
+									</table:Column>
+									<table:Column width="6rem" hAlign="Center">
+										<m:Label text="Status" />
+										<table:template>
+											<core:Icon src="{path: 'Available',	formatter: '.formatAvailableToIcon'}"/>
+										</table:template>
+									</table:Column>
+									<table:Column width="11rem" hAlign="Center">
+										<m:Label text="Delivery Date" />
+										<table:template>
+											<m:DatePicker value="{
+												path: 'DeliveryDate',
+												type: 'sap.ui.model.type.Date',
+												formatOptions: {source: {pattern: 'timestamp'}}
+											}"/>
+										</table:template>
+									</table:Column>
+								</table:columns>
+							</table:Table>
+						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
