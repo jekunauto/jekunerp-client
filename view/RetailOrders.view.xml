@@ -294,12 +294,10 @@
 		<footer>
 			<m:OverflowToolbar id="otbFooter">
 				<m:ToolbarSpacer/>
-				<m:Button type="Accept" text="Accept">
+				<m:Button type="Accept" text="Accept" press="showSuccessMessage">
 					<m:layoutData><m:OverflowToolbarLayoutData moveToOverflow="false" /></m:layoutData>
 				</m:Button>
-				<m:Button type="Reject" text="Reject">
-					<m:layoutData><m:OverflowToolbarLayoutData moveToOverflow="false" /></m:layoutData>
-				</m:Button>
+				<m:Button type="Reject" text="Reject" press="showErrorMessage"/>
 				<m:OverflowToolbarButton text="Delete" icon="sap-icon://delete"/>
 				<m:OverflowToolbarButton text="Edit" icon="sap-icon://edit"/>
 				<m:OverflowToolbarButton text="Add" icon="sap-icon://add"/>

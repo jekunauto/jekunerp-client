@@ -81,15 +81,25 @@ sap.ui.define([
 			SplitContainer.prototype.backToPage.apply(this, arguments);
 		},
 		onSubmit: function(){
+			this.getMessagesBox().showWarningMessage("You are sure to save the order's Data!");
 			console.log(this.getView().getModel().oData);
 		},
 		formatAvailableToObjectState : function (bAvailable) {
 			return bAvailable ? "Success" : "Error";
 		},
-
+		
+		showErrorMessage: function(){
+			this.getMessagesBox().showErrorMessage("Yur are sure to reject the order's data");
+		},
+		
+		showSuccessMessage: function(){
+			this.getMessagesBox().showSuccessMessage("If you see this message, the order's is saved into the DataBase");
+		},
+		
 		formatAvailableToIcon : function(bAvailable) {
 			return bAvailable ? "sap-icon://accept" : "sap-icon://decline";
 		},
+		
 		handleDetailsPress : function(oEvent) {
 			MessageToast.show("Details for product with id " + this.getView().getModel().getProperty("ProductId", oEvent.getSource().getBindingContext()));
 		}
