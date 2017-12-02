@@ -15,7 +15,9 @@ sap.ui.define([
 				this._bMessageOpen = false;
 				this._sErrorText = "Sorry, a technical error occurred! Please try again later.";
 		},
-		
+		/**
+		 * shwo the general Message
+		 */
 		showDefaultMessage: function (text) {
 			var dialog = new Dialog({
 				title: 'Default Message',
@@ -36,7 +38,9 @@ sap.ui.define([
 
 			dialog.open();
 		},
-
+		/**
+		 * shwo the Error Message
+		 */
 		showErrorMessage: function (text) {
 			var dialog = new Dialog({
 				title: 'Error',
@@ -99,7 +103,6 @@ sap.ui.define([
 					dialog.destroy();
 				}
 			});
-
 			dialog.open();
 		}
 	});
