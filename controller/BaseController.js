@@ -21,7 +21,7 @@ sap.ui.define([
 			onInit: function() {
 				// Load <code>versionInfo</code> to ensure the <code>versionData</code> model is loaded.
 				if (Device.system.phone || Device.system.tablet) {
-					this.getOwnerComponent().loadVersionInfo(); // for Desktop is always loaded in <code>Component.js</code>
+					// this.getOwnerComponent().loadVersionInfo(); // for Desktop is always loaded in <code>Component.js</code>
 				}
 			},
 
