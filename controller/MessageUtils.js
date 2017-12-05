@@ -63,6 +63,9 @@ sap.ui.define([
 			dialog.open();
 		},
 
+		/**
+		 * show the Warning Message
+		 */
 		showWarningMessage: function (text) {
 			var dialog = new Dialog({
 				title: 'Warning',
@@ -85,6 +88,9 @@ sap.ui.define([
 			dialog.open();
 		},
 
+		/**
+		 * show the success Message
+		 */
 		showSuccessMessage: function (text) {
 			var dialog = new Dialog({
 				title: 'Success',
@@ -97,6 +103,38 @@ sap.ui.define([
 					text: 'OK',
 					press: function () {
 						dialog.close();
+					}
+				}),
+				afterClose: function() {
+					dialog.destroy();
+				}
+			});
+			dialog.open();
+		},
+		
+		/**
+		 * show the confirm Message
+		 * return value: 
+		 *		true: confirmed
+		 *		false: cancle
+		 */
+		showConfirmMessage: function (json) {
+			var dialog = new Dialog({
+				title: 'Confirm',
+				type: 'Message',
+				content: new Text({ text: json.text }),
+				beginButton: new Button({
+					text: 'Submit',
+					press: function () {
+						dialog.close();
+						json.confirm();
+					}
+				}),
+				endButton: new Button({
+					text: 'Cancel',
+					press: function () {
+						dialog.close();
+						json.cancel();
 					}
 				}),
 				afterClose: function() {

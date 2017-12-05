@@ -21,7 +21,7 @@ sap.ui.define([
 			var oData = {};
         	var oProductJson = this.initSampleDataModel();
         	// oData = $.extend(oData, oProductJson);
-			this.getView().setModel(oProductJson);
+      		this.getView().setModel(oProductJson);
 		},
 		initSampleDataModel : function() {
 			var oModel = new JSONModel();
@@ -84,10 +84,7 @@ sap.ui.define([
 			this.getMessagesBox().showWarningMessage("You are sure to save the order's Data!");
 			console.log(this.getView().getModel().oData);
 		},
-		formatAvailableToObjectState : function (bAvailable) {
-			return bAvailable ? "Success" : "Error";
-		},
-		
+
 		showErrorMessage: function(){
 			this.getMessagesBox().showErrorMessage("Yur are sure to reject the order's data");
 		},
@@ -96,12 +93,57 @@ sap.ui.define([
 			this.getMessagesBox().showSuccessMessage("If you see this message, the order's is saved into the DataBase");
 		},
 		
+		showConfirm: function(){
+			var viewObject = this; 
+			this.getMessagesBox().showConfirmMessage({
+				text :"确认保存数据?",
+				confirm: function(){
+					console.log(viewObject.getView().getModel().oData);
+				},
+				cancel: function(){
+					
+				}
+			});
+		},
+		
+		onSwitchChange: function(oEvent) {
+			debugger;
+			var switchState = oEvent.getParameter("state");	//获取 switch 的状态
+			var oName = this.getView().byId("name");
+			oName.setEditable(switchState);			//设置 ipnut 不可以编辑
+		},
+		
+		formatAvailableToObjectState : function (bAvailable) {
+			return bAvailable ? "Success" : "Error";
+		},
+		
 		formatAvailableToIcon : function(bAvailable) {
 			return bAvailable ? "sap-icon://accept" : "sap-icon://decline";
 		},
 		
 		handleDetailsPress : function(oEvent) {
 			MessageToast.show("Details for product with id " + this.getView().getModel().getProperty("ProductId", oEvent.getSource().getBindingContext()));
+		},
+		
+		handleChange:function(oEvent){
+			var bValid = oEvent.getParameter("valid");
+			var oDRS = oEvent.oSource;
+			if (bValid) {
+				oDRS.setValueState(sap.ui.core.ValueState.None);
+			} else {
+				oDRS.setValueState(sap.ui.core.ValueState.Error);
+			}
+		},
+		
+		getSelectedIndices: function (oEvent) {
+			var aIndices = this.getView().byId("table1").getSelectedIndices();
+			var sMsg;
+			if (aIndices.length < 1) {
+				sMsg = "no item selected";
+			} else {
+				sMsg = aIndices;
+			}
+			MessageToast.show(sMsg);
 		}
 
 	});

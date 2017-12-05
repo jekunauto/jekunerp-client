@@ -48,14 +48,17 @@
 													<f:FormElement label="Date">
 														<f:fields>
 															<m:DatePicker id="DP1" placeholder="Enter Date ..." valueFormat="yyyy-MM-dd" displayFormat="long" change="handleChange"  value="{/DP1}"/>
-															<m:TimePicker id="TP1" valueFormat="HH:mm" displayFormat="HH:mm" placeholder="Enter Time ..." change="handleChange" value="{/TP1}"/>
+															<m:TimePicker valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" placeholder="Enter Time with second..." change="handleChange" value="{/TP1}"/>
+															<m:TimePicker valueFormat="HH:mm" displayFormat="HH:mm" placeholder="Enter Time ..." change="handleChange" value="{/TP2}"/>
 														</f:fields>
 													</f:FormElement>
-													<f:FormElement label="Street">
-														<m:Input value="{/Street}"/>
+													<f:FormElement label="DateRange">
+															<m:DateRangeSelection valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" dateValue="{/dateValueDRS2}" 
+															secondDateValue="{/secondDateValueDRS2}" change="handleChange"/>
 													</f:FormElement>
-													<f:FormElement label="ZIP Code/City">
-														<m:Input value="{/ZIPCode}"/>
+													<f:FormElement label="Date Time">
+														<m:DateTimePicker valueFormat="yyyy-MM-dd-HH-mm-ss" displayFormat="short" change="handleChange" value="{/checkedTime1}"/>
+														<m:DateTimePicker valueFormat="yyyy-MM-dd HH-mm-ss" displayFormat="yyyy-MM-dd HH-mm-ss" change="handleChange" value="{/checkedTime2}"/>
 													</f:FormElement>
 													<f:FormElement label="Country">
 														<f:fields>
@@ -72,16 +75,16 @@
 											</f:FormContainer>
 											<f:FormContainer name="testOne">
 												<f:formElements>
-													<f:FormElement label="Name">
+													<f:FormElement label="name">
 														<f:fields>
-															<m:Input value="{/SupplierName}"/>
+															<m:Input id="name" value="{/name}"/>
 														</f:fields>
 													</f:FormElement>
-													<f:FormElement label="Street">
-														<m:Input value="{/Street}"/>
+													<f:FormElement label="Password">
+														<m:Input type="Password" placeholder="Enter password ..."  value="{/Password}"/>
 													</f:FormElement>
-													<f:FormElement label="ZIP Code/City">
-														<m:Input value="{/ZIPCode}"/>
+													<f:FormElement label="SearchField">
+														<m:SearchField  value="{/SearchField}" liveChange="onClickSearch" />
 													</f:FormElement>
 													<f:FormElement label="Country">
 														<f:fields>
@@ -117,11 +120,21 @@
 												<f:formElements>
 													<f:FormElement label="Name">
 														<f:fields>
-															<m:Input value="{/SupplierName}"/>
+															<m:Switch id="switch1" state="false" customTextOn="Yes" customTextOff="No" enabled="true" change="onSwitchChange">
+																<m:layoutData>
+																	<m:FlexItemData growFactor="1" />
+																</m:layoutData>
+															</m:Switch>
+															
+															<m:Switch id="switch2" type="AcceptReject" state="true" enabled="true" change="onSwitchChange">
+																<m:layoutData>
+																	<m:FlexItemData growFactor="1" />
+																</m:layoutData>
+															</m:Switch>
 														</f:fields>
 													</f:FormElement>
-													<f:FormElement label="Street">
-														<m:Input value="{/Street}"/>
+													<f:FormElement label="Name">
+														<m:Input value="{/Name}"/>
 													</f:FormElement>
 													<f:FormElement label="ZIP Code/City">
 														<m:Input value="{/ZIPCode}"/>
@@ -194,11 +207,43 @@
 				<subSections>
 					<ObjectPageSubSection title="Section 3" mode="Expanded" id="Section3">
 						<blocks>
-							<table:Table
+							<!-- grid的选择模式  ：Single、MultiToggle、None  
+								 grid行的选择模式（前提是需要在 grid选择模式为 Single、MultiToggle）：RowSelector、RowOnly、Row 
+								 title 标题属性
+							-->
+							<table:Table id="table1"
 								rows="{/ProductCollection}"
-								title="Products"
 								selectionMode="MultiToggle"
-								visibleRowCount="7">
+								selectionBehavior="RowSelector"
+								visibleRowCount="7"
+								ariaLabelledBy="title">
+								<table:toolbar>
+									<m:Toolbar>
+										<m:content>
+											<m:Title id="title" text="Products" />
+											<m:ToolbarSpacer/>
+											<m:Button
+												icon="sap-icon://activities"
+												tooltip="show indices of selected items"
+												press="getSelectedIndices"/>
+											<m:Button
+												icon="sap-icon://activity-items"
+												tooltip="show context of latest selection item"
+												press="getContextByIndex"/>
+											<m:Button
+												icon="sap-icon://decline"
+												tooltip="clear selection"
+												press="clearSelection"/>
+											<m:Switch
+												state="true"
+												customTextOn="on"
+												customTextOff="off"
+												tooltip="enable select all items"
+												change="onSwitchChange"/>
+										</m:content>
+									</m:Toolbar>
+								</table:toolbar>
+								
 								<table:columns>
 									<table:Column width="11rem">
 										<m:Label text="Product Name" />
@@ -213,7 +258,7 @@
 										</table:template>
 									</table:Column>
 									<table:Column width="6rem" hAlign="End">
-										<m:Label text="Quantity" />
+										<m:Label text="Quantity" sortProperty="Quantity"/>
 										<table:template>
 											<m:Label text="{Quantity}" />
 										</table:template>
@@ -298,10 +343,10 @@
 					<m:layoutData><m:OverflowToolbarLayoutData moveToOverflow="false" /></m:layoutData>
 				</m:Button>
 				<m:Button type="Reject" text="Reject" press="showErrorMessage"/>
-				<m:OverflowToolbarButton text="Delete" icon="sap-icon://delete"/>
+				<m:OverflowToolbarButton text="Delete" icon="sap-icon://delete" press="onSubmit"/>
 				<m:OverflowToolbarButton text="Edit" icon="sap-icon://edit"/>
 				<m:OverflowToolbarButton text="Add" icon="sap-icon://add"/>
-				<m:Button id="save" icon="sap-icon://save" text="Save" type="Emphasized" visible="true" press="onSubmit" /> 
+				<m:Button id="save" icon="sap-icon://save" text="Save" type="Emphasized" visible="true" press="showConfirm" /> 
 
 			</m:OverflowToolbar>
 		</footer>
