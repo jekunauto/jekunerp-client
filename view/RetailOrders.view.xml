@@ -265,8 +265,7 @@
 								</table:extension>
 								
 								<table:noData>
-									<m:Link
-										class="sapUiMediumMargin"
+									<m:Link class="sapUiMediumMargin"
 										text="No Data found. Press here to reset all filters."
 										press="clearAllFilters"/>
 								</table:noData>

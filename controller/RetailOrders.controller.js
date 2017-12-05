@@ -153,7 +153,6 @@ sap.ui.define([
 		},
 		
 		addGridRow: function(oEvent){
-			debugger;
 			var oTable = this.getView().byId("table1");
 			oTable.getRowActionTemplate();
 			oTable.addRow();
