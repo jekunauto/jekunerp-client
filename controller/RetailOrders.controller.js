@@ -150,6 +150,13 @@ sap.ui.define([
 			/* 隐藏列的方法*/
 			var oTableColumnQuantity = this.getView().byId("Quantity");
 			oTableColumnQuantity.setVisible(switchState);
+		},
+		
+		addGridRow: function(oEvent){
+			debugger;
+			var oTable = this.getView().byId("table1");
+			oTable.getRowActionTemplate();
+			oTable.addRow();
 		}
 
 	});

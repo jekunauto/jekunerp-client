@@ -215,8 +215,9 @@
 								rows="{/ProductCollection}"
 								selectionMode="MultiToggle"
 								selectionBehavior="RowSelector"
-								visibleRowCount="7"
-								ariaLabelledBy="title">
+								columnHeaderVisible="true"
+								visibleRowCountMode="Interactive"
+								visibleRowCount="7">
 								<table:toolbar>
 									<m:Toolbar>
 										<m:content>
@@ -244,14 +245,40 @@
 									</m:Toolbar>
 								</table:toolbar>
 								
+								<table:extension>
+									<layout:HorizontalLayout>
+										<m:Toolbar>
+											<m:content>
+												<m:Button
+													icon="sap-icon://add"
+													text="addRow"
+													tooltip="show indices of selected items"
+													press="addGridRow"/>
+												<m:Button
+													icon="sap-icon://less"
+													text="deleteRow"
+													tooltip="show context of latest selection item"
+													press="deleteGridRow"/>
+											</m:content>
+										</m:Toolbar>
+									</layout:HorizontalLayout>
+								</table:extension>
+								
+								<table:noData>
+									<m:Link
+										class="sapUiMediumMargin"
+										text="No Data found. Press here to reset all filters."
+										press="clearAllFilters"/>
+								</table:noData>
+								
 								<table:columns>
-									<table:Column width="11rem" sortProperty="ProductName">
+									<table:Column width="11rem" sortProperty="Name" filterProperty="Name" defaultFilterOperator="StartsWith">
 										<m:Label text="Product Name" />
 										<table:template>
 											<m:Text text="{Name}" wrapping="false" />
 										</table:template>
 									</table:Column>
-									<table:Column width="11rem" sortProperty="ProductId">
+									<table:Column width="11rem" sortProperty="ProductId" filterProperty="ProductId">
 										<m:Label text="Product Id" />
 										<table:template>
 											<m:Input value="{ProductId}"/>
@@ -356,7 +383,6 @@
 				<m:OverflowToolbarButton text="Edit" icon="sap-icon://edit"/>
 				<m:OverflowToolbarButton text="Add" icon="sap-icon://add"/>
 				<m:Button id="save" icon="sap-icon://save" text="Save" type="Emphasized" visible="true" press="showConfirm" /> 
-
 			</m:OverflowToolbar>
 		</footer>
 	</ObjectPageLayout>
