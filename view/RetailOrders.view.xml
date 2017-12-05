@@ -154,9 +154,9 @@
 											</f:FormContainer>
 											<f:FormContainer>
 												<f:formElements>
-													<f:FormElement label="Name">
+													<f:FormElement label="Email">
 														<f:fields>
-															<m:Input value="{/SupplierName}"/>
+															<m:Input value="{/Email}" type="Email"/>
 														</f:fields>
 													</f:FormElement>
 													<f:FormElement label="Street">
@@ -167,9 +167,23 @@
 													</f:FormElement>
 													<f:FormElement label="Country">
 														<f:fields>
-															<m:Select width="100%" selectedKey="{/Country}"></m:Select>
+															<!-- valueState: Warning  Error  success  -->
+															<m:RadioButtonGroup binding="{/radioButton}" id="radioButton" columns="3" selectedIndex="2" valueState="success" enabled="true">
+																<m:buttons>
+																	<m:RadioButton id="RB2-1" groupName="GroupInputListItem" value="1" text="Option 1"/>
+																	<m:RadioButton id="RB2-2" groupName="GroupInputListItem" value="2" text="Option 2" editable="false"/>
+																	<m:RadioButton id="RB2-3" groupName="GroupInputListItem" value="3" text="Option 3"/>
+																</m:buttons>
+															</m:RadioButtonGroup>
 														</f:fields>
 													</f:FormElement>
+													
+													<f:FormElement label="TextAreaValue">
+														<f:fields>
+															<m:TextArea value="{/TextAreaValue}" maxLength="40" width="100%" valueState=""></m:TextArea>
+														</f:fields>
+													</f:FormElement>
+													
 												</f:formElements>
 											</f:FormContainer>
 											

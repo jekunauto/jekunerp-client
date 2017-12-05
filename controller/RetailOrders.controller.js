@@ -82,7 +82,7 @@ sap.ui.define([
 		},
 		onSubmit: function(){
 			this.getMessagesBox().showWarningMessage("You are sure to save the order's Data!");
-			console.log(this.getView().getModel().oData);
+			console.log(this.getView().getModel().getData());
 		},
 
 		showErrorMessage: function(){
@@ -94,11 +94,14 @@ sap.ui.define([
 		},
 		
 		showConfirm: function(){
+			var oRadioButton = this.getView().byId("RB2-1");
+			console.log(oRadioButton.getSelected());
+			
 			var viewObject = this; 
 			this.getMessagesBox().showConfirmMessage({
 				text :"确认保存数据?",
 				confirm: function(){
-					console.log(viewObject.getView().getModel().oData);
+					console.log(viewObject.getView().getModel().getData());
 				},
 				cancel: function(){
 					
