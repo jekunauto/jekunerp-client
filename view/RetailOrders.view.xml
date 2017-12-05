@@ -77,7 +77,7 @@
 												<f:formElements>
 													<f:FormElement label="name">
 														<f:fields>
-															<m:Input id="name" value="{/name}"/>
+															<m:Input value="{/name}"/>
 														</f:fields>
 													</f:FormElement>
 													<f:FormElement label="Password">
@@ -134,7 +134,7 @@
 														</f:fields>
 													</f:FormElement>
 													<f:FormElement label="Name">
-														<m:Input value="{/Name}"/>
+														<m:Input id="name" value="{/Name}"/>
 													</f:FormElement>
 													<f:FormElement label="ZIP Code/City">
 														<m:Input value="{/ZIPCode}"/>
@@ -239,31 +239,31 @@
 												customTextOn="on"
 												customTextOff="off"
 												tooltip="enable select all items"
-												change="onSwitchChange"/>
+												change="onGridSwitchChange"/>
 										</m:content>
 									</m:Toolbar>
 								</table:toolbar>
 								
 								<table:columns>
-									<table:Column width="11rem">
+									<table:Column width="11rem" sortProperty="ProductName">
 										<m:Label text="Product Name" />
 										<table:template>
 											<m:Text text="{Name}" wrapping="false" />
 										</table:template>
 									</table:Column>
-									<table:Column width="11rem">
+									<table:Column width="11rem" sortProperty="ProductId">
 										<m:Label text="Product Id" />
 										<table:template>
 											<m:Input value="{ProductId}"/>
 										</table:template>
 									</table:Column>
-									<table:Column width="6rem" hAlign="End">
-										<m:Label text="Quantity" sortProperty="Quantity"/>
+									<table:Column id="Quantity" width="6rem" hAlign="End">
+										<m:Label text="Quantity"/>
 										<table:template>
 											<m:Label text="{Quantity}" />
 										</table:template>
 									</table:Column>
-									<table:Column width="9rem">
+									<table:Column id="Status" width="9rem">
 										<m:Label text="Status" />
 										<table:template>
 											<m:ObjectStatus text="{Status}" state="{path: 'Available', formatter: '.formatAvailableToObjectState'}"/>
@@ -329,6 +329,15 @@
 										</table:template>
 									</table:Column>
 								</table:columns>
+								<table:footer>
+									<m:Toolbar>
+										<m:ToolbarSpacer/>
+										<m:Button
+											icon="sap-icon://hint"
+											tooltip="Show information"
+											press="showInfo"/>
+									</m:Toolbar>
+								</table:footer>
 							</table:Table>
 						</blocks>
 					</ObjectPageSubSection>

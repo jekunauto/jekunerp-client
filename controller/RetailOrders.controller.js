@@ -107,7 +107,6 @@ sap.ui.define([
 		},
 		
 		onSwitchChange: function(oEvent) {
-			debugger;
 			var switchState = oEvent.getParameter("state");	//获取 switch 的状态
 			var oName = this.getView().byId("name");
 			oName.setEditable(switchState);			//设置 ipnut 不可以编辑
@@ -144,6 +143,13 @@ sap.ui.define([
 				sMsg = aIndices;
 			}
 			MessageToast.show(sMsg);
+		},
+		
+		onGridSwitchChange:function(oEvent){
+			var switchState = oEvent.getParameter("state");	//获取 switch 的状态
+			/* 隐藏列的方法*/
+			var oTableColumnQuantity = this.getView().byId("Quantity");
+			oTableColumnQuantity.setVisible(switchState);
 		}
 
 	});
