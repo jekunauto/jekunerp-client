@@ -156,21 +156,33 @@ sap.ui.define([
 		},
 		
 		addGridRow: function(oEvent){
-			debugger;
 			var oTable = this.getView().byId("table1");
 			var jsonData = oTable.getModel().getData();
-			
 			var productData = jsonData.ProductCollection;
 			
-			var json = {};  
-			productData.push(json);
-			
-		/*	for(var i=0; i<10; i++) {
-				oTable.getModel().setData({});
-			}*/
+			productData.push({});
 			oTable.getModel().setData(jsonData);
-			// this.getView().setModel(viewData);
+		},
+		
+		deleteGridRow: function(oEvent){
+			var aIndices = this.getView().byId("table1").getSelectedIndices();
+			if (aIndices.length > 1) {
+				
+				var oTable = this.getView().byId("table1");
+				var jsonData = oTable.getModel().getData();
+				var productDataArray = jsonData.ProductCollection;
+				
+				var filtered = productDataArray.filter(function(data, index){
+					if( aIndices.includes( index ) ){
+						return false;
+					}else{
+						return true;
+					}
+				});
+				
+				jsonData.ProductCollection = filtered;
+				oTable.getModel().setData(jsonData);
+			}
 		}
-
 	});
 }, true);

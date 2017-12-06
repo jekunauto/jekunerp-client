@@ -212,7 +212,6 @@
 								</m:VBox>
 							</ObjectPageLazyLoader>
 						</blocks>
-						
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
@@ -223,8 +222,7 @@
 						<blocks>
 							<!-- grid的选择模式  ：Single、MultiToggle、None  
 								 grid行的选择模式（前提是需要在 grid选择模式为 Single、MultiToggle）：RowSelector、RowOnly、Row 
-								 title 标题属性
-							-->
+								 title 标题属性 -->
 							<table:Table id="table1"
 								rows="{/ProductCollection}"
 								selectionMode="MultiToggle"
@@ -353,13 +351,13 @@
 										</table:template>
 									</table:Column>
 									<table:Column width="6rem" hAlign="Center">
-										<m:Label text="Status" />
+										<m:Label text="Status"/>
 										<table:template>
 											<core:Icon src="{path: 'Available',	formatter: '.formatAvailableToIcon'}"/>
 										</table:template>
 									</table:Column>
 									<table:Column width="11rem" hAlign="Center">
-										<m:Label text="Delivery Date" />
+										<m:Label text="Delivery Date"/>
 										<table:template>
 											<m:DatePicker value="{
 												path: 'DeliveryDate',
@@ -369,15 +367,14 @@
 										</table:template>
 									</table:Column>
 								</table:columns>
+								
 								<table:footer>
 									<m:Toolbar>
 										<m:ToolbarSpacer/>
-										<m:Button
-											icon="sap-icon://hint"
-											tooltip="Show information"
-											press="showInfo"/>
+										<m:Button icon="sap-icon://hint" tooltip="Show information" press="showInfo"/>
 									</m:Toolbar>
 								</table:footer>
+								
 							</table:Table>
 						</blocks>
 					</ObjectPageSubSection>
