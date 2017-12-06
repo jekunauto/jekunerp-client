@@ -178,8 +178,8 @@ sap.ui.define([
 			    "isSelected": false,
 			    "nodes": [
 			      {
-			        "text": "订货单",
-			        "name": "DHD",
+			        "text": "采购订单",
+			        "name": "purchaseOrders",
 			        // "ref": "#/api/jQuery.Event",
 			        "isSelected": false
 			      }

@@ -104,6 +104,14 @@
 				"name": "apiId",
 				"target": ["apiMaster", "retailOrders"]
 			}, {
+				"pattern": "retailOrders/:id",
+				"name": "retailOrders",
+				"target": ["apiMaster", "retailOrders"]
+			}, {
+				"pattern": "purchaseOrders",
+				"name": "purchaseOrders",
+				"target": ["apiMaster", "purchaseOrders"]
+			}, {
 				"pattern": "home",
 				"name": "home",
 				"target": ["apiMaster", "home"]
@@ -128,6 +136,11 @@
 				"retailOrders": {
 					"viewName": "RetailOrders",
 					"viewId": "retailOrders",
+					"viewLevel": 2
+				},
+				"purchaseOrders":{
+					"viewName": "PurchaseOrders",
+					"viewId": "purchaseOrders",
 					"viewLevel": 2
 				}
 			}

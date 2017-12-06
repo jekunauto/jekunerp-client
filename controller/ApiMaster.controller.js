@@ -110,9 +110,9 @@ sap.ui.define([
 					return;
 				}
 
-				this.getRouter().navTo("apiId", {id : apiId}, false);
+				//this.getRouter().navTo( "apiId", {id : apiId}, false);
+				this.getRouter().navTo( apiId, {id : apiId}, false);
 			}
-
 		});
 	}
 );
