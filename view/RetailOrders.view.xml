@@ -43,7 +43,7 @@
 												columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"/>
 										</f:layout>
 										<f:formContainers>
-											<f:FormContainer name="testOne">
+											<f:FormContainer name="testOne" title="Online">
 												<f:formElements>
 													<f:FormElement label="Date">
 														<f:fields>
@@ -73,7 +73,7 @@
 													</f:FormElement>
 												</f:formElements>
 											</f:FormContainer>
-											<f:FormContainer name="testOne">
+											<f:FormContainer name="testOne" title="OnlineOthers">
 												<f:formElements>
 													<f:FormElement label="name">
 														<f:fields>
@@ -98,10 +98,10 @@
 								</m:VBox>
 							</ObjectPageLazyLoader>
 						</blocks>
-						<actions>
+						<!--<actions>
 							<m:Button icon="sap-icon://synchronize"></m:Button>
 							<m:Button icon="sap-icon://expand"></m:Button>
-						</actions>
+						</actions>-->
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>

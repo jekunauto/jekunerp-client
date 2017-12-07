@@ -1,0 +1,118 @@
+<core:View xmlns:m="sap.m" 
+		   xmlns="sap.uxap" 
+		   xmlns:core="sap.ui.core" 
+		   xmlns:layout="sap.ui.layout" 
+		   xmlns:f="sap.ui.layout.form" 
+		   xmlns:table="sap.ui.table" 
+		   xmlns:u="sap.ui.unified"
+	controllerName="apestech.ui.erp.controller.vipInfoEntry" height="100%">
+
+	<ObjectPageLayout id="ObjectPageLayout" enableLazyLoading="true" showFooter="true">
+		<headerTitle>
+			<ObjectPageHeader objectTitle="会员信息录入" objectSubtitle="会员信息录入`s title">
+				<actions>
+					<ObjectPageHeaderActionButton text="save" icon="sap-icon://save" title="保存" press="onSubmit"/>
+				</actions>
+				<breadCrumbsLinks>
+					<m:Link text="会员信息" press="handleLink1Press"/>
+					<m:Link text="会员信息录入" press="handleLink2Press"/>
+				</breadCrumbsLinks>
+			</ObjectPageHeader>
+		</headerTitle>
+		<headerContent>
+			<layout:VerticalLayout>
+				<m:Label text="请在这边添加对于会员信息录入的描述"/>
+				<!--<m:VBox height="10px">-->
+				<!--	<m:Label text="Achieved goals"/>-->
+				<!--</m:VBox>-->
+			</layout:VerticalLayout>
+		</headerContent>
+		
+		<sections>
+			<ObjectPageSection title="my section">
+				<subSections>
+					<ObjectPageSubSection title="Section 1" mode="Expanded" id="Section1">
+						<ObjectPageLazyLoader stashed="true" id="Section1stashed">
+								<m:VBox class="sapUiSmallMargin">
+									<f:Form id="FormToolbar" editable="true" ariaLabelledBy="Title1">
+										<f:layout>
+											<f:ResponsiveGridLayout adjustLabelSpan="false" 
+												labelSpanXL="2" labelSpanL="2" labelSpanM="2" labelSpanS="2" 
+												emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" 
+												columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"/>
+										</f:layout>
+										<f:formContainers>
+											<f:FormContainer name="testOne">
+												<f:formElements>
+													<f:FormElement label="Date">
+														<f:fields>
+															<m:DatePicker id="DP1" placeholder="Enter Date ..." valueFormat="yyyy-MM-dd" displayFormat="long" change="handleChange"  value="{/DP1}"/>
+															<m:TimePicker valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" placeholder="Enter Time with second..." change="handleChange" value="{/TP1}"/>
+															<m:TimePicker valueFormat="HH:mm" displayFormat="HH:mm" placeholder="Enter Time ..." change="handleChange" value="{/TP2}"/>
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement label="DateRange">
+															<m:DateRangeSelection valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" dateValue="{/dateValueDRS2}" 
+															secondDateValue="{/secondDateValueDRS2}" change="handleChange"/>
+													</f:FormElement>
+													<f:FormElement label="Date Time">
+														<m:DateTimePicker valueFormat="yyyy-MM-dd-HH-mm-ss" displayFormat="short" change="handleChange" value="{/checkedTime1}"/>
+														<m:DateTimePicker valueFormat="yyyy-MM-dd HH-mm-ss" displayFormat="yyyy-MM-dd HH-mm-ss" change="handleChange" value="{/checkedTime2}"/>
+													</f:FormElement>
+													<f:FormElement label="Country">
+														<f:fields>
+															<m:Select width="100%" selectedKey="{/Country}">
+																<m:items>
+																	<core:Item text="Germany" key="Germany"/>
+																	<core:Item text="USA" key="USA"/>
+																	<core:Item text="England" key="England"/>
+																</m:items>
+															</m:Select>
+														</f:fields>
+													</f:FormElement>
+												</f:formElements>
+											</f:FormContainer>
+											<f:FormContainer name="testOne">
+												<f:formElements>
+													<f:FormElement label="name">
+														<f:fields>
+															<m:Input value="{/name}"/>
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement label="Password">
+														<m:Input type="Password" placeholder="Enter password ..."  value="{/Password}"/>
+													</f:FormElement>
+													<f:FormElement label="SearchField">
+														<m:SearchField  value="{/SearchField}" liveChange="onClickSearch" />
+													</f:FormElement>
+													<f:FormElement label="Country">
+														<f:fields>
+															<m:Select width="100%" selectedKey="{/Country}"></m:Select>
+														</f:fields>
+													</f:FormElement>
+												</f:formElements>
+											</f:FormContainer>
+										</f:formContainers>
+									</f:Form>
+								</m:VBox>
+							</ObjectPageLazyLoader>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+		
+		<footer>
+			<m:OverflowToolbar id="otbFooter">
+				<m:ToolbarSpacer/>
+				<m:Button type="Accept" text="Accept" press="showSuccessMessage">
+					<m:layoutData><m:OverflowToolbarLayoutData moveToOverflow="false" /></m:layoutData>
+				</m:Button>
+				<m:Button type="Reject" text="Reject" press="showErrorMessage"/>
+				<m:OverflowToolbarButton text="Delete" icon="sap-icon://delete" press="onSubmit"/>
+				<m:OverflowToolbarButton text="Edit" icon="sap-icon://edit"/>
+				<m:OverflowToolbarButton text="Add" icon="sap-icon://add"/>
+				<m:Button id="save" icon="sap-icon://save" text="Save" type="Emphasized" visible="true" press="showConfirm" /> 
+			</m:OverflowToolbar>
+		</footer>
+	</ObjectPageLayout>
+</core:View>

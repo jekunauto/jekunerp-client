@@ -133,27 +133,10 @@
 					<Button id="cancel" text="Cancel" visible="true" press="handleCancelPress"/>
 					
 					<Button type="Reject" text="Reject" icon="sap-icon://delete"/>
-					
-					<Button text="save" icon="sap-icon://save"/>
-					
 					<Button text="Delete" icon="sap-icon://delete"/>
 					<Button text="Edit" icon="sap-icon://edit"/>
 				</contentLeft>
-				
-			<!--	<contentRight>
-					<Button id="save" icon="sap-icon://save" text="Save" type="Emphasized" visible="true" press="handleSavePress" /> 
-					<Button id="cancel" text="Cancel" visible="true" press="handleCancelPress" />
-					
-					<Button type="Accept" text="Accept">
-						<layoutData><OverflowToolbarLayoutData moveToOverflow="false" /></layoutData>
-					</Button>
-					
-					<OverflowToolbarButton text="save" icon="sap-icon://save"/>
-					
-					<OverflowToolbarButton text="Delete" icon="sap-icon://delete"/>
-					<OverflowToolbarButton text="Edit" icon="sap-icon://edit"/>
-				
-				</contentRight>-->
+
 			</Bar>
 		</footer>
 	</Page>

@@ -108,6 +108,10 @@
 				"name": "retailOrders",
 				"target": ["apiMaster", "retailOrders"]
 			}, {
+				"pattern": "vipInfoEntry/:id",
+				"name": "vipInfoEntry",
+				"target": ["apiMaster", "vipInfoEntry"]
+			}, {
 				"pattern": "purchaseOrders",
 				"name": "purchaseOrders",
 				"target": ["apiMaster", "purchaseOrders"]
@@ -141,6 +145,11 @@
 				"purchaseOrders":{
 					"viewName": "PurchaseOrders",
 					"viewId": "purchaseOrders",
+					"viewLevel": 2
+				},
+				"vipInfoEntry":{
+					"viewName": "VipInfoEntry",
+					"viewId": "vipInfoEntry",
 					"viewLevel": 2
 				}
 			}

@@ -23,6 +23,7 @@ sap.ui.define([
         	// oData = $.extend(oData, oProductJson);
       		this.getView().setModel(oProductJson);
 		},
+		
 		initSampleDataModel : function() {
 			var oModel = new JSONModel();
 			var oDateFormat = DateFormat.getDateInstance({source: {pattern: "timestamp"}, pattern: "dd/MM/yyyy"});
@@ -61,8 +62,8 @@ sap.ui.define([
 			});
 
 			return oModel;
-		}
-		,
+		},
+		
 		onBeforeRendering: function () {
 			if (Device.system.desktop && this._oSplitContainer) {
 				this._oSplitContainer.setMode("HideMode");
