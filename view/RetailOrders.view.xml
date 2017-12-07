@@ -168,7 +168,7 @@
 													<f:FormElement label="Country">
 														<f:fields>
 															<!-- valueState: Warning  Error  success  -->
-															<m:RadioButtonGroup binding="{/radioButton}" id="radioButton" columns="3" selectedIndex="2" valueState="success" enabled="true">
+															<m:RadioButtonGroup id="radioButton" columns="3" selectedIndex="{/radioButton}" valueState="success" enabled="true">
 																<m:buttons>
 																	<m:RadioButton id="RB2-1" groupName="GroupInputListItem" value="1" text="Option 1" />
 																	<m:RadioButton id="RB2-2" groupName="GroupInputListItem" value="2" text="Option 2" editable="false"/>
