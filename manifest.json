@@ -123,6 +123,10 @@
 				"pattern": "serviceOrders",
 				"name": "serviceOrders",
 				"target": ["apiMaster", "serviceOrders"]
+			}, {
+				"pattern": "queryrRetailOrders",
+				"name": "queryrRetailOrders",
+				"target": ["apiMaster", "queryrRetailOrders"]
 			}],
 			"targets": {
 				"welcome": {
@@ -157,9 +161,14 @@
 					"viewLevel": 2
 				},
 				"serviceOrders": {
-				"viewName": "ServiceOrders",
-				"viewId": "serviceOrders",
-				"viewLevel": 2
+					"viewName": "ServiceOrders",
+					"viewId": "serviceOrders",
+					"viewLevel": 2
+				},
+				"queryrRetailOrders": {
+					"viewName": "QueryrRetailOrders",
+					"viewId": "queryrRetailOrders",
+					"viewLevel": 2
 				}
 			}
 		}

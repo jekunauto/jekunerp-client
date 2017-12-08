@@ -1,0 +1,187 @@
+<mvc:View xmlns="sap.m" 
+		  xmlns:m="sap.m"
+          xmlns:mvc="sap.ui.core.mvc" 
+		  xmlns:l="sap.ui.layout" 
+		  xmlns:core="sap.ui.core" 
+		  xmlns:custom="apestech.ui.erp.controls"  
+		  xmlns:f="sap.ui.layout.form"
+		  controllerName="apestech.ui.erp.controller.queryRetailOrders">
+	<Page showHeader="true" title="查询零售单" >
+		<subHeader>
+			<Bar>
+				<contentLeft>
+					<ToggleButton text="Pressed" enabled="true" pressed="true" press="onPress"/>
+					<ToggleButton text="Pressed &amp; Disabled" enabled="false" pressed="true" press="onPress"/>
+				</contentLeft>
+				<contentRight>
+					<ToggleButton icon="sap-icon://action" press="onPress"/>
+					<ToggleButton icon="sap-icon://home" enabled="false" press="onPress"/>
+				</contentRight>
+			</Bar>
+		</subHeader>
+		
+		<content>
+			<f:Form id="FormToolbar"
+				editable="true"
+				ariaLabelledBy="Title1">
+				<f:layout> 
+					<f:ResponsiveGridLayout
+						labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="3"
+						adjustLabelSpan="false"
+						emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+						columnsXL="3" columnsL="3" columnsM="3"
+						singleContainerFullSize="true" />
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement label="Name">
+								<f:fields>
+									<Input value="{SupplierName}" id="name"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Street">
+								<Input value="{Street}" />
+							</f:FormElement>
+							<f:FormElement label="ZIP Code/City">
+								 <Input value="{ZIPCode}">
+							     </Input>  
+						   </f:FormElement>
+							<f:FormElement label="Country">
+								<f:fields>
+									<Select width="100%" id="country" selectedKey="{Country}">
+										<items>
+											<core:Item text="Germany" key="Germany"/>
+											<core:Item text="USA" key="USA"/>
+											<core:Item text="England" key="England"/>
+										</items>
+									</Select>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+		 	       </f:FormContainer>
+		 	       
+		    		<f:FormContainer>
+						<f:formElements>
+							<f:FormElement label="Name">
+								<f:fields>
+									<Input value="{SupplierName}" id="name1"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Street">
+								<Input value="{Street}" />
+							</f:FormElement>
+							<f:FormElement label="ZIP Code/City">
+								 <Input value="{ZIPCode}">
+								
+								 </Input> 
+						   </f:FormElement>
+							<f:FormElement label="Country">
+								<f:fields>
+									<Select width="100%" id="country1" selectedKey="{Country}">
+										<items>
+											<core:Item text="Germany" key="Germany"/>
+											<core:Item text="USA" key="USA"/>
+											<core:Item text="England" key="England"/>
+										</items>
+									</Select>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+		 	       </f:FormContainer>
+		 	       
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement label="Name">
+								<f:fields>
+									<Input value="{SupplierName}" id="name2"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Street">
+								<Input value="{Street}" />
+							</f:FormElement>
+							<f:FormElement label="ZIP Code/City">
+								 <Input value="{ZIPCode}" />
+						   </f:FormElement>
+							<f:FormElement label="Country">
+								<f:fields>
+									<Select width="100%" id="country2" selectedKey="{Country}">
+										<items>
+											<core:Item text="Germany" key="Germany"/>
+											<core:Item text="USA" key="USA"/>
+											<core:Item text="England" key="England"/>
+										</items>
+									</Select>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+		 	        </f:FormContainer>
+			   </f:formContainers>
+			</f:Form>
+		</content>
+		
+		<content>
+			<m:Table id="list" width="auto" 
+				growing="true"
+				growingThreshold="10" 
+				items="{ 
+					path:'/ProductCollection', 
+					sorter: {
+						path: 'SupplierName',
+						descending: false,
+						group: true
+					},
+					groupHeaderFactory: '.getGroupHeader'
+				}">
+				<m:columns>
+					<m:Column>
+						<m:Text text="Quantity"/>
+					</m:Column>
+					<m:Column>
+						<m:Text text="ProductId"/>
+					</m:Column>
+					<m:Column minScreenWidth="Small" demandPopin="true">
+						<m:Text text="Name"/>
+					</m:Column>
+					<m:Column minScreenWidth="Tablet" demandPopin="false">
+						<m:Text text="Price"/>
+					</m:Column>
+					<m:Column minScreenWidth="Tablet" demandPopin="false">
+						<m:Text text="Depth"/>
+					</m:Column>
+					<m:Column minScreenWidth="Tablet" demandPopin="false">
+						<m:Text text="Height"/>
+					</m:Column>
+				</m:columns>
+				<m:items>
+					<m:ColumnListItem type="" press="onPress">
+						<m:cells>
+							<m:ObjectNumber number="{Quantity}" emphasized="false"/>
+							<m:Text text="{ProductId}"/>
+							<m:Text text="{Name}"/>
+							<m:Text text="{Price}"/>
+							<m:Text text="{Depth}"/>
+							<m:Text text="{Height}"/>
+						</m:cells>
+					</m:ColumnListItem>
+				</m:items>
+			</m:Table>
+		</content>
+        
+		<footer>
+			<Bar>
+				<contentLeft>
+					<!-- visible 控制按钮是否可以显示  enabled="false" 控制按钮点击-->
+					<Button type="Accept" text="Accept" icon="sap-icon://save" enabled="false"/>
+					<Button id="save" icon="sap-icon://save" text="Save" type="Emphasized" visible="true" press="handleSavePress"/> 
+					<Button id="cancel" text="Cancel" visible="true" press="handleCancelPress"/>
+					
+					<Button type="Reject" text="Reject" icon="sap-icon://delete"/>
+					<Button text="Delete" icon="sap-icon://delete"/>
+					<Button text="Edit" icon="sap-icon://edit"/>
+				</contentLeft>
+
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

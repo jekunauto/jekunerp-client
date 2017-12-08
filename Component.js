@@ -153,35 +153,33 @@ sap.ui.define([
 
 			aTreeContent = [{
 			    "text": "零售管理",
-			    "name": "零售管理",
-			    // "ref": "#/api/jQuery",
+			    "name": "retailOrdersMain",
 			    "isSelected": true,
 			    "nodes": [{
 			    	"text": "收银台",
 			    	"name": "LSD",
-			        // "ref": "#/api/jQuery.Event",
 			        "isSelected": false
 			    }, {
 			        "text": "零售单",
 			        "name": "retailOrders",
-			        // "ref": "#/api/jQuery.Event",
+			        "isSelected": false
+			    }, {
+			        "text": "查询零售单",
+			        "name": "queryrRetailOrders",
 			        "isSelected": false
 			    }]
 			  }, {
 			    "text": "采购管理",
-			    "name": "采购管理",
-			    // "ref": "#/api/jQuery",
+			    "name": "PUR",
 			    "isSelected": false,
 			    "nodes": [{
 			        "text": "采购订单",
 			        "name": "purchaseOrders",
-			        // "ref": "#/api/jQuery.Event",
 			        "isSelected": false
 			    }]
 			}, {
 			    "text": "会员管理",
 			    "name": "CRM",
-			    // "ref": "#/api/jQuery",
 			    "isSelected": false,
 			    "nodes": [{
 			        "text": "会员信息录入",
@@ -191,7 +189,6 @@ sap.ui.define([
 			},{
 			    "text": "服务管理",
 			    "name": "SER",
-			    // "ref": "#/api/jQuery",
 			    "isSelected": false,
 			    "nodes": [{
 			        "text": "服务单",

@@ -154,158 +154,157 @@
 						</f:Form>
 						
 						<table:Table id="table1"
-								rows="{/ProductCollection1}"
-								selectionMode="MultiToggle"
-								selectionBehavior="RowSelector"
-								columnHeaderVisible="true"
-								visibleRowCountMode="Interactive"
-								visibleRowCount="7">
-								<table:toolbar>
+							rows="{/ProductCollection1}"
+							selectionMode="MultiToggle"
+							selectionBehavior="RowSelector"
+							columnHeaderVisible="true"
+							visibleRowCountMode="Interactive"
+							visibleRowCount="7">
+							<table:toolbar>
+								<m:Toolbar>
+									<m:content>
+										<m:Title id="title" text="Products" />
+										<m:ToolbarSpacer/>
+										<m:Button
+											icon="sap-icon://activities"
+											tooltip="show indices of selected items"
+											press="getSelectedIndices"/>
+										<m:Button
+											icon="sap-icon://activity-items"
+											tooltip="show context of latest selection item"
+											press="getContextByIndex"/>
+										<m:Button
+											icon="sap-icon://decline"
+											tooltip="clear selection"
+											press="clearSelection"/>
+										<m:Switch
+											state="true"
+											customTextOn="on"
+											customTextOff="off"
+											tooltip="enable select all items"
+											change="onGridSwitchChange"/>
+									</m:content>
+								</m:Toolbar>
+							</table:toolbar>
+							
+							<table:extension>
+								<layout:HorizontalLayout>
 									<m:Toolbar>
 										<m:content>
-											<m:Title id="title" text="Products" />
-											<m:ToolbarSpacer/>
 											<m:Button
-												icon="sap-icon://activities"
+												icon="sap-icon://add"
+												text="addRow"
 												tooltip="show indices of selected items"
-												press="getSelectedIndices"/>
+												press="addGridRow"/>
 											<m:Button
-												icon="sap-icon://activity-items"
+												icon="sap-icon://less"
+												text="deleteRow"
 												tooltip="show context of latest selection item"
-												press="getContextByIndex"/>
-											<m:Button
-												icon="sap-icon://decline"
-												tooltip="clear selection"
-												press="clearSelection"/>
-											<m:Switch
-												state="true"
-												customTextOn="on"
-												customTextOff="off"
-												tooltip="enable select all items"
-												change="onGridSwitchChange"/>
+												press="deleteGridRow"/>
 										</m:content>
 									</m:Toolbar>
-								</table:toolbar>
-								
-								<table:extension>
-									<layout:HorizontalLayout>
-										<m:Toolbar>
-											<m:content>
-												<m:Button
-													icon="sap-icon://add"
-													text="addRow"
-													tooltip="show indices of selected items"
-													press="addGridRow"/>
-												<m:Button
-													icon="sap-icon://less"
-													text="deleteRow"
-													tooltip="show context of latest selection item"
-													press="deleteGridRow"/>
-											</m:content>
-										</m:Toolbar>
-									</layout:HorizontalLayout>
-								</table:extension>
-								
-								<table:noData>
-									<m:Link class="sapUiMediumMargin"
-										text="No Data found. Press here to reset all filters."
-										press="clearAllFilters"/>
-								</table:noData>
-								
-								<table:columns>
-									<table:Column width="11rem" sortProperty="Name" filterProperty="Name" defaultFilterOperator="StartsWith">
-										<m:Label text="Product Name" />
-										<table:template>
-											<m:Text text="{Name}" wrapping="false" />
-										</table:template>
-									</table:Column>
-									<table:Column width="11rem" sortProperty="ProductId" filterProperty="ProductId">
-										<m:Label text="Product Id" />
-										<table:template>
-											<m:Input value="{ProductId}"/>
-										</table:template>
-									</table:Column>
-									<table:Column id="Quantity" width="6rem" hAlign="End">
-										<m:Label text="Quantity"/>
-										<table:template>
-											<m:Label text="{Quantity}" />
-										</table:template>
-									</table:Column>
-									<table:Column id="Status" width="9rem">
-										<m:Label text="Status" />
-										<table:template>
-											<m:ObjectStatus text="{Status}" state="{path: 'Available', formatter: '.formatAvailableToObjectState'}"/>
-										</table:template>
-									</table:Column>
-									<table:Column width="9rem">
-										<m:Label text="Price" />
-										<table:template>
-											<u:Currency value="{Price}" currency="{CurrencyCode}"/>
-										</table:template>
-									</table:Column>
-									<table:Column width="12rem">
-										<m:Label text="Supplier" />
-										<table:template>
-											<m:ComboBox value="{SupplierName}" items="{/Suppliers}">
-												<core:Item text="{Name}"/>
-											</m:ComboBox>
-										</table:template>
-									</table:Column>
-									<table:Column width="9rem">
-										<m:Label text="Image" />
-										<table:template>
-											<m:Link text="Show Image" href="{ProductPicUrl}" target="_blank"/>
-										</table:template>
-									</table:Column>
-									<table:Column width="9rem">
-										<m:Label text="Details" />
-										<table:template>
-											<m:Button text="Show Details" press="handleDetailsPress"/>
-										</table:template>
-									</table:Column>
-									<table:Column width="7rem">
-										<m:Label text="Heavy Weight" />
-										<table:template>
-											<m:CheckBox selected="{
-												path: 'Heavy',
-												type: 'sap.ui.model.type.String'
-											}"/>
-										</table:template>
-									</table:Column>
-									<table:Column width="12rem">
-										<m:Label text="Category" />
-										<table:template>
-											<m:Select selectedKey="{Category}" items="{/Categories}">
-												<core:Item text="{Name}" key="{Name}"/>
-											</m:Select>
-										</table:template>
-									</table:Column>
-									<table:Column width="6rem" hAlign="Center">
-										<m:Label text="Status"/>
-										<table:template>
-											<core:Icon src="{path: 'Available',	formatter: '.formatAvailableToIcon'}"/>
-										</table:template>
-									</table:Column>
-									<table:Column width="11rem" hAlign="Center">
-										<m:Label text="Delivery Date"/>
-										<table:template>
-											<m:DatePicker value="{
-												path: 'DeliveryDate',
-												type: 'sap.ui.model.type.Date',
-												formatOptions: {source: {pattern: 'timestamp'}}
-											}"/>
-										</table:template>
-									</table:Column>
-								</table:columns>
-								
-								<table:footer>
-									<m:Toolbar>
-										<m:ToolbarSpacer/>
-										<m:Button icon="sap-icon://hint" tooltip="Show information" press="showInfo"/>
-									</m:Toolbar>
-								</table:footer>
-								
-							</table:Table>
+								</layout:HorizontalLayout>
+							</table:extension>
+							
+							<table:noData>
+								<m:Link class="sapUiMediumMargin"
+									text="No Data found. Press here to reset all filters."
+									press="clearAllFilters"/>
+							</table:noData>
+							
+							<table:columns>
+								<table:Column width="11rem" sortProperty="Name" filterProperty="Name" defaultFilterOperator="StartsWith">
+									<m:Label text="Product Name" />
+									<table:template>
+										<m:Text text="{Name}" wrapping="false" />
+									</table:template>
+								</table:Column>
+								<table:Column width="11rem" sortProperty="ProductId" filterProperty="ProductId">
+									<m:Label text="Product Id" />
+									<table:template>
+										<m:Input value="{ProductId}"/>
+									</table:template>
+								</table:Column>
+								<table:Column id="Quantity" width="6rem" hAlign="End">
+									<m:Label text="Quantity"/>
+									<table:template>
+										<m:Label text="{Quantity}" />
+									</table:template>
+								</table:Column>
+								<table:Column id="Status" width="9rem">
+									<m:Label text="Status" />
+									<table:template>
+										<m:ObjectStatus text="{Status}" state="{path: 'Available', formatter: '.formatAvailableToObjectState'}"/>
+									</table:template>
+								</table:Column>
+								<table:Column width="9rem">
+									<m:Label text="Price" />
+									<table:template>
+										<u:Currency value="{Price}" currency="{CurrencyCode}"/>
+									</table:template>
+								</table:Column>
+								<table:Column width="12rem">
+									<m:Label text="Supplier" />
+									<table:template>
+										<m:ComboBox value="{SupplierName}" items="{/Suppliers}">
+											<core:Item text="{Name}"/>
+										</m:ComboBox>
+									</table:template>
+								</table:Column>
+								<table:Column width="9rem">
+									<m:Label text="Image" />
+									<table:template>
+										<m:Link text="Show Image" href="{ProductPicUrl}" target="_blank"/>
+									</table:template>
+								</table:Column>
+								<table:Column width="9rem">
+									<m:Label text="Details" />
+									<table:template>
+										<m:Button text="Show Details" press="handleDetailsPress"/>
+									</table:template>
+								</table:Column>
+								<table:Column width="7rem">
+									<m:Label text="Heavy Weight" />
+									<table:template>
+										<m:CheckBox selected="{
+											path: 'Heavy',
+											type: 'sap.ui.model.type.String'
+										}"/>
+									</table:template>
+								</table:Column>
+								<table:Column width="12rem">
+									<m:Label text="Category" />
+									<table:template>
+										<m:Select selectedKey="{Category}" items="{/Categories}">
+											<core:Item text="{Name}" key="{Name}"/>
+										</m:Select>
+									</table:template>
+								</table:Column>
+								<table:Column width="6rem" hAlign="Center">
+									<m:Label text="Status"/>
+									<table:template>
+										<core:Icon src="{path: 'Available',	formatter: '.formatAvailableToIcon'}"/>
+									</table:template>
+								</table:Column>
+								<table:Column width="11rem" hAlign="Center">
+									<m:Label text="Delivery Date"/>
+									<table:template>
+										<m:DatePicker value="{
+											path: 'DeliveryDate',
+											type: 'sap.ui.model.type.Date',
+											formatOptions: {source: {pattern: 'timestamp'}}
+										}"/>
+									</table:template>
+								</table:Column>
+							</table:columns>
+							
+							<table:footer>
+								<m:Toolbar>
+									<m:ToolbarSpacer/>
+									<m:Button icon="sap-icon://hint" tooltip="Show information" press="showInfo"/>
+								</m:Toolbar>
+							</table:footer>
+						</table:Table>
 					</layout:mainContent>
 					
 					<layout:sideContent>
@@ -315,8 +314,7 @@
 							items="{ 
 							path:'/ProductCollection', 
 							sorter: { path: 'Name'} 
-							}"
-						>
+							}">
 							<m:columns>
 								<m:Column>
 									<m:Text text="Quantity"/>
