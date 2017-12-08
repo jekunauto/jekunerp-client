@@ -2,180 +2,185 @@
 	xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:table="sap.ui.table" xmlns:u="sap.ui.unified">
 	<m:Page showHeader="true" showNavButton="false" title="会员信息录入">
 		
-		<m:content class="sapUiSmallMargin">
-			<f:Form id="FormToolbar" editable="true">
-				<f:title>
-					<core:Title text="Address" />
-				</f:title>
-				<f:layout>
-					<f:ResponsiveGridLayout adjustLabelSpan="false" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="3" emptySpanXL="0" emptySpanL="0"
-						emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
-				</f:layout>
-				<f:formContainers>
-					<f:FormContainer name="testOne" title="BaseInfo">
-						<f:formElements>
-							<f:FormElement label="Date">
-								<f:fields>
-									<m:DatePicker id="DP1" placeholder="Enter Date ..." valueFormat="yyyy-MM-dd" displayFormat="long" change="handleChange" value="{/DP1}"/>
-									<m:TimePicker valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" placeholder="Enter Time with second..." change="handleChange" value="{/TP1}"/>
-									<m:TimePicker valueFormat="HH:mm" displayFormat="HH:mm" placeholder="Enter Time ..." change="handleChange" value="{/TP2}"/>
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="DateRange">
-								<m:DateRangeSelection valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" dateValue="{/dateValueDRS2}"
-									secondDateValue="{/secondDateValueDRS2}" change="handleChange"/>
-							</f:FormElement>
-							<f:FormElement label="Date Time">
-								<m:DateTimePicker valueFormat="yyyy-MM-dd-HH-mm-ss" displayFormat="short" change="handleChange" value="{/checkedTime1}"/>
-								<m:DateTimePicker valueFormat="yyyy-MM-dd HH-mm-ss" displayFormat="yyyy-MM-dd HH-mm-ss" change="handleChange" value="{/checkedTime2}"/>
-							</f:FormElement>
-							<f:FormElement label="Country">
-								<f:fields>
-									<m:Select width="100%" selectedKey="{/Country}">
-										<m:items>
-											<core:Item text="Germany" key="Germany"/>
-											<core:Item text="USA" key="USA"/>
-											<core:Item text="England" key="England"/>
-										</m:items>
-									</m:Select>
-								</f:fields>
-							</f:FormElement>
-						</f:formElements>
-					</f:FormContainer>
-					<f:FormContainer name="testOne" title="BaseInfomation">
-						<f:formElements>
-							<f:FormElement label="name">
-								<f:fields>
-									<m:Input value="{/name}"/>
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="Password">
-								<m:Input type="Password" placeholder="Enter password ..." value="{/Password}"/>
-							</f:FormElement>
-							<f:FormElement label="SearchField">
-								<m:SearchField value="{/SearchField}" liveChange="onClickSearch"/>
-							</f:FormElement>
-							<f:FormElement label="Country">
-								<f:fields>
-									<m:Select width="100%" selectedKey="{/Country}"></m:Select>
-								</f:fields>
-							</f:FormElement>
-						</f:formElements>
-					</f:FormContainer>
-					
-					<f:FormContainer name="testOne" title="BaseInfomation">
-						<f:formElements>
-							<f:FormElement label="name">
-								<f:fields>
-									<m:Input value="{/name}"/>
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="Password">
-								<m:Input type="Password" placeholder="Enter password ..." value="{/Password}"/>
-							</f:FormElement>
-							<f:FormElement label="SearchField">
-								<m:SearchField value="{/SearchField}" liveChange="onClickSearch"/>
-							</f:FormElement>
-							<f:FormElement label="Country">
-								<f:fields>
-									<m:Select width="100%" selectedKey="{/Country}"></m:Select>
-								</f:fields>
-							</f:FormElement>
-						</f:formElements>
-					</f:FormContainer>
-					
-				</f:formContainers>
-			</f:Form>
+		<m:content>
+			<m:VBox class="sapUiSmallMargin">
+				<f:Form id="FormToolbar" editable="true">
+					<f:title>
+						<core:Title text="Address" />
+					</f:title>
+					<f:layout>
+						<f:ResponsiveGridLayout adjustLabelSpan="false" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="3" emptySpanXL="0" emptySpanL="0"
+							emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+					</f:layout>
+					<f:formContainers>
+						<f:FormContainer name="testOne" title="BaseInfo">
+							<f:formElements>
+								<f:FormElement label="Date">
+									<f:fields>
+										<m:DatePicker id="DP1" placeholder="Enter Date ..." valueFormat="yyyy-MM-dd" displayFormat="long" change="handleChange" value="{/DP1}"/>
+										<m:TimePicker valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" placeholder="Enter Time with second..." change="handleChange" value="{/TP1}"/>
+										<m:TimePicker valueFormat="HH:mm" displayFormat="HH:mm" placeholder="Enter Time ..." change="handleChange" value="{/TP2}"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="DateRange">
+									<m:DateRangeSelection valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" dateValue="{/dateValueDRS2}"
+										secondDateValue="{/secondDateValueDRS2}" change="handleChange"/>
+								</f:FormElement>
+								<f:FormElement label="Date Time">
+									<m:DateTimePicker valueFormat="yyyy-MM-dd-HH-mm-ss" displayFormat="short" change="handleChange" value="{/checkedTime1}"/>
+									<m:DateTimePicker valueFormat="yyyy-MM-dd HH-mm-ss" displayFormat="yyyy-MM-dd HH-mm-ss" change="handleChange" value="{/checkedTime2}"/>
+								</f:FormElement>
+								<f:FormElement label="Country">
+									<f:fields>
+										<m:Select width="100%" selectedKey="{/Country}">
+											<m:items>
+												<core:Item text="Germany" key="Germany"/>
+												<core:Item text="USA" key="USA"/>
+												<core:Item text="England" key="England"/>
+											</m:items>
+										</m:Select>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+						<f:FormContainer name="testOne" title="BaseInfomation">
+							<f:formElements>
+								<f:FormElement label="name">
+									<f:fields>
+										<m:Input value="{/name}"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="Password">
+									<m:Input type="Password" placeholder="Enter password ..." value="{/Password}"/>
+								</f:FormElement>
+								<f:FormElement label="SearchField">
+									<m:SearchField value="{/SearchField}" liveChange="onClickSearch"/>
+								</f:FormElement>
+								<f:FormElement label="Country">
+									<f:fields>
+										<m:Select width="100%" selectedKey="{/Country}"></m:Select>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+						
+						<f:FormContainer name="testOne" title="BaseInfomation">
+							<f:formElements>
+								<f:FormElement label="name">
+									<f:fields>
+										<m:Input value="{/name}"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="Password">
+									<m:Input type="Password" placeholder="Enter password ..." value="{/Password}"/>
+								</f:FormElement>
+								<f:FormElement label="SearchField">
+									<m:SearchField value="{/SearchField}" liveChange="onClickSearch"/>
+								</f:FormElement>
+								<f:FormElement label="Country">
+									<f:fields>
+										<m:Select width="100%" selectedKey="{/Country}"></m:Select>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+						
+					</f:formContainers>
+				</f:Form>
+			</m:VBox>
 		</m:content>
 		
-		<m:content class="sapUiSmallMargin">	
-			<f:Form id="FormToolbar2" editable="true" ariaLabelledBy="Title1">
-				<f:title>
-					<core:Title text="Contact" />
-				</f:title>
-				<f:layout>
-					<f:ResponsiveGridLayout adjustLabelSpan="false" 
-						labelSpanXL="2" labelSpanL="2" labelSpanM="2" labelSpanS="2" 
-						emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" 
-						columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"/>
-				</f:layout>
-				<f:formContainers>
-					<f:FormContainer>
-						<f:formElements>
-							<f:FormElement label="Name">
-								<f:fields>
-									<m:Switch id="switch1" state="false" customTextOn="Yes" customTextOff="No" enabled="true" change="onSwitchChange">
-										<m:layoutData>
-											<m:FlexItemData growFactor="1" />
-										</m:layoutData>
-									</m:Switch>
-									
-									<m:Switch id="switch2" type="AcceptReject" state="true" enabled="true" change="onSwitchChange">
-										<m:layoutData>
-											<m:FlexItemData growFactor="1" />
-										</m:layoutData>
-									</m:Switch>
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="Name">
-								<m:Input id="name" value="{/Name}"/>
-							</f:FormElement>
-							<f:FormElement label="ZIP Code/City">
-								<m:Input value="{/ZIPCode}"/>
-							</f:FormElement>
-							<f:FormElement label="Country">
-								<f:fields>
-									<m:Select width="100%" selectedKey="{/Country}">
-										<m:items>
-											<core:Item text="Germany" key="Germany"/>
-											<core:Item text="USA" key="USA"/>
-											<core:Item text="England" key="England"/>
-										</m:items>
-									</m:Select>
-								</f:fields>
-							</f:FormElement>
-						</f:formElements>
-					</f:FormContainer>
-					<f:FormContainer>
-						<f:formElements>
-							<f:FormElement label="Email">
-								<f:fields>
-									<m:Input value="{/Email}" type="Email"/>
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="Street">
-								<m:Input value="{/Street}"/>
-							</f:FormElement>
-							<f:FormElement label="ZIP Code/City">
-								<m:Input value="{/ZIPCode}"/>
-							</f:FormElement>
-							<f:FormElement label="Country">
-								<f:fields>
-									<!-- valueState: Warning  Error  success  -->
-									<m:RadioButtonGroup id="radioButton" columns="3" selectedIndex="{/radioButton}" valueState="success" enabled="true">
-										<m:buttons>
-											<m:RadioButton id="RB2-1" groupName="GroupInputListItem" value="1" text="Option 1" />
-											<m:RadioButton id="RB2-2" groupName="GroupInputListItem" value="2" text="Option 2" editable="false"/>
-											<m:RadioButton id="RB2-3" groupName="GroupInputListItem" value="3" text="Option 3"/>
-										</m:buttons>
-									</m:RadioButtonGroup>
-								</f:fields>
-							</f:FormElement>
-							
-							<f:FormElement label="TextAreaValue">
-								<f:fields>
-									<m:TextArea value="{/TextAreaValue}" maxLength="40" width="100%" valueState=""></m:TextArea>
-								</f:fields>
-							</f:FormElement>
-							
-						</f:formElements>
-					</f:FormContainer>
-				</f:formContainers>
-			</f:Form>
+		<m:content class="sapUiSmallMargin">
+			<m:VBox class="sapUiSmallMargin">
+				<f:Form id="FormToolbar2" editable="true" ariaLabelledBy="Title1">
+					<f:title>
+						<core:Title text="Contact" />
+					</f:title>
+					<f:layout>
+						<f:ResponsiveGridLayout adjustLabelSpan="false" 
+							labelSpanXL="2" labelSpanL="2" labelSpanM="2" labelSpanS="2" 
+							emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" 
+							columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"/>
+					</f:layout>
+					<f:formContainers>
+						<f:FormContainer>
+							<f:formElements>
+								<f:FormElement label="Name">
+									<f:fields>
+										<m:Switch id="switch1" state="false" customTextOn="Yes" customTextOff="No" enabled="true" change="onSwitchChange">
+											<m:layoutData>
+												<m:FlexItemData growFactor="1" />
+											</m:layoutData>
+										</m:Switch>
+										
+										<m:Switch id="switch2" type="AcceptReject" state="true" enabled="true" change="onSwitchChange">
+											<m:layoutData>
+												<m:FlexItemData growFactor="1" />
+											</m:layoutData>
+										</m:Switch>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="Name">
+									<m:Input id="name" value="{/Name}"/>
+								</f:FormElement>
+								<f:FormElement label="ZIP Code/City">
+									<m:Input value="{/ZIPCode}"/>
+								</f:FormElement>
+								<f:FormElement label="Country">
+									<f:fields>
+										<m:Select width="100%" selectedKey="{/Country}">
+											<m:items>
+												<core:Item text="Germany" key="Germany"/>
+												<core:Item text="USA" key="USA"/>
+												<core:Item text="England" key="England"/>
+											</m:items>
+										</m:Select>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+						<f:FormContainer>
+							<f:formElements>
+								<f:FormElement label="Email">
+									<f:fields>
+										<m:Input value="{/Email}" type="Email"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="Street">
+									<m:Input value="{/Street}"/>
+								</f:FormElement>
+								<f:FormElement label="ZIP Code/City">
+									<m:Input value="{/ZIPCode}"/>
+								</f:FormElement>
+								<f:FormElement label="Country">
+									<f:fields>
+										<!-- valueState: Warning  Error  success  -->
+										<m:RadioButtonGroup id="radioButton" columns="3" selectedIndex="{/radioButton}" valueState="success" enabled="true">
+											<m:buttons>
+												<m:RadioButton id="RB2-1" groupName="GroupInputListItem" value="1" text="Option 1" />
+												<m:RadioButton id="RB2-2" groupName="GroupInputListItem" value="2" text="Option 2" editable="false"/>
+												<m:RadioButton id="RB2-3" groupName="GroupInputListItem" value="3" text="Option 3"/>
+											</m:buttons>
+										</m:RadioButtonGroup>
+									</f:fields>
+								</f:FormElement>
+								
+								<f:FormElement label="TextAreaValue">
+									<f:fields>
+										<m:TextArea value="{/TextAreaValue}" maxLength="40" width="100%" valueState=""></m:TextArea>
+									</f:fields>
+								</f:FormElement>
+								
+							</f:formElements>
+						</f:FormContainer>
+					</f:formContainers>
+				</f:Form>
+			</m:VBox>	
 		</m:content>
 		
 		<m:content class="sapUiSmallPadding">
-			<table:Table id="table1"
+			<m:VBox class="sapUiSmallMargin">
+				<table:Table id="table1"
 					rows="{/ProductCollection1}"
 					selectionMode="MultiToggle"
 					selectionBehavior="RowSelector"
@@ -326,9 +331,8 @@
 							<m:Button icon="sap-icon://hint" tooltip="Show information" press="showInfo"/>
 						</m:Toolbar>
 					</table:footer>
-					
 				</table:Table>
-					
+			</m:VBox>
 		</m:content>
 		
 		<m:footer>
