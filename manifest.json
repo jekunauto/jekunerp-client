@@ -119,6 +119,10 @@
 				"pattern": "home",
 				"name": "home",
 				"target": ["apiMaster", "home"]
+			}, {
+				"pattern": "serviceOrders",
+				"name": "serviceOrders",
+				"target": ["apiMaster", "serviceOrders"]
 			}],
 			"targets": {
 				"welcome": {
@@ -151,6 +155,11 @@
 					"viewName": "VipInfoEntry",
 					"viewId": "vipInfoEntry",
 					"viewLevel": 2
+				},
+				"serviceOrders": {
+				"viewName": "ServiceOrders",
+				"viewId": "serviceOrders",
+				"viewLevel": 2
 				}
 			}
 		}

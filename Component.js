@@ -180,12 +180,22 @@ sap.ui.define([
 			    }]
 			}, {
 			    "text": "会员管理",
-			    "name": "会员管理",
+			    "name": "CRM",
 			    // "ref": "#/api/jQuery",
 			    "isSelected": false,
 			    "nodes": [{
 			        "text": "会员信息录入",
 			        "name": "vipInfoEntry",
+			        "isSelected": false
+			     }]
+			},{
+			    "text": "服务管理",
+			    "name": "SER",
+			    // "ref": "#/api/jQuery",
+			    "isSelected": false,
+			    "nodes": [{
+			        "text": "服务单",
+			        "name": "serviceOrders",
 			        "isSelected": false
 			     }]
 			}];
