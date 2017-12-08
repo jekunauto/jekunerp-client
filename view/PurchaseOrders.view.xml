@@ -309,10 +309,14 @@
 					</layout:mainContent>
 					
 					<layout:sideContent>
-						<m:Table id="list" width="auto" items="{ 
+						<m:Table id="list" width="auto" 
+							growing="true"
+							growingThreshold="10" 
+							items="{ 
 							path:'/ProductCollection', 
 							sorter: { path: 'Name'} 
-						}">
+							}"
+						>
 							<m:columns>
 								<m:Column>
 									<m:Text text="Quantity"/>

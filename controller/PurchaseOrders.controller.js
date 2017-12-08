@@ -66,7 +66,6 @@ sap.ui.define([
 		},
 		
 		onPress: function(oEvent){
-			debugger;
 			var oItem = oEvent.getSource();
 			var jsonData = oItem.getModel().getData();
 			var param = oItem.getBindingContext("undefined").getPath().substr(1);
@@ -85,6 +84,10 @@ sap.ui.define([
 					
 				}
 			});
+		},
+		
+		onExit: function() {
+			this.oModel.destroy();
 		}
 	});
 }, true);
