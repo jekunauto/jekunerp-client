@@ -163,11 +163,11 @@
 															<m:Input value="{/Email}" type="Email"/>
 														</f:fields>
 													</f:FormElement>
-													<f:FormElement label="Street">
-														<m:Input value="{/Street}"/>
+													<f:FormElement label="Number">
+														<m:Input value="{/Number}" type="Number"/>
 													</f:FormElement>
-													<f:FormElement label="ZIP Code/City">
-														<m:Input value="{/ZIPCode}"/>
+													<f:FormElement label="Tel">
+														<m:Input value="{/Tel}" type="Tel"/>
 													</f:FormElement>
 													<f:FormElement label="Country">
 														<f:fields>
@@ -193,9 +193,9 @@
 											
 											<f:FormContainer>
 												<f:formElements>
-													<f:FormElement label="Name">
+													<f:FormElement label="Url">
 														<f:fields>
-															<m:Input value="{/SupplierName}"/>
+															<m:Input value="{/Url}" type="Url"/>
 														</f:fields>
 													</f:FormElement>
 													<f:FormElement label="Street">
