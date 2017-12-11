@@ -64,6 +64,7 @@
 														<f:fields>
 															<m:Select width="100%" selectedKey="{/Country}">
 																<m:items>
+																	<core:Item text="" key=""/>
 																	<core:Item text="Germany" key="Germany"/>
 																	<core:Item text="USA" key="USA"/>
 																	<core:Item text="England" key="England"/>
@@ -86,9 +87,18 @@
 													<f:FormElement label="SearchField">
 														<m:SearchField  value="{/SearchField}" liveChange="onClickSearch" />
 													</f:FormElement>
-													<f:FormElement label="Country">
+													<f:FormElement label="product">
 														<f:fields>
-															<m:Select width="100%" selectedKey="{/Country}"></m:Select>
+															<m:ActionSelect
+																id="productSelect"
+																items="{
+																	path: '/ProductCollection',
+																	sorter: { path: 'Name' }
+																}">
+																<m:items>
+																	<core:Item key="{ProductId}" text="{Name}" />
+																</m:items>
+															</m:ActionSelect>
 														</f:fields>
 													</f:FormElement>
 												</f:formElements>
@@ -201,14 +211,48 @@
 													<f:FormElement label="Street">
 														<m:Input value="{/Street}"/>
 													</f:FormElement>
-													<f:FormElement label="ZIP Code/City">
-														<m:Input value="{/ZIPCode}"/>
+													<f:FormElement label="MultiComboBox">
+														<m:MultiComboBox
+															selectedItems="{/multiComboBoxValue}"
+															selectedKeys="{/multiComboBoxValue}"
+															selectionChange="handleSelectionChange"
+															selectionFinish="handleSelectionFinish"
+															width="500px"
+															items="{
+																path: '/ProductCollection',
+																sorter: { path: 'Name' }
+															}">
+															<core:Item key="{ProductId}" text="{Name}" />
+														</m:MultiComboBox>
+														
 													</f:FormElement>
-													<f:FormElement label="Country">
+													<f:FormElement label="Combo Product">
 														<f:fields>
-															<m:Select width="100%" selectedKey="{/Country}"></m:Select>
+															<m:ComboBox 
+																value="{/comboBoxValue}"
+																items="{
+																	path: '/ProductCollection',
+																	sorter: { path: 'Name' }
+																}">
+																<core:Item key="{ProductId}" text="{Name}" />
+															</m:ComboBox>
 														</f:fields>
 													</f:FormElement>
+													
+													<f:FormElement label="Combo Product">
+														<f:fields>
+															<m:ComboBox 
+																value="{/comboBoxValue}"
+																showSecondaryValues="true"
+																items="{
+																	path: '/ProductCollection',
+																	sorter: { path: 'Name' }
+																}">
+																<core:ListItem key="{ProductId}" text="{Name}" additionalText="{ProductId}"/>
+															</m:ComboBox>
+														</f:fields>
+													</f:FormElement>
+													
 												</f:formElements>
 											</f:FormContainer>
 										</f:formContainers>

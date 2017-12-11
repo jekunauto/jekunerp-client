@@ -137,19 +137,19 @@ sap.ui.define([
 			}
 
 			this._modelsPromise = new Promise(function (resolve) {
-				if (aTreeContent.length > 0) {
-					aTreeContent.push({
-						isSelected: false,
-						name: "experimental",
-						ref: "#/api/experimental",
-						text: "Experimental APIs"
-					}, {
-						isSelected: false,
-						name: "deprecated",
-						ref: "#/api/deprecated",
-						text: "Deprecated APIs"
-					});
-				}
+				// if (aTreeContent.length > 0) {
+				// 	aTreeContent.push({
+				// 		isSelected: false,
+				// 		name: "experimental",
+				// 		ref: "#/api/experimental",
+				// 		text: "Experimental APIs"
+				// 	}, {
+				// 		isSelected: false,
+				// 		name: "deprecated",
+				// 		ref: "#/api/deprecated",
+				// 		text: "Deprecated APIs"
+				// 	});
+				// }
 
 			aTreeContent = [{
 			    "text": "零售管理",

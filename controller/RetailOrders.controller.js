@@ -94,6 +94,38 @@ sap.ui.define([
 			this.getMessagesBox().showSuccessMessage("If you see this message, the order's is saved into the DataBase");
 		},
 		
+		handleSelectionChange: function(oEvent) {
+			var changedItem = oEvent.getParameter("changedItem");
+			var isSelected = oEvent.getParameter("selected");
+
+			var state = "Selected";
+			if (!isSelected) {
+				state = "Deselected";
+			}
+
+			MessageToast.show("Event 'selectionChange': " + state + " '" + changedItem.getText() + "'", {
+				width: "auto"
+			});
+		},
+
+		handleSelectionFinish: function(oEvent) {
+			var selectedItems = oEvent.getParameter("selectedItems");
+			var messageText = "Event 'selectionFinished': [";
+
+			for (var i = 0; i < selectedItems.length; i++) {
+				messageText += "'" + selectedItems[i].getText() + "'";
+				if (i != selectedItems.length - 1) {
+					messageText += ",";
+				}
+			}
+
+			messageText += "]";
+
+			MessageToast.show(messageText, {
+				width: "auto"
+			});
+		},
+		
 		showConfirm: function(){
 			var oRadioButton = this.getView().byId("RB2-1");
 			console.log(oRadioButton.getSelected());

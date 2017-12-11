@@ -1,4 +1,4 @@
-<mvc:View
+<mvc:View  controllerName="apestech.ui.erp.controller.serviceOrders"
 	xmlns:layout="sap.ui.layout"
 	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc"
@@ -6,7 +6,7 @@
 	xmlns="sap.m"
 	xmlns:f="sap.ui.layout.form" xmlns:table="sap.ui.table" xmlns:u="sap.ui.unified">
 	
-	<m:Page showHeader="true" showNavButton="false" title="会员信息录入">
+	<m:Page showHeader="true" showNavButton="false" title="服务单">
 		
 		<m:content>
 			<m:VBox class="sapUiSmallMargin">
@@ -50,19 +50,34 @@
 							</f:formElements>
 						</f:FormContainer>
 						
-						<f:FormContainer name="testOne" title="BaseInfomation">
+						<f:FormContainer name="testOne" title="Mask Input">
 							<f:formElements>
 								<f:FormElement label="name">
 									<f:fields>
-										<m:Input value="{/name}"/>
+										<m:MaskInput mask = "~~~~~~~~~~" placeholderSymbol = "_" placeholder = "Enter text" value="{/MaskInput1}">
+											<m:rules>
+												<m:MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
+											</m:rules>
+										</m:MaskInput>
 									</f:fields>
 								</f:FormElement>
-								<f:FormElement label="Password">
-									<m:Input type="Password" placeholder="Enter password ..." value="{/Password}"/>
+								
+								<f:FormElement label="Mask Input Number">
+									<m:MaskInput mask="9999.99" placeholderSymbol = "_" placeholder="Enter a two float number" value="{/MaskInputNumber}"/>
 								</f:FormElement>
-								<f:FormElement label="SearchField">
-									<m:SearchField value="{/SearchField}" liveChange="onClickSearch"/>
+								
+								<f:FormElement label="Mask Input Number">
+									<m:MaskInput mask="9999.9999" placeholderSymbol = "_" placeholder="Enter a two double number" value="{/MaskInputNumber}"/>
 								</f:FormElement>
+								
+								<f:FormElement label="Phone Number">
+									<m:MaskInput mask="000-0000-0000" placeholderSymbol="_"  placeholder="Enter phoneNumber" value="{/phoneNumber}">
+										<m:rules>
+											<m:MaskInputRule maskFormatSymbol="0" regex="[0-9]"/>
+										</m:rules>
+									</m:MaskInput>
+								</f:FormElement>
+								
 								<f:FormElement label="Country">
 									<f:fields>
 										<m:Select width="100%" selectedKey="{/Country}"></m:Select>
