@@ -1,19 +1,7 @@
-<mvc:View
-		controllerName="apestech.ui.erp.controller.ApiMaster"
-		xmlns:mvc="sap.ui.core.mvc"
-		xmlns="sap.m"
-		xmlns:core="sap.ui.core"
-		class="sapContrast sapContrastPlus">
-
-	<Page
-			id="page"
-			enableScrolling="true"
-			showFooter="false"
-			navButtonPress="onNavBack"
-			showNavButton="false"
-			showHeader="false"
-			class="sapUiDocumentationMasterPage">
-
+<mvc:View controllerName="apestech.ui.erp.controller.ApiMaster" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core"
+	class="sapContrast sapContrastPlus">
+	<Page id="page" enableScrolling="true" showFooter="false" navButtonPress="onNavBack" showNavButton="false" showHeader="false"
+		class="sapUiDocumentationMasterPage">
 		<!-- Header -->
 		<subHeader>
 			<Toolbar>
@@ -22,31 +10,16 @@
 				<Button icon="sap-icon://collapse-group" press="onTreeCollapseAll"></Button>
 			</Toolbar>
 		</subHeader>
-
-        <!-- Navigation List -->
+		<!-- Navigation List -->
 		<content>
-
-			<Tree
-					id="tree"
-					mode="SingleSelectMaster"
-					selectionChange="onNodeSelect"
-					items="{
-						path: 'treeData>/',
-						sorter : {
-							path : 'name',
-							comparator : '.compareTreeNodes'
-						}
-					}">
-				<StandardTreeItem
-						title="{treeData>text}">
+			<Tree id="tree" mode="SingleSelectMaster" selectionChange="onNodeSelect"
+				items="{ path: 'treeData>/', sorter : { path : 'name', comparator : '.compareTreeNodes' } }">
+				<StandardTreeItem title="{treeData>text}" icon="{treeData>icon}">
 					<customData>
-						<core:CustomData key="nodeId" value="{treeData>name}" />
+						<core:CustomData key="nodeId" value="{treeData>name}"/>
 					</customData>
 				</StandardTreeItem>
 			</Tree>
-
 		</content>
-
 	</Page>
-
 </mvc:View>

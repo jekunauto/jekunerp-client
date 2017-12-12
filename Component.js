@@ -56,6 +56,7 @@ sap.ui.define([
 			// call the base component's init function and create the App view
 			UIComponent.prototype.init.apply(this, arguments);
 
+			debugger;
 			// create the views based on the url/hash
 			this.getRouter().initialize();
 
@@ -155,44 +156,54 @@ sap.ui.define([
 			    "text": "零售管理",
 			    "name": "retailOrdersMain",
 			    "isSelected": true,
+			    "icon": "sap-icon://course-program",
 			    "nodes": [{
 			    	"text": "收银台",
 			    	"name": "LSD",
+			    	"icon": "sap-icon://attachment-audio",
 			        "isSelected": false
 			    }, {
 			        "text": "零售单",
 			        "name": "retailOrders",
+			        "icon": "sap-icon://customer-financial-fact-sheet",
 			        "isSelected": false
 			    }, {
 			        "text": "查询零售单",
 			        "name": "queryrRetailOrders",
+			        "icon": "sap-icon://attachment-audio",
 			        "isSelected": false
 			    }]
 			  }, {
 			    "text": "采购管理",
 			    "name": "PUR",
 			    "isSelected": false,
+			    "icon": "sap-icon://action-settings",
 			    "nodes": [{
 			        "text": "采购订单",
 			        "name": "purchaseOrders",
+			        "icon": "sap-icon://attachment-audio",
 			        "isSelected": false
 			    }]
 			}, {
 			    "text": "会员管理",
 			    "name": "CRM",
 			    "isSelected": false,
+			    "icon": "sap-icon://employee",
 			    "nodes": [{
 			        "text": "会员信息录入",
 			        "name": "vipInfoEntry",
+			        "icon": "sap-icon://employee",
 			        "isSelected": false
 			     }]
 			},{
 			    "text": "服务管理",
 			    "name": "SER",
 			    "isSelected": false,
+			    "icon": "sap-icon://attachment-audio",
 			    "nodes": [{
 			        "text": "服务单",
 			        "name": "serviceOrders",
+			        "icon": "sap-icon://building",
 			        "isSelected": false
 			     }]
 			}];

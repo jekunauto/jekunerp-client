@@ -91,6 +91,7 @@
 														<f:fields>
 															<m:ActionSelect
 																id="productSelect"
+																selectedKey="{/ActionSelect}"
 																items="{
 																	path: '/ProductCollection',
 																	sorter: { path: 'Name' }
