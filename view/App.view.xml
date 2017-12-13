@@ -20,10 +20,10 @@
 						<OverflowToolbarLayoutData priority="NeverOverflow" />
 					</layoutData>
 				</ToggleButton>
-				<Image id="sap_logo" src="images/logo_ui5.png"
+				<Image id="sap_logo" src="images/logo_index.png"
 					visible="{=!${appView>/bPhoneSize}}"
 					densityAware="false"
-					height="2rem"
+					height="2.5rem"
 					class="sapLogo"
 					decorative="false"
 					press="navigateToSection" />
@@ -41,8 +41,7 @@
 					<items>
 						<!--<IconTabFilter id="welcomeTab" text="Home" key="home" visible="{=${appView>/bPhoneSize}}">-->
 						<!--</IconTabFilter>-->
-						<IconTabFilter id="topicMasterTab" text="{i18n>Documentation}" key="topic">
-						</IconTabFilter>
+						<!--<IconTabFilter id="topicMasterTab" text="{i18n>Documentation}" key="topic"/>-->
 						<!--<IconTabFilter id="apiMasterTab" text="API Reference" key="api">-->
 						<!--</IconTabFilter>-->
 						<!--<IconTabFilter id="controlsMasterTab" text="Samples" key="controls">-->

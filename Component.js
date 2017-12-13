@@ -56,7 +56,6 @@ sap.ui.define([
 			// call the base component's init function and create the App view
 			UIComponent.prototype.init.apply(this, arguments);
 
-			debugger;
 			// create the views based on the url/hash
 			this.getRouter().initialize();
 
@@ -159,7 +158,7 @@ sap.ui.define([
 			    "icon": "sap-icon://course-program",
 			    "nodes": [{
 			    	"text": "收银台",
-			    	"name": "LSD",
+			    	"name": "checkoutDesk",
 			    	"icon": "sap-icon://attachment-audio",
 			        "isSelected": false
 			    }, {
@@ -195,7 +194,7 @@ sap.ui.define([
 			        "icon": "sap-icon://employee",
 			        "isSelected": false
 			     }]
-			},{
+			}, {
 			    "text": "服务管理",
 			    "name": "SER",
 			    "isSelected": false,
@@ -203,6 +202,42 @@ sap.ui.define([
 			    "nodes": [{
 			        "text": "服务单",
 			        "name": "serviceOrders",
+			        "icon": "sap-icon://building",
+			        "isSelected": false
+			     }]
+			}, {
+			    "text": "模版界面",
+			    "name": "DEMO",
+			    "isSelected": false,
+			    "icon": "sap-icon://attachment-audio",
+			    "nodes": [{
+			        "text": "模版界面1",
+			        "name": "demo1",
+			        "icon": "sap-icon://building",
+			        "isSelected": false
+			     }, {
+			        "text": "模版界面2",
+			        "name": "demo2",
+			        "icon": "sap-icon://building",
+			        "isSelected": false
+			     }, {
+			        "text": "模版界面3",
+			        "name": "demo3",
+			        "icon": "sap-icon://building",
+			        "isSelected": false
+			     }, {
+			        "text": "模版界面4",
+			        "name": "demo4",
+			        "icon": "sap-icon://building",
+			        "isSelected": false
+			     }, {
+			        "text": "模版界面5",
+			        "name": "demo5",
+			        "icon": "sap-icon://building",
+			        "isSelected": false
+			     }, {
+			        "text": "模版界面6",
+			        "name": "demo6",
 			        "icon": "sap-icon://building",
 			        "isSelected": false
 			     }]
