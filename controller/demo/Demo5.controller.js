@@ -40,6 +40,13 @@ sap.ui.define([
             var oTreeTable = this.getView().byId("TreeTableBasic");
             oTreeTable.expandToLevel(1);
         },
+        
+        toggleOpenState: function(oEvent){
+        	var source = oEvent.getSource();
+        	var param = oEvent.getParameters();
+        	
+        	
+        },
 		
 		showConfirm: function(){
 			var viewObject = this; 

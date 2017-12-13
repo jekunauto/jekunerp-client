@@ -77,11 +77,6 @@
 									</m:MaskInput>
 								</f:FormElement>
 								
-								<f:FormElement label="Country">
-									<f:fields>
-										<m:Select width="100%" selectedKey="{/Country}"></m:Select>
-									</f:fields>
-								</f:FormElement>
 							</f:formElements>
 						</f:FormContainer>
 						
@@ -95,6 +90,7 @@
                     id="TreeTableBasic"
                     rows="{path:'/catalog/clothing', parameters: {arrayNames:['categories']}}"
                     selectionMode="MultiToggle"
+                    toggleOpenState="toggleOpenState"
                     enableSelectAll="false"
                     ariaLabelledBy="title">
             	

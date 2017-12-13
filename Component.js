@@ -159,7 +159,7 @@ sap.ui.define([
 			    "nodes": [{
 			        "text": "会员信息录入",
 			        "name": "vipInfoEntry",
-			        "icon": "sap-icon://employee",
+			        "icon": "sap-icon://add-employee",
 			        "isSelected": false
 			     }]
 			}, {
@@ -177,36 +177,36 @@ sap.ui.define([
 			    "text": "模版界面",
 			    "name": "DEMO",
 			    "isSelected": false,
-			    "icon": "sap-icon://attachment-audio",
+			    "icon": "sap-icon://attachment-html",
 			    "nodes": [{
 			        "text": "模版界面1",
 			        "name": "demo1",
-			        "icon": "sap-icon://building",
+			        "icon": "sap-icon://attachment-html",
 			        "isSelected": false
 			     }, {
 			        "text": "模版界面2",
 			        "name": "demo2",
-			        "icon": "sap-icon://building",
+			        "icon": "sap-icon://attachment-html",
 			        "isSelected": false
 			     }, {
 			        "text": "模版界面3",
 			        "name": "demo3",
-			        "icon": "sap-icon://building",
+			        "icon": "sap-icon://attachment-html",
 			        "isSelected": false
 			     }, {
 			        "text": "模版界面4",
 			        "name": "demo4",
-			        "icon": "sap-icon://building",
+			        "icon": "sap-icon://attachment-html",
 			        "isSelected": false
 			     }, {
 			        "text": "模版界面5",
 			        "name": "demo5",
-			        "icon": "sap-icon://building",
+			        "icon": "sap-icon://attachment-html",
 			        "isSelected": false
 			     }, {
 			        "text": "模版界面6",
 			        "name": "demo6",
-			        "icon": "sap-icon://building",
+			        "icon": "sap-icon://attachment-html",
 			        "isSelected": false
 			     }]
 			}];
