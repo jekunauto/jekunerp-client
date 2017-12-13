@@ -1,4 +1,4 @@
-<mvc:View controllerName="apestech.ui.erp.controller.vipInfoEntry" xmlns:m="sap.m" xmlns:layout="sap.ui.layout"
+<mvc:View controllerName="apestech.ui.erp.controller.demo.demo2" xmlns:m="sap.m" xmlns:layout="sap.ui.layout"
 	xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:table="sap.ui.table" xmlns:u="sap.ui.unified">
 	<m:Page showHeader="true" showNavButton="false" title="模版界面2">
 		

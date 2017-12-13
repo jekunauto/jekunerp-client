@@ -102,35 +102,11 @@
 			}, {
 				"pattern": "api/{id}",
 				"name": "apiId",
-				"target": ["apiMaster", "retailOrders"]
-			}, {
-				"pattern": "retailOrders/:id",
-				"name": "retailOrders",
-				"target": ["apiMaster", "retailOrders"]
-			}, {
-				"pattern": "vipInfoEntry/:id",
-				"name": "vipInfoEntry",
-				"target": ["apiMaster", "vipInfoEntry"]
-			}, {
-				"pattern": "purchaseOrders",
-				"name": "purchaseOrders",
-				"target": ["apiMaster", "purchaseOrders"]
+				"target": ["apiMaster", "home"]
 			}, {
 				"pattern": "home",
 				"name": "home",
 				"target": ["apiMaster", "home"]
-			}, {
-				"pattern": "serviceOrders",
-				"name": "serviceOrders",
-				"target": ["apiMaster", "serviceOrders"]
-			}, {
-				"pattern": "queryrRetailOrders",
-				"name": "queryrRetailOrders",
-				"target": ["apiMaster", "queryrRetailOrders"]
-			}, {
-				"pattern": "checkoutDesk",
-				"name": "checkoutDesk",
-				"target": ["apiMaster", "checkoutDesk"]
 			}, {
 				"pattern": "demo1",
 				"name": "demo1",
@@ -171,36 +147,6 @@
 				"home": {
 					"viewName": "Home",
 					"viewId": "home",
-					"viewLevel": 2
-				},
-				"retailOrders": {
-					"viewName": "RetailOrders",
-					"viewId": "retailOrders",
-					"viewLevel": 2
-				},
-				"purchaseOrders":{
-					"viewName": "PurchaseOrders",
-					"viewId": "purchaseOrders",
-					"viewLevel": 2
-				},
-				"vipInfoEntry":{
-					"viewName": "VipInfoEntry",
-					"viewId": "vipInfoEntry",
-					"viewLevel": 2
-				},
-				"serviceOrders": {
-					"viewName": "ServiceOrders",
-					"viewId": "serviceOrders",
-					"viewLevel": 2
-				},
-				"queryrRetailOrders": {
-					"viewName": "QueryrRetailOrders",
-					"viewId": "queryrRetailOrders",
-					"viewLevel": 2
-				},
-				"checkoutDesk": {
-					"viewName": "CheckoutDesk",
-					"viewId": "checkoutDesk",
 					"viewLevel": 2
 				},
 				"demo1": {

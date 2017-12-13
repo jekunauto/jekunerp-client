@@ -1,4 +1,4 @@
-<mvc:View  controllerName="apestech.ui.erp.controller.checkoutDesk"
+<mvc:View  controllerName="apestech.ui.erp.controller.demo.demo5"
 	xmlns:layout="sap.ui.layout"
 	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc"

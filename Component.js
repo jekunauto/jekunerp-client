@@ -152,38 +152,6 @@ sap.ui.define([
 				// }
 
 			aTreeContent = [{
-			    "text": "零售管理",
-			    "name": "retailOrdersMain",
-			    "isSelected": true,
-			    "icon": "sap-icon://course-program",
-			    "nodes": [{
-			    	"text": "收银台",
-			    	"name": "checkoutDesk",
-			    	"icon": "sap-icon://attachment-audio",
-			        "isSelected": false
-			    }, {
-			        "text": "零售单",
-			        "name": "retailOrders",
-			        "icon": "sap-icon://customer-financial-fact-sheet",
-			        "isSelected": false
-			    }, {
-			        "text": "查询零售单",
-			        "name": "queryrRetailOrders",
-			        "icon": "sap-icon://attachment-audio",
-			        "isSelected": false
-			    }]
-			  }, {
-			    "text": "采购管理",
-			    "name": "PUR",
-			    "isSelected": false,
-			    "icon": "sap-icon://action-settings",
-			    "nodes": [{
-			        "text": "采购订单",
-			        "name": "purchaseOrders",
-			        "icon": "sap-icon://attachment-audio",
-			        "isSelected": false
-			    }]
-			}, {
 			    "text": "会员管理",
 			    "name": "CRM",
 			    "isSelected": false,
