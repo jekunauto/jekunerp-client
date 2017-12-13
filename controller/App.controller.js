@@ -39,17 +39,7 @@ sap.ui.define([
 					bHasMaster: false,
 					bSearchMode: false
 				});
-				this.MENU_LINKS_MAP = {
-					"Legal": "https://www.sap.com/corporate/en/legal/impressum.html",
-					"Privacy": "https://www.sap.com/corporate/en/legal/privacy.html",
-					"Terms of Use": "https://www.sap.com/corporate/en/legal/terms-of-use.html",
-					"Copyright": "https://www.sap.com/corporate/en/legal/copyright.html",
-					"Trademark": "https://www.sap.com/corporate/en/legal/copyright.html#trademark",
-					"Disclaimer": "http://help-legacy.sap.com/disclaimer-full"
-				};
-				this.FEEDBACK_SERVICE_URL = "https://feedback-sapuisofiaprod.hana.ondemand.com:443/api/v2/apps/5bb7d7ff-bab9-477a-a4c7-309fa84dc652/posts";
-				this.OLD_DOC_LINK_SUFFIX = ".html";
-
+			
 				// Cache view reference
 				this._oView = this.getView();
 
@@ -64,9 +54,6 @@ sap.ui.define([
 
 				// apply content density mode to root view
 				this._oView.addStyleClass(this.getOwnerComponent().getContentDensityClass());
-
-				// register Feedback rating icons
-				this._registerFeedbackRatingIcons();
 			},
 
 			onBeforeRendering: function() {
@@ -152,15 +139,11 @@ sap.ui.define([
 			},
 
 			handleMenuItemClick: function (oEvent) {
-				var sTargetText = oEvent.getParameter("item").getText(),
-					sTarget = this.MENU_LINKS_MAP[sTargetText];
+				var sTargetText = oEvent.getParameter("item").getText();
 
 				if (sTargetText === "About") {
 					this.aboutDialogOpen();
-				} else if (sTargetText === "Feedback") {
-					this.feedbackDialogOpen();
-				} else if (sTarget) {
-					sap.m.URLHelper.redirect(sTarget, true);
+					// sap.m.URLHelper.redirect(sTarget, true);    实现界面跳转
 				}
 			},
 
@@ -289,210 +272,6 @@ sap.ui.define([
 				oNavCon.back();
 			},
 
-			/**
-			 * Opens a dialog to give feedback on the demo kit
-			 */
-			feedbackDialogOpen: function () {
-				var that = this;
-
-				if (!this._oFeedbackDialog) {
-					this._oFeedbackDialog = new sap.ui.xmlfragment("feedbackDialogFragment", "apestech.ui.erp.view.FeedbackDialog", this);
-					this._oView.addDependent(this._oFeedbackDialog);
-
-					this._oFeedbackDialog.textInput = Fragment.byId("feedbackDialogFragment", "feedbackInput");
-					this._oFeedbackDialog.contextCheckBox = Fragment.byId("feedbackDialogFragment", "pageContext");
-					this._oFeedbackDialog.contextData = Fragment.byId("feedbackDialogFragment", "contextData");
-					this._oFeedbackDialog.ratingStatus = Fragment.byId("feedbackDialogFragment", "ratingStatus");
-					this._oFeedbackDialog.ratingStatus.value = 0;
-					this._oFeedbackDialog.sendButton = Fragment.byId("feedbackDialogFragment", "sendButton");
-					this._oFeedbackDialog.ratingBar = [
-						{
-							button : Fragment.byId("feedbackDialogFragment", "excellent"),
-							status : "Excellent"
-						},
-						{
-							button : Fragment.byId("feedbackDialogFragment", "good"),
-							status : "Good"
-						},
-						{
-							button : Fragment.byId("feedbackDialogFragment", "average"),
-							status : "Average"
-						},
-						{
-							button : Fragment.byId("feedbackDialogFragment", "poor"),
-							status : "Poor"
-						},
-						{
-							button : Fragment.byId("feedbackDialogFragment", "veryPoor"),
-							status : "Very Poor"
-						}
-					];
-					this._oFeedbackDialog.reset = function () {
-						this.sendButton.setEnabled(false);
-						this.textInput.setValue("");
-						this.contextCheckBox.setSelected(true);
-						this.ratingStatus.setText("");
-						this.ratingStatus.setState("None");
-						this.ratingStatus.value = 0;
-						this.contextData.setVisible(false);
-						this.ratingBar.forEach(function(oRatingBarElement){
-							if (oRatingBarElement.button.getPressed()) {
-								oRatingBarElement.button.setPressed(false);
-							}
-						});
-					};
-					this._oFeedbackDialog.updateContextData = function() {
-						var sVersion = that._getUI5Version(),
-							sUI5Distribution = that._getUI5Distribution();
-
-						if (this.contextCheckBox.getSelected()) {
-							this.contextData.setValue("Location: " + that._getCurrentPageRelativeURL() + "\n" + sUI5Distribution + " Version: " + sVersion);
-						} else {
-							this.contextData.setValue(sUI5Distribution + " Version: " + sVersion);
-						}
-					};
-
-					this._oFeedbackDialog.updateContextData();
-				}
-				this._oFeedbackDialog.updateContextData();
-				if (!this._oFeedbackDialog.isOpen()) {
-					jQuery.sap.syncStyleClass("sapUiSizeCompact", this.getView(), this._oFeedbackDialog);
-					this._oFeedbackDialog.open();
-				}
-			},
-
-			/**
-			 * Event handler for the send feedback button
-			 */
-			onFeedbackDialogSend: function() {
-				var data = {};
-
-				if (this._oFeedbackDialog.contextCheckBox.getSelected()) {
-					data = {
-						"texts": {
-							"t1": this._oFeedbackDialog.textInput.getValue()
-						},
-						"ratings":{
-							"r1": {"value" : this._oFeedbackDialog.ratingStatus.value}
-						},
-						"context": {"page": this._getCurrentPageRelativeURL(), "attr1": this._getUI5Distribution() + ":" + sap.ui.version}
-					};
-				} else {
-					data = {
-						"texts": {
-							"t1": this._oFeedbackDialog.textInput.getValue()
-						},
-						"ratings":{
-							"r1": {"value" : this._oFeedbackDialog.ratingStatus.value}
-						},
-						"context": {"attr1": this._getUI5Distribution() + ":" + sap.ui.version}
-					};
-				}
-
-				// send feedback
-				this._oFeedbackDialog.setBusyIndicatorDelay(0);
-				this._oFeedbackDialog.setBusy(true);
-
-				jQuery.ajax({
-					url: this.FEEDBACK_SERVICE_URL,
-					type: "POST",
-					contentType: "application/json",
-					data: JSON.stringify(data)
-				}).
-				done(
-					function () {
-						MessageBox.success("Your feedback has been sent.", {title: "Thank you!"});
-						this._oFeedbackDialog.reset();
-						this._oFeedbackDialog.close();
-						this._oFeedbackDialog.setBusy(false);
-					}.bind(this)
-				).
-				fail(
-					function (oRequest, sStatus, sError) {
-						var sErrorDetails = sError; // + "\n" + oRequest.responseText;
-						MessageBox.error("An error occurred sending your feedback:\n" + sErrorDetails, {title: "Sorry!"});
-						this._oFeedbackDialog.setBusy(false);
-					}.bind(this)
-				);
-
-			},
-
-			/**
-			 * Event handler for the cancel feedback button
-			 */
-			onFeedbackDialogCancel: function () {
-				this._oFeedbackDialog.reset();
-				this._oFeedbackDialog.close();
-			},
-
-			/**
-			 * Event handler for the toggle context link
-			 */
-			onShowHideContextData: function () {
-				this._oFeedbackDialog.contextData.setVisible(!this._oFeedbackDialog.contextData.getVisible());
-			},
-
-			/**
-			 * Event handler for the context selection checkbox
-			 */
-			onContextSelect: function() {
-				this._oFeedbackDialog.updateContextData();
-			},
-
-			/**
-			 * Event handler for the rating to update the label and the data
-			 * @param {sap.ui.base.Event} oEvent Event
-			 */
-			onPressRatingButton: function(oEvent) {
-				var that = this;
-				var oPressedButton = oEvent.getSource();
-
-				that._oFeedbackDialog.ratingBar.forEach(function(oRatingBarElement) {
-					if (oPressedButton !== oRatingBarElement.button) {
-						oRatingBarElement.button.setPressed(false);
-					} else {
-						if (!oRatingBarElement.button.getPressed()) {
-							setRatingStatus("None", "", 0);
-						} else {
-							switch (oRatingBarElement.status) {
-								case "Excellent":
-									setRatingStatus("Success", oRatingBarElement.status, 5);
-									break;
-								case "Good":
-									setRatingStatus("Success", oRatingBarElement.status, 4);
-									break;
-								case "Average":
-									setRatingStatus("None", oRatingBarElement.status, 3);
-									break;
-								case "Poor":
-									setRatingStatus("Warning", oRatingBarElement.status, 2);
-									break;
-								case "Very Poor":
-									setRatingStatus("Error", oRatingBarElement.status, 1);
-							}
-						}
-					}
-				});
-
-				function setRatingStatus(sState, sText, iValue) {
-					that._oFeedbackDialog.ratingStatus.setState(sState);
-					that._oFeedbackDialog.ratingStatus.setText(sText);
-					that._oFeedbackDialog.ratingStatus.value = iValue;
-					if (iValue) {
-						that._oFeedbackDialog.sendButton.setEnabled(true);
-					} else {
-						that._oFeedbackDialog.sendButton.setEnabled(false);
-					}
-				}
-			},
-
-			//onFeedbackInput : function() {
-			//	if (this._oFeedbackDialog.textInput.getValue() || this._oFeedbackDialog.ratingStatus.value) {
-			//		this._oFeedbackDialog.sendButton.setEnabled(true);
-			//	} else {
-			//		this._oFeedbackDialog.sendButton.setEnabled(false);
-			//	}
-			//},
 
 			onSearch : function (oEvent) {
 				var sQuery = oEvent.getParameter("query");
@@ -524,38 +303,6 @@ sap.ui.define([
 				oViewModel.setProperty("/bSearchMode", bSearchMode);
 
 				this._toggleTabHeaderClass();
-			},
-
-			/**
-			 * Register Feedback rating icons
-			 * @private
-			 */
-			_registerFeedbackRatingIcons: function () {
-				IconPool.addIcon("icon-face-very-bad", "FeedbackRatingFaces", {
-					fontFamily: "FeedbackRatingFaces",
-					content: "E086",
-					suppressMirroring: true
-				});
-				IconPool.addIcon("icon-face-bad", "FeedbackRatingFaces", {
-					fontFamily: "FeedbackRatingFaces",
-					content: "E087",
-					suppressMirroring: true
-				});
-				IconPool.addIcon("icon-face-neutral", "FeedbackRatingFaces", {
-					fontFamily: "FeedbackRatingFaces",
-					content: "E089",
-					suppressMirroring: true
-				});
-				IconPool.addIcon("icon-face-happy", "FeedbackRatingFaces", {
-					fontFamily: "FeedbackRatingFaces",
-					content: "E08B",
-					suppressMirroring: true
-				});
-				IconPool.addIcon("icon-face-very-happy", "FeedbackRatingFaces", {
-					fontFamily: "FeedbackRatingFaces",
-					content: "E08C",
-					suppressMirroring: true
-				});
 			},
 
 			_getUI5Version: function () {
