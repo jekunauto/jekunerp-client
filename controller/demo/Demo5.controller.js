@@ -17,11 +17,9 @@ sap.ui.define([
 		},
 		
 		onBeforeRendering: function() {
-			
 		},
 
 		onAfterRendering: function() {
-
 		},
 
 		onExit: function() {
