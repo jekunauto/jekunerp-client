@@ -86,10 +86,38 @@
 		</m:content>
 		
 		<m:content>
+			<m:VBox class="sapUiSmallMargin">
+				<f:Form id="SelectDialog" editable="true">
+					<f:title>
+						<core:Title text="Table Select Dialog" />
+					</f:title>
+					<f:layout>
+						<f:ResponsiveGridLayout adjustLabelSpan="false" labelSpanXL="2" labelSpanL="2" labelSpanM="2" labelSpanS="2" emptySpanXL="0" emptySpanL="0"
+							emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"/>
+					</f:layout>
+					<f:formContainers>
+						
+						<f:FormContainer name="testOne" title="BaseInfo">
+							<f:formElements>
+								<f:FormElement label="Date">
+									<f:fields>
+										
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+						
+					</f:formContainers>
+				</f:Form>
+			</m:VBox>
+		</m:content>
+		
+		<m:content>
             <table:TreeTable
                     id="TreeTableBasic"
                     rows="{path:'/catalog/clothing', parameters: {arrayNames:['categories']}}"
                     selectionMode="MultiToggle"
+                    selectionBehavior="Row"
                     toggleOpenState="toggleOpenState"
                     enableSelectAll="false"
                     ariaLabelledBy="title">
@@ -100,6 +128,7 @@
                         <m:ToolbarSpacer/>
                         <m:Button text="Collapse all" press="onCollapseAll"/>
                         <m:Button text="Expand first level" press="onExpandFirstLevel"/>
+                        <m:Button text="addRow" press="onTreeAddRow"/>
                     </m:Toolbar>
                 </table:toolbar>
                 
@@ -119,8 +148,7 @@
                     <table:Column width="11rem">
                         <m:Label text="Size"/>
                         <table:template>
-                            <m:Select
-                                    items="{path: '/sizes', templateShareable: true}"
+                            <m:Select items="{path: '/sizes', templateShareable: true}"
                                     selectedKey="{size}"
                                     visible="{= !!${size}}"
                                     forceSelection="false">

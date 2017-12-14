@@ -16,6 +16,18 @@ sap.ui.define([
 			this.getView().setModel(oModel);
 		},
 		
+		onBeforeRendering: function() {
+			
+		},
+
+		onAfterRendering: function() {
+
+		},
+
+		onExit: function() {
+			
+		},
+		
 		initTreeModel: function(){
 			var oModel = new JSONModel();
 			jQuery.ajax(jQuery.sap.getModulePath("apestech.ui.erp.mockdata", "/Clothing.json"), {
@@ -41,10 +53,21 @@ sap.ui.define([
             oTreeTable.expandToLevel(1);
         },
         
+        onTreeAddRow: function(){
+        	var oTable = this.getView().byId("TreeTableBasic");
+			var jsonData = oTable.getModel().getData();
+			
+			//获取选中的行索引
+			var iIndex = oTable.getSelectedIndex();
+        },
+        
+        onTreeDeleteRow: function(){
+        	
+        },
+        
         toggleOpenState: function(oEvent){
         	var source = oEvent.getSource();
         	var param = oEvent.getParameters();
-        	
         	
         },
 		
@@ -59,10 +82,7 @@ sap.ui.define([
 					
 				}
 			});
-		},
-		
-		onExit: function() {
-			this.oModel.destroy();
 		}
+		
 	});
 }, true);

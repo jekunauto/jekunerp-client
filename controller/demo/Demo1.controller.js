@@ -127,9 +127,6 @@ sap.ui.define([
 		},
 		
 		showConfirm: function(){
-			var oRadioButton = this.getView().byId("RB2-1");
-			console.log(oRadioButton.getSelected());
-			
 			var viewObject = this; 
 			this.getMessagesBox().showConfirmMessage({
 				text :"确认保存数据?",
