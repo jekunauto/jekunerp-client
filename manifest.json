@@ -124,36 +124,6 @@
 					"viewName": "Home",
 					"viewId": "home",
 					"viewLevel": 2
-				},
-				"demo1": {
-					"viewName": "demo/demo1",
-					"viewId": "demo1",
-					"viewLevel": 2
-				},
-				"demo2": {
-					"viewName": "demo/demo2",
-					"viewId": "demo2",
-					"viewLevel": 2
-				},
-				"demo3": {
-					"viewName": "demo/demo3",
-					"viewId": "demo3",
-					"viewLevel": 2
-				},
-				"demo4": {
-					"viewName": "demo/demo4",
-					"viewId": "demo4",
-					"viewLevel": 2
-				},
-				"demo5": {
-					"viewName": "demo/demo5",
-					"viewId": "demo5",
-					"viewLevel": 2
-				},
-				"demo6": {
-					"viewName": "demo/demo6",
-					"viewId": "demo6",
-					"viewLevel": 2
 				}
 			}
 		}

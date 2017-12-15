@@ -47,15 +47,13 @@ sap.ui.define([
 
 				this.oTabNavigation = this._oView.byId("tabHeader");
 				this.oHeader = this._oView.byId("headerToolbar");
-			
-
-				this.oRouter = this.getRouter();
+			   
+               	this.oRouter = this.getRouter();
 				/*初始化路由*/ 
-		 
-			    var oDataRouter= this._getRouteData();
-			    
-			    var oRouterData=oDataRouter.routes;
-			    var oTargetData=oDataRouter.targets;
+			 
+		        var oDataRouter= this._getRouteData();
+			    var oRouterData=oDataRouter.data.routes;
+			    var oTargetData=oDataRouter.data.targets;
 				   
 			    var iTarget=oTargetData.length;
 				   for(var j=0;j<iTarget;j++){
@@ -66,15 +64,8 @@ sap.ui.define([
 						    viewId: oTarget.viewId,
 							viewLevel: oTarget.viewLevel
 					  });
-				  }
+			   }
 				   
-		    //     that.oRouter.getTargets().addTarget("demo2",{
-					 //   viewName: "demo/demo2",
-					 //   viewType: "XML",
-						// viewId: "demo2",
-						// viewLevel: 2 
-			   // });
-			    
                 this._initRouter(oRouterData,this.oRouter);
                 
 				ResizeHandler.register(this.oHeader, this.onHeaderResize.bind(this));
@@ -374,18 +365,12 @@ sap.ui.define([
 				}
 			},
 			_getRouteData:function(){
-			   var oModel = new JSONModel();
-			   jQuery.ajax(jQuery.sap.getModulePath("apestech.ui.erp.mockdata", "/router.json"), {
-			      dataType: "json",
-				   success: function (oData) {
-				   	  oModel.setData(oData);
-				  }, 
-				error: function () {
-					jQuery.sap.log.error("failed to load json");
-				}
-			   });
-			   return oModel;
-			},
+		       var  sPath = $.sap.getModulePath("apestech.ui.erp.mockdata", "/router.json");
+			    return   $.sap.sjax({
+			        url: sPath,
+			        dataType: "json"
+			    });
+		 	},
 			_initRouter: function(oRouterData,oRouter) {
 				  var iRouter=oRouterData.length;
 				  for(var i=0;i<iRouter;i++){
