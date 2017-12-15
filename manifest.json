@@ -107,30 +107,6 @@
 				"pattern": "home",
 				"name": "home",
 				"target": ["apiMaster", "home"]
-			}, {
-				"pattern": "demo1",
-				"name": "demo1",
-				"target": ["apiMaster", "demo1"]
-			}, {
-				"pattern": "demo2",
-				"name": "demo2",
-				"target": ["apiMaster", "demo2"]
-			}, {
-				"pattern": "demo3",
-				"name": "demo3",
-				"target": ["apiMaster", "demo3"]
-			}, {
-				"pattern": "demo4",
-				"name": "demo4",
-				"target": ["apiMaster", "demo4"]
-			}, {
-				"pattern": "demo5",
-				"name": "demo5",
-				"target": ["apiMaster", "demo5"]
-			}, {
-				"pattern": "demo6",
-				"name": "demo6",
-				"target": ["apiMaster", "demo6"]
 			}],
 			"targets": {
 				"welcome": {
