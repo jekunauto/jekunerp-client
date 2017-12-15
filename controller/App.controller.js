@@ -22,14 +22,14 @@ sap.ui.define([
 			onInit : function () {
 				BaseController.prototype.onInit.call(this);
 				
-				this.post("user.save", {"body":'{"hello":"eeewe"}'}).done(function (resp) {
-					// 当result为true的回调
-					console.log(resp);
+				// this.post("user.save", {"body":'{"hello":"eeewe"}'}).done(function (resp) {
+				// 	// 当result为true的回调
+				// 	console.log(resp);
 					
-				}).fail(function (err) {
-				  // 当result为false的回调
-					console.error(err);
-				});
+				// }).fail(function (err) {
+				//   // 当result为false的回调
+				// 	console.error(err);
+				// });
 
 				var oViewModel = new JSONModel({
 					busy : false,
@@ -47,8 +47,27 @@ sap.ui.define([
 
 				this.oTabNavigation = this._oView.byId("tabHeader");
 				this.oHeader = this._oView.byId("headerToolbar");
-				this.oRouter = this.getRouter();
-
+			   
+               	this.oRouter = this.getRouter();
+				/*初始化路由*/ 
+			 
+		        var oDataRouter= this._getRouteData();
+			    var oRouterData=oDataRouter.data.routes;
+			    var oTargetData=oDataRouter.data.targets;
+				   
+			    var iTarget=oTargetData.length;
+				   for(var j=0;j<iTarget;j++){
+				   	    var oTarget=oTargetData[j];
+				   	    this.oRouter.getTargets().addTarget(oTarget.target,{
+						    viewName: oTarget.viewName,
+						    viewType: "XML",
+						    viewId: oTarget.viewId,
+							viewLevel: oTarget.viewLevel
+					  });
+			   }
+				   
+                this._initRouter(oRouterData,this.oRouter);
+                
 				ResizeHandler.register(this.oHeader, this.onHeaderResize.bind(this));
 				this.oRouter.attachRouteMatched(this.onRouteChange.bind(this));
 
@@ -344,6 +363,24 @@ sap.ui.define([
 				} else {
 					th.removeStyleClass("tabHeaderNoLeftMargin");
 				}
+			},
+			_getRouteData:function(){
+		       var  sPath = $.sap.getModulePath("apestech.ui.erp.mockdata", "/router.json");
+			    return   $.sap.sjax({
+			        url: sPath,
+			        dataType: "json"
+			    });
+		 	},
+			_initRouter: function(oRouterData,oRouter) {
+				  var iRouter=oRouterData.length;
+				  for(var i=0;i<iRouter;i++){
+				      var oRoutes=oRouterData[i];
+				  	  oRouter.addRoute({
+					      pattern: oRoutes.pattern,
+					      name: oRoutes.name,
+					      target: oRoutes.target
+	                 });
+				  }
 			}
 
 		});
