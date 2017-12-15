@@ -1,0 +1,64 @@
+{"routes":[ {
+				"pattern": "demo1",
+				"name": "demo1",
+				"target": ["apiMaster", "demo1"]
+			}, {
+				"pattern": "demo2",
+				"name": "demo2",
+				"target": ["apiMaster", "demo2"]
+			}, {
+				"pattern": "demo3",
+				"name": "demo3",
+				"target": ["apiMaster", "demo3"]
+			}, {
+				"pattern": "demo4",
+				"name": "demo4",
+				"target": ["apiMaster", "demo4"]
+			}, {
+				"pattern": "demo5",
+				"name": "demo5",
+				"target": ["apiMaster", "demo5"]
+			}, {
+				"pattern": "demo6",
+				"name": "demo6",
+				"target": ["apiMaster", "demo6"]
+			}],
+	   "targets":[
+				{  
+					"target":"demo1",
+					"viewName": "demo/demo1",
+					"viewId": "demo1",
+					"viewLevel": 2
+			    },
+				{   
+					"target":"demo2",
+					"viewName": "demo/demo2",
+					"viewId": "demo2",
+					"viewLevel": 2
+				},
+				{ 
+					"target":"demo3",
+					"viewName": "demo/demo3",
+					"viewId": "demo3",
+					"viewLevel": 2
+				},
+				{ 
+					"target":"demo4",
+					"viewName": "demo/demo4",
+					"viewId": "demo4",
+					"viewLevel": 2
+				},
+				{   
+					"target":"demo5",
+					"viewName": "demo/demo5",
+					"viewId": "demo5",
+					"viewLevel": 2
+				},
+				{  
+					"target":"demo6",
+					"viewName": "demo/demo6",
+					"viewId": "demo6",
+					"viewLevel": 2
+				}
+        ]
+}

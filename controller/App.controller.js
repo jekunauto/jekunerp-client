@@ -48,7 +48,7 @@ sap.ui.define([
 				this.oTabNavigation = this._oView.byId("tabHeader");
 				this.oHeader = this._oView.byId("headerToolbar");
 				this.oRouter = this.getRouter();
-
+                this._initRouter(this.oRouter);
 				ResizeHandler.register(this.oHeader, this.onHeaderResize.bind(this));
 				this.oRouter.attachRouteMatched(this.onRouteChange.bind(this));
 
@@ -352,18 +352,24 @@ sap.ui.define([
 				   var oRouterData=oData.routes;
 				   var oTargetData=oData.targets;
 				   
-				   oRouter.getTargets().addTarget("test",{
-					    viewName: "Test",
-					    viewType: "XML",
-						viewId: "test",
-						viewLevel: 2 
-					});
-				  var iRouter=oRouterData.size();
+				   var iTarget=oTargetData.length;
+				   for(var j=0;j<iTarget;j++){
+				   	    var oTarget=oTargetData[j];
+				   	    oRouter.getTargets().addTarget(oTarget.target,{
+					    viewName: oTarget.viewName,
+					    viewId: oTarget.viewId,
+						viewLevel: oTarget.viewLevel
+					  });
+				   }
+				  
+					
+				  var iRouter=oRouterData.length;
 				  for(var i=0;i<iRouter;i++){
+				      var oRoutes=oRouterData[i];
 				  	  oRouter.addRoute({
-					      pattern: "testRouter",
-					      name: "testRouter",
-					      target: "test"
+					      pattern: oRoutes.pattern,
+					      name: oRoutes.name,
+					      target: oRoutes.target
 	                 });
 				  }
 		        
