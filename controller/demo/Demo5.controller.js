@@ -96,14 +96,14 @@ sap.ui.define([
 		
 		handleTableSelectDialogPress: function(oEvent){
 			if (!this._oDialog) {
-				this._oDialog = sap.ui.xmlfragment("apestech.ui.erp.view.Dialog", this);
+				this._oDialog = sap.ui.xmlfragment("apestech.ui.erp.view..dialog.QueryDialog", this);
 			}
 
-			// Multi-select
-			this._oDialog.setMultiSelect(true);
+			// // Multi-select
+			// this._oDialog.setMultiSelect(true);
 
-			// Remember selections
-			this._oDialog.setRememberSelections(true);
+			// // Remember selections
+			// this._oDialog.setRememberSelections(true);
 
 			this.getView().addDependent(this._oDialog);
 
@@ -120,20 +120,22 @@ sap.ui.define([
 		},
 
 		handleClose: function(oEvent) {
-			debugger
 			var aContexts = oEvent.getParameter("selectedContexts");
+			
+			var list=[];
 			if (aContexts && aContexts.length) {
-				var list = aContexts.map(function(oContext){
+				list = aContexts.map(function(oContext){
 					var oJson = oContext.getObject();
-					console.log(oJson);
-					console.log();
-					return oJson.ProductId;
+					return oJson;
 				});
-				
-				
 				MessageToast.show("You have chosen " + list.join(", "));
 			}
 			oEvent.getSource().getBinding("items").filter([]);
+			
+			var oModel = this.getView().getModel().getData();
+			oModel.selectDialog = JSON.stringify(list);
+			
+			this.getModel().setData(oModel);
 		}
 		
 	});

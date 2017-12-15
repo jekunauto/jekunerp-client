@@ -119,8 +119,8 @@
 						<core:Title text="Address" />
 					</f:title>
 					<f:layout>
-						<f:ResponsiveGridLayout adjustLabelSpan="false" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="3" emptySpanXL="0" emptySpanL="0"
-							emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+						<f:ResponsiveGridLayout adjustLabelSpan="false" labelSpanXL="2" labelSpanL="2" labelSpanM="2" labelSpanS="2" emptySpanXL="0" emptySpanL="0"
+							emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"/>
 					</f:layout>
 					<f:formContainers>
 						<f:FormContainer name="testOne" title="BaseInfo">
@@ -172,27 +172,14 @@
 										<m:Select width="100%" selectedKey="{/Country}"></m:Select>
 									</f:fields>
 								</f:FormElement>
-							</f:formElements>
-						</f:FormContainer>
-						
-						<f:FormContainer name="testOne" title="BaseInfomation">
-							<f:formElements>
-								<f:FormElement label="name">
+								
+								<f:FormElement label="">
 									<f:fields>
-										<m:Input value="{/name}"/>
+										<Button text="Show Table Select Dialog" press="handleTableSelectDialogPress"/>
+										<Input type="text" value="{/selectDialog}"/>
 									</f:fields>
 								</f:FormElement>
-								<f:FormElement label="Password">
-									<m:Input type="Password" placeholder="Enter password ..." value="{/Password}"/>
-								</f:FormElement>
-								<f:FormElement label="SearchField">
-									<m:SearchField value="{/SearchField}" liveChange="onClickSearch"/>
-								</f:FormElement>
-								<f:FormElement label="Country">
-									<f:fields>
-										<m:Select width="100%" selectedKey="{/Country}"></m:Select>
-									</f:fields>
-								</f:FormElement>
+								
 							</f:formElements>
 						</f:FormContainer>
 						

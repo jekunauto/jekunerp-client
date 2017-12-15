@@ -102,7 +102,7 @@
 								<f:FormElement label="">
 									<f:fields>
 										<Button text="Show Table Select Dialog" press="handleTableSelectDialogPress"/>
-										<Input type="text"/>
+										<Input type="text" value="{/selectDialog}"/>
 									</f:fields>
 								</f:FormElement>
 							</f:formElements>
