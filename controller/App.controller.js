@@ -344,6 +344,32 @@ sap.ui.define([
 				} else {
 					th.removeStyleClass("tabHeaderNoLeftMargin");
 				}
+			},
+			_initRouter: function(oRouter) {
+				jQuery.ajax(jQuery.sap.getModulePath("apestech.ui.erp.mockdata", "/router.json"), {
+				dataType: "json",
+				success: function (oData) {
+				   var oRouterData=oData.routes;
+				   var oTargetData-oData.targets;
+				   
+				   oRouter.getTargets().addTarget("test",{
+					    viewName: "Test",
+					    viewType: "XML",
+						viewId: "test",
+						viewLevel: 2 
+					});
+				  var iRouter=
+				  for(var i=0;i<)
+		          oRouter.addRoute({
+				      pattern: "testRouter",
+				      name: "testRouter",
+				      target: "test"
+	              });
+				},
+				error: function () {
+					jQuery.sap.log.error("failed to load json");
+				}
+			});
 			}
 
 		});
