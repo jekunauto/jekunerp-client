@@ -127,7 +127,7 @@ sap.ui.define([
 					var oJson = oContext.getObject();
 					console.log(oJson);
 					console.log();
-					return oJson.name;
+					return oJson.ProductId;
 				});
 				
 				
