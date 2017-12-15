@@ -99,9 +99,10 @@
 						
 						<f:FormContainer name="testOne" title="BaseInfo">
 							<f:formElements>
-								<f:FormElement label="Date">
+								<f:FormElement label="">
 									<f:fields>
-										
+										<Button text="Show Table Select Dialog" press="handleTableSelectDialogPress"/>
+										<Input type="text"/>
 									</f:fields>
 								</f:FormElement>
 							</f:formElements>

@@ -4,8 +4,8 @@ sap.ui.define([
 	"sap/ui/Device",
 	"sap/m/MessageToast",
 	"sap/m/SplitContainer",
-	"sap/ui/core/format/DateFormat"
-], function(JSONModel, BaseController, Device, MessageToast, SplitContainer, DateFormat) {
+	"sap/ui/model/Filter"
+], function(JSONModel, BaseController, Device, MessageToast, SplitContainer, Filter) {
 	"use strict";
 
 	return BaseController.extend("apestech.ui.erp.controller.demo.demo5", {
@@ -23,12 +23,24 @@ sap.ui.define([
 		},
 
 		onExit: function() {
-			
+			if (this._oDialog) {
+				this._oDialog.destroy();
+			}
 		},
 		
 		initTreeModel: function(){
 			var oModel = new JSONModel();
 			jQuery.ajax(jQuery.sap.getModulePath("apestech.ui.erp.mockdata", "/Clothing.json"), {
+				dataType: "json",
+				success: function (oData) {
+					oModel.setData(oData);
+				},
+				error: function () {
+					jQuery.sap.log.error("failed to load json");
+				}
+			});
+			
+			jQuery.ajax(jQuery.sap.getModulePath("apestech.ui.erp.mockdata", "/products.json"), {
 				dataType: "json",
 				success: function (oData) {
 					oModel.setData(oData);
@@ -80,6 +92,48 @@ sap.ui.define([
 					
 				}
 			});
+		},
+		
+		handleTableSelectDialogPress: function(oEvent){
+			if (!this._oDialog) {
+				this._oDialog = sap.ui.xmlfragment("apestech.ui.erp.view.Dialog", this);
+			}
+
+			// Multi-select
+			this._oDialog.setMultiSelect(true);
+
+			// Remember selections
+			this._oDialog.setRememberSelections(true);
+
+			this.getView().addDependent(this._oDialog);
+
+			// toggle compact style
+			jQuery.sap.syncStyleClass("sapUiSizeCompact", this.getView(), this._oDialog);
+			this._oDialog.open();
+		},
+		
+		handleSearch: function(oEvent) {
+			var sValue = oEvent.getParameter("value");
+			var oFilter = new Filter("Name", sap.ui.model.FilterOperator.Contains, sValue);
+			var oBinding = oEvent.getSource().getBinding("items");
+			oBinding.filter([oFilter]);
+		},
+
+		handleClose: function(oEvent) {
+			debugger
+			var aContexts = oEvent.getParameter("selectedContexts");
+			if (aContexts && aContexts.length) {
+				var list = aContexts.map(function(oContext){
+					var oJson = oContext.getObject();
+					console.log(oJson);
+					console.log();
+					return oJson.name;
+				});
+				
+				
+				MessageToast.show("You have chosen " + list.join(", "));
+			}
+			oEvent.getSource().getBinding("items").filter([]);
 		}
 		
 	});
