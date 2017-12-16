@@ -86,19 +86,19 @@
 				"controlId": "splitApp",
 				"controlAggregation": "detailPages",
 				"bypassed": {
-					"target": ["welcome"]
+					"target": ["home"]
 				},
 				"async": true,
 				"clearTarget": false
 			},
 			"routes": [{
-				"pattern": "welcome",
-				"name": "welcome",
-				"target": ["welcome"]
+				"pattern": "home",
+				"name": "home",
+				"target": ["home"]
 			}, {
 				"pattern": "",
 				"name": "api",
-				"target": ["apiMaster", "welcome"]
+				"target": ["apiMaster", "home"]
 			}, {
 				"pattern": "api/{id}",
 				"name": "apiId",
@@ -113,11 +113,6 @@
                 "target": ["login"]
            }],
 			"targets": {
-				"welcome": {
-					"viewName": "Welcome",
-					"viewLevel": 2,
-					"viewId": "welcome"
-				},
 				"apiMaster": {
 					"viewName": "ApiMaster",
 					"viewLevel": 1,

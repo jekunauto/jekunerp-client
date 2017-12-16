@@ -12,8 +12,8 @@ sap.ui.define([
                 password: ""
             }, 
             onInit: function () {
-            	this.getRouter().getRoute("login").attachPatternMatched(this._onMatched, this);
                 this.getView().setModel(new JSONModel(this.model));
+                this.getRouter().getRoute("login").attachPatternMatched(this._onMatched, this);
             },
             loginPressHandle: function () {
                 var targets = this.getOwnerComponent().getTargets();
