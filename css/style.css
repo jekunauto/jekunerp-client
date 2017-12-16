@@ -1585,3 +1585,21 @@ html[data-sap-ui-os="mac"] pre.prettyprint.prettyprinted {
 .sap-phone .sapMList .sapMFeedListItemTextName .sapMLnk {
 	white-space: pre-line;
 }
+
+.loginForm {
+    background-color: #F2F2F2 !important;
+    position: absolute;
+    width: 250px;
+    height: 250px;
+}
+
+.bg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(http://lorempixel.com/800/500/nature) no-repeat center center fixed;
+    background-size: cover;
+    -webkit-filter: blur(5px);
+}
