@@ -17,7 +17,6 @@ sap.ui.define([
             loginPressHandle: function () {
                 var router = this.getOwnerComponent().getRouter();
                 sap.ui.core.BusyIndicator.show(1000);
-                
                //var  currentUser = AuthGuard.authenticateUser(this.model.userid, this.model.password, function(err){
                //     if (err) {
                //         targets.display("login");
