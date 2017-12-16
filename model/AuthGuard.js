@@ -36,18 +36,18 @@ sap.ui.define([
                   return userObj.firstName + " " + userObj.lastName;
                }
                return "no-user";
-            },
-
-            authenticateUser: function (user, pass，cdk) {
-               	this.post("user.save", {"body":'{"userid":user,"password":pass}'}).done(function (resp) {
-					// 当result为true的回调
-                    storage.put("currentUser",resp);
-                    cdk(false);
-				}).fail(function (err) {
-				  // 当result为false的回调
-				   cdk(err);
-				});
             }
+
+    //         authenticateUser: function (user, pass，cdk) {
+    //           	this.post("user.save", {"body":'{"userid":user,"password":pass}'}).done(function (resp) {
+				// 	// 当result为true的回调
+    //                 //storage.put("currentUser",resp);
+    //                 cdk(false);
+				// }).fail(function (err) {
+				//   // 当result为false的回调
+				//   cdk(err);
+				// });
+    //         }
         };
 
         return AuthGuard;

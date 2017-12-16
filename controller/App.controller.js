@@ -15,7 +15,7 @@ sap.ui.define([
 		"sap/ui/core/IconPool",
 		"sap/m/SplitAppMode",
 		"sap/m/MessageBox"
-	], function (BaseController, JSONModel, ResizeHandler, Device, Component, Fragment, library, IconPool, SplitAppMode, MessageBox) {
+	], function (BaseController, JSONModel, ResizeHandler, Device, Component, Fragment, library, IconPool, SplitAppMode) {
 		"use strict";
 
 		return BaseController.extend("apestech.ui.erp.controller.App", {

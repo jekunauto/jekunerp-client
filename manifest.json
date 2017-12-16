@@ -92,17 +92,9 @@
 				"clearTarget": false
 			},
 			"routes": [{
-				"pattern": "home",
-				"name": "home",
-				"target": ["home"]
-			}, {
 				"pattern": "",
-				"name": "api",
-				"target": ["apiMaster", "home"]
-			}, {
-				"pattern": "api/{id}",
-				"name": "apiId",
-				"target": ["apiMaster", "home"]
+				"name": "login",
+				"target": ["login"]
 			}, {
 				"pattern": "home",
 				"name": "home",

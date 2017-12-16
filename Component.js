@@ -39,6 +39,7 @@ sap.ui.define([
 		 * @override
 		 */
 		init: function () {
+			debugger;
 
 			// This promise will be resolved when the api-based models (libsData, treeData) have been loaded
 			this._modelsPromise = null;
@@ -66,8 +67,9 @@ sap.ui.define([
    //         this.getRouter().navTo("login",{
 			    
 			// });
-            // targets.display("login");
-            // return;
+			 var targets=this.getTargets();
+             targets.display("login");
+             return;
                   
 			// Prevents inappropriate focus change which causes ObjectPage to scroll,
 			// thus text can be selected and copied
