@@ -58,7 +58,7 @@ sap.ui.define([
 			 */
 			_onMatched: function () {
 				try {
-					 //this.hideMasterSide();
+					  this.hideMasterSide();
 				} catch (e) {
 					// try-catch due to a bug in UI5 SplitApp, CL 1898264 should fix it
 					jQuery.sap.log.error(e);

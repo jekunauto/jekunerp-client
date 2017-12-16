@@ -63,7 +63,12 @@ sap.ui.define([
 				// Preload API Info on desktop for faster startup
 				this.fetchMenuInfoAndBindModels.bind(this);
 			}
-
+   //         this.getRouter().navTo("login",{
+			    
+			// });
+            // targets.display("login");
+            // return;
+                  
 			// Prevents inappropriate focus change which causes ObjectPage to scroll,
 			// thus text can be selected and copied
 			// sap.m.TablePopin.prototype.onfocusin = function () { };

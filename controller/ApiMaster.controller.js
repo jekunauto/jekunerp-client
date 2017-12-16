@@ -8,7 +8,7 @@
 sap.ui.define([
 		"apestech/ui/erp/controller/MasterTreeBaseController",
 		"sap/ui/model/json/JSONModel"
-	], function (MasterTreeBaseController, JSONModel) {
+	], function (MasterTreeBaseController) {
 		"use strict";
 		
 		return MasterTreeBaseController.extend("apestech.ui.erp.controller.ApiMaster", {
@@ -30,7 +30,7 @@ sap.ui.define([
 
 				this.getRouter().getRoute("api").attachPatternMatched(this._onMatched, this);
 				this.getRouter().getRoute("apiId").attachPatternMatched(this._onTopicMatched, this);
-				this.getRouter().getRoute("home").attachPatternMatched(this._onTopicMatched, this);
+				this.getRouter().getRoute("welcome").attachPatternMatched(this._onTopicMatched, this);
 				// this.getRouter().getRoute("experimental").attachPatternMatched(this._onTopicMatched, this);
 			},
 
@@ -47,7 +47,7 @@ sap.ui.define([
 			_onTopicMatched: function (event) {
 
 				try {
-					this.showMasterSide();
+					 this.showMasterSide();
 				} catch (e) {
 					// try-catch due to a bug in UI5 SplitApp, CL 1898264 should fix it
 					jQuery.sap.log.error(e);

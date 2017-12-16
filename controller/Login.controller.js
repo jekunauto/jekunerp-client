@@ -12,6 +12,7 @@ sap.ui.define([
                 password: ""
             }, 
             onInit: function () {
+            	this.getRouter().getRoute("login").attachPatternMatched(this._onMatched, this);
                 this.getView().setModel(new JSONModel(this.model));
             },
             loginPressHandle: function () {
@@ -23,8 +24,16 @@ sap.ui.define([
                         targets.display("login");
                         return;
                     }
-                    targets.display("home");
+                    targets.display("welcome");
                 });
-            }
+            },
+            _onMatched: function () {
+				try {
+					this.hideMasterSide();
+				} catch (e) {
+					// try-catch due to a bug in UI5 SplitApp, CL 1898264 should fix it
+					jQuery.sap.log.error(e);
+				}
+			}
         });
 });

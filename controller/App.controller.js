@@ -116,7 +116,7 @@ sap.ui.define([
 				}
 
 				// hide master on route change
-				this.getView().byId("splitApp").hideMaster();
+			    this.getView().byId("splitApp").hideMaster();
 				oViewModel.setProperty("/bIsShownMaster", false);
 			},
 

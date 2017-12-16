@@ -107,7 +107,11 @@
 				"pattern": "home",
 				"name": "home",
 				"target": ["apiMaster", "home"]
-			}],
+			},{
+				"pattern": "login",
+                "name": "login",
+                "target": ["login"]
+           }],
 			"targets": {
 				"welcome": {
 					"viewName": "Welcome",
@@ -124,7 +128,12 @@
 					"viewName": "Home",
 					"viewId": "home",
 					"viewLevel": 2
-				}
+				},
+				"login": {
+		          "viewName": "Login",
+		          "viewLevel": 0,
+		          "title": "{i18n>LoginViewTitle}"
+                 }
 			}
 		}
 	}

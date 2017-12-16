@@ -1,0 +1,18 @@
+<mvc:View xmlns="sap.m" 
+ xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" 
+ xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form"  
+ controllerName="apestech.ui.erp.controller.Login">
+<m:Page>
+    <m:VBox class="sapUiSmallMargin loginForm">
+        <f:SimpleForm>
+            <f:content>
+                <m:Label text="{i18n>Login_user}"/>
+                <m:Input placeholder="{i18n>Login_userPlaceholder}"/>
+                <m:Label text="{i18n>Login_pass}"/>
+                <m:Input type="Password" placeholder="{i18n>Login_passPlaceholder}"/>
+                <m:Button type="Accept" text="{i18n>OK}" press="loginPressHandle"/>
+            </f:content>
+        </f:SimpleForm>
+    </m:VBox>
+</m:Page>
+</mvc:View>
