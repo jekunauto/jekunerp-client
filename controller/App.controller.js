@@ -3,7 +3,6 @@
  * (c) Copyright 2009-2017 SAP SE or an SAP affiliate company.
  * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
  */
-
 sap.ui.define([
 		"apestech/ui/erp/controller/BaseController",
 		"sap/ui/model/json/JSONModel",
@@ -14,8 +13,13 @@ sap.ui.define([
 		"sap/ui/documentation/library",
 		"sap/ui/core/IconPool",
 		"sap/m/SplitAppMode",
-		"sap/m/MessageBox"
-	], function (BaseController, JSONModel, ResizeHandler, Device, Component, Fragment, library, IconPool, SplitAppMode) {
+		"sap/m/MessageToast",
+		'sap/m/ResponsivePopover',
+		'sap/m/Button',
+		'sap/m/NotificationListItem',
+		'sap/ui/core/CustomData'
+	], function (BaseController, JSONModel, ResizeHandler, Device, Component, Fragment, library, IconPool, SplitAppMode,
+		MessageToast, ResponsivePopover, Button, NotificationListItem, CustomData) {
 		"use strict";
 
 		return BaseController.extend("apestech.ui.erp.controller.App", {
@@ -49,8 +53,8 @@ sap.ui.define([
 				this.oHeader = this._oView.byId("headerToolbar");
 			   
                	this.oRouter = this.getRouter();
+               	
 				/*初始化路由*/ 
-			 
 		        var oDataRouter= this._getRouteData();
 			    var oRouterData=oDataRouter.data.routes;
 			    var oTargetData=oDataRouter.data.targets;
@@ -70,6 +74,15 @@ sap.ui.define([
                 
 				ResizeHandler.register(this.oHeader, this.onHeaderResize.bind(this));
 				this.oRouter.attachRouteMatched(this.onRouteChange.bind(this));
+
+				debugger;
+				//初始化 消息提示
+			    var alertsData = $.sap.sjax({
+			        url: $.sap.getModulePath("apestech.ui.erp.mockdata", "/alerts.json"),
+			        dataType: "json"
+			    });
+				var oAlerts = new JSONModel(alertsData.data);
+				this.getView().setModel(oAlerts, "alerts");
 
 				// apply content density mode to root view
 				this._oView.addStyleClass(this.getOwnerComponent().getContentDensityClass());
@@ -291,15 +304,6 @@ sap.ui.define([
 				oNavCon.back();
 			},
 
-
-			onSearch : function (oEvent) {
-				var sQuery = oEvent.getParameter("query");
-				if (!sQuery) {
-					return;
-				}
-				this.getRouter().navTo("search", {searchParam: sQuery}, false);
-			},
-
 			onHeaderResize: function (oEvent) {
 				var iWidth = oEvent.size.width,
 					bPhoneSize = Device.system.phone || iWidth < Device.media._predefinedRangeSets[Device.media.RANGESETS.SAP_STANDARD_EXTENDED].points[0];
@@ -364,26 +368,100 @@ sap.ui.define([
 					th.removeStyleClass("tabHeaderNoLeftMargin");
 				}
 			},
+			
 			_getRouteData:function(){
 		       var  sPath = $.sap.getModulePath("apestech.ui.erp.mockdata", "/router.json");
-			    return   $.sap.sjax({
+			    return $.sap.sjax({
 			        url: sPath,
 			        dataType: "json"
 			    });
 		 	},
+		 	
 			_initRouter: function(oRouterData,oRouter) {
-				  var iRouter=oRouterData.length;
-				  for(var i=0;i<iRouter;i++){
-				      var oRoutes=oRouterData[i];
-				  	  oRouter.addRoute({
-					      pattern: oRoutes.pattern,
-					      name: oRoutes.name,
-					      target: oRoutes.target
-	                 });
-				  }
+				var iRouter=oRouterData.length;
+				for(var i=0;i<iRouter;i++){
+					var oRoutes=oRouterData[i];
+				  	oRouter.addRoute({
+						pattern: oRoutes.pattern,
+					    name: oRoutes.name,
+					    target: oRoutes.target
+	            	});
+				}
+			},
+			
+			/**
+			 * 首页加载代办事宜的方法
+			 */
+			onNotificationPress: function(oEvent){
+				debugger;
+				var oBundle = this.getModel("i18n").getResourceBundle();
+				// close message popover
+				var oMessagePopover = this.getView().byId("errorMessagePopover");
+				if (oMessagePopover && oMessagePopover.isOpen()) {
+					oMessagePopover.destroy();
+				}
+				var oButton = new Button({
+					text: oBundle.getText("notificationButtonText"),
+					press: function () {
+						MessageToast.show("Show all Notifications was pressed");
+					}
+				});
+				var oNotificationPopover = new ResponsivePopover(this.getView().createId("notificationMessagePopover"), {
+					title: oBundle.getText("notificationTitle"),
+					contentWidth: "300px",
+					endButton : oButton,
+					placement: sap.m.PlacementType.Bottom,
+					content: {
+						path: 'alerts>/alerts/notifications',
+						factory: this._createNotification
+					},
+					afterClose: function () {
+						oNotificationPopover.destroy();
+					}
+				});
+				this.getView().byId("app").addDependent(oNotificationPopover);
+				// forward compact/cozy style into dialog
+				jQuery.sap.syncStyleClass(this.getView().getController().getOwnerComponent().getContentDensityClass(), this.getView(), oNotificationPopover);
+				oNotificationPopover.openBy(oEvent.getSource());
+			},
+			
+			/**
+			 * Factory function for the notification items
+			 * @param {string} sId The id for the item
+			 * @param {sap.ui.model.Context} oBindingContext The binding context for the item
+			 * @returns {sap.m.NotificationListItem} The new notification list item
+			 * @private
+			 */
+			_createNotification: function (sId, oBindingContext) {
+				debugger;
+				var oBindingObject = oBindingContext.getObject();
+				var oNotificationItem = new NotificationListItem({
+					title: oBindingObject.title,
+					description: oBindingObject.description,
+					priority: oBindingObject.priority,
+					close: function (oEvent) {
+						var sBindingPath = oEvent.getSource().getCustomData()[0].getValue();
+						var sIndex = sBindingPath.split("/").pop();
+						var aItems = oEvent.getSource().getModel("alerts").getProperty("/alerts/notifications");
+						aItems.splice(sIndex, 1);
+						oEvent.getSource().getModel("alerts").setProperty("/alerts/notifications", aItems);
+						oEvent.getSource().getModel("alerts").updateBindings("/alerts/notifications");
+						sap.m.MessageToast.show("Notification has been deleted.");
+					},
+					datetime: oBindingObject.date,
+					authorPicture: oBindingObject.icon,
+					press: function () {
+					},
+					customData : [
+						new CustomData({
+							key : "path",
+							value : oBindingContext.getPath()
+						})
+					]
+				});
+				return oNotificationItem;
 			}
 
 		});
-
 	}
 );

@@ -8,7 +8,7 @@
 		displayBlock="true"
 		busy="{appView>/busy}"
 		busyIndicatorDelay="{appView>/delay}">
-	<Page
+	<Page id="app"
 		showHeader="false"
 		enableScrolling="false"
 		showNavButton="false"
@@ -53,43 +53,38 @@
 					</layoutData>
 				</ToolbarSpacer>
 
-				<ObjectStatus text="Version {versionData>/version} {= ${versionData>/isDevVersion} ? '- development in progress!' : ''}" state="{= ${versionData>/isDevVersion} ? 'Warning' : 'None'}" visible="{=!${appView>/bPhoneSize}}" />
+				<ObjectStatus text="Version {versionData>/version} {\
+				= ${versionData>/isDevVersion} ? '- development in progress!' : ''}" state="{= ${versionData>/isDevVersion} ? 'Warning' : 'None'}" visible="{=!${appView>/bPhoneSize}}" />
 
-				<custom:Search id="searchControl" toggle="onToggleSearchMode" search="onSearch" width="{= (${appView>/bPhoneSize} &amp;&amp; ${appView>/bSearchMode}) ? '100%' : ''}"/>
-
-				<!-- press="feedbackDialogOpen" -->
 				<Button  icon="sap-icon://comment" type="Transparent" visible="{=!${appView>/bPhoneSize} &amp;&amp; !${appView>/bSearchMode}}">
 					<layoutData>
 						<OverflowToolbarLayoutData priority="NeverOverflow" />
 					</layoutData>
 				</Button>
 				
-				<Button icon="sap-icon://hint"></Button>
-
-				<!--<MenuButton icon="sap-icon://hint" type="Transparent" visible="{=!${appView>/bSearchMode}}">
+				<Button
+					id="notificationButton"
+					icon="sap-icon://ui-notifications"
+					text="{= ${alerts>/alerts/notifications}.length }"
+					visible="{= ${alerts>/alerts/notifications}.length === 0 ? false : true }"
+					type="Transparent"
+					press="onNotificationPress">
+					<layoutData>
+						<OverflowToolbarLayoutData closeOverflowOnInteraction="false"/>
+					</layoutData>
+				</Button>
+				
+				<MenuButton icon="sap-icon://hint" type="Transparent" text="管理員">
 					<layoutData>
 						<OverflowToolbarLayoutData priority="NeverOverflow" />
 					</layoutData>
-					<menu>
-						<Menu class="sapContrast sapContrastPlus" itemSelected="handleMenuItemClick">
-							<items>
-								<MenuItem text="Version {versionData>/version}" visible="{appView>/bPhoneSize}" />
-								<MenuItem text="Feedback" visible="{appView>/bPhoneSize}" />
-								<MenuItem text="About" />
-								<MenuItem text="Legal" visible="{=!${versionData>/isOpenUI5}}"/>
-								<MenuItem text="Privacy" visible="{=!${versionData>/isOpenUI5}}"/>
-								<MenuItem text="Terms of Use" visible="{=!${versionData>/isOpenUI5}}">
-									<items>
-										<MenuItem text="Terms of Use" />
-										<MenuItem text="Copyright" />
-										<MenuItem text="Trademark" />
-										<MenuItem text="Disclaimer" />
-									</items>
-								</MenuItem>
-							</items>
-						</Menu>
-					</menu>
-				</MenuButton>-->
+					<Menu class="sapContrast sapContrastPlus" itemSelected="handleMenuItemClick">
+						<items>
+							<MenuItem icon="sap-icon://hint" text="Logout" type="Transparent"/>
+							<MenuItem icon="sap-icon://hint" text="Message" type="Transparent"/>
+						</items>
+					</Menu>
+				</MenuButton>
 				<core:ExtensionPoint name="customLinks" />
 			</tnt:ToolHeader>
 
