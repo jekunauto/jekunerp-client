@@ -67,8 +67,9 @@ sap.ui.define([
 			    
 			// });
 			
-			 var targets=this.getTargets();
-             targets.display("login");
+			// var targets=this.getTargets();
+            // targets.display("login");
+             this.getRouter().navTo("login",{ });
              return;
                   
 			// Prevents inappropriate focus change which causes ObjectPage to scroll,
