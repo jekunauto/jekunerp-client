@@ -31,7 +31,7 @@
 	"sap.ui5": {
 		"_version": "1.2.0",
 		"config": {
-		    "appServerUrl": "http://127.0.0.1:8080",
+		    "appServerUrl": "http://10.2.4.196:8060",
 		    "appKey":"00001",
 		    "appSecret":"abcdeabcdeabcdeabcdeabcde"
 		},
@@ -86,7 +86,7 @@
 				"controlId": "splitApp",
 				"controlAggregation": "detailPages",
 				"bypassed": {
-					"target": ["home"]
+					"target": ["login"]
 				},
 				"async": true,
 				"clearTarget": false

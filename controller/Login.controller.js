@@ -15,17 +15,28 @@ sap.ui.define([
                 this.getRouter().getRoute("login").attachPatternMatched(this._onMatched, this);
             },
             loginPressHandle: function () {
-                var router = this.getOwnerComponent().getRouter();
-                sap.ui.core.BusyIndicator.show(1000);
-               //var  currentUser = AuthGuard.authenticateUser(this.model.userid, this.model.password, function(err){
-               //     if (err) {
-               //         targets.display("login");
-               //         return;
-               //     }
-               //     targets.display("welcome");
-               // });
-               router.navTo("home");
-               sap.ui.core.BusyIndicator.hide();
+               var router = this.getOwnerComponent().getRouter();
+               sap.ui.core.BusyIndicator.show();
+               
+               var currentUser = AuthGuard.authenticateUser(this.model.userid, this.model.password, {
+                    onSuccess: function (result) {
+                       sap.ui.core.BusyIndicator.hide();
+                       router.navTo("home");
+                   },
+                    onFailure: function (err) {
+                        sap.ui.core.BusyIndicator.hide();
+                        // switch (err.code) {
+                        //     case "PasswordResetRequiredException":
+                        //         that.getModel().setProperty("/flow", "PasswordReset");
+                        //         break;
+                        //     default:
+                        console.log(err.body);
+                        MessageToast.show(err.body);
+                    }
+                
+               });
+
+               
             },
             _onMatched: function () {
 				try {

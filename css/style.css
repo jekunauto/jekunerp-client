@@ -1590,7 +1590,7 @@ html[data-sap-ui-os="mac"] pre.prettyprint.prettyprinted {
     background-color: #F2F2F2 !important;
     width: 250px;
     height: 250px;
-    margin:0px auto
+    margin:100px auto;
 }
 
 .bg {

@@ -13,8 +13,9 @@ sap.ui.define([
 	"sap/ui/model/json/JSONModel",
 	"apestech/ui/erp/util/ModuleRouter",
 	"apestech/ui/erp/controller/util/ConfigUtil",
-	"apestech/ui/erp/controller/util/MessageUtils"
-], function (jQuery, UIComponent, Device, models, ErrorHandler, JSONModel, DocumentationRouter, ConfigUtil, MessageUtils) {
+	"apestech/ui/erp/controller/MessageUtils",
+	"apestech/ui/erp/model/AuthGuard"
+], function (jQuery, UIComponent, Device, models, ErrorHandler, JSONModel, DocumentationRouter, ConfigUtil, MessageUtils,AuthGuard) {
 	"use strict";
 
 	var aTreeContent = [],
@@ -67,10 +68,18 @@ sap.ui.define([
 			    
 			// });
 			
-			// var targets=this.getTargets();
-            // targets.display("login");
-             this.getRouter().navTo("login",{ });
-             return;
+		    // var targets=this.getTargets();
+      //      targets.display("login");
+      //      return;
+             // var targets = this.getTargets();
+              var routes  = this.getRouter();
+              AuthGuard.hasSession(function (err) {
+                    if (err) {
+                        routes.navTo("login");
+                        return;
+                    }
+                    routes.navTo("home");
+             });
                   
 			// Prevents inappropriate focus change which causes ObjectPage to scroll,
 			// thus text can be selected and copied
