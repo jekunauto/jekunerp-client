@@ -4,7 +4,7 @@ sap.ui.define([
 ], function (MessageToast) {
     "use strict";
      var Config = {
-        	 "appServerUrl": "http://10.2.4.196:8060",
+        	 "appServerUrl": "http://10.2.5.37:8060",
 			 "appKey":"00001",
 		     "appSecret":"abcdeabcdeabcdeabcdeabcde"
         };

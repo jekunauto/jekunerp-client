@@ -99,11 +99,12 @@ sap.ui.define([
 				Device.orientation.detachHandler(this._onOrientationChange, this);
 			},
 
-			onRouteChange: function (oEvent) {
+		    onRouteChange: function (oEvent) {
 
 				if (!this.oRouter.getRoute(oEvent.getParameter("name"))._oConfig.target) {
 					return;
 				}
+				
 
 				var sRouteName = oEvent.getParameter("name"),
 					sTabId = this.oRouter.getRoute(sRouteName)._oConfig.target[0] + "Tab",

@@ -4,18 +4,19 @@
  * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
  */
 
-sap.ui.define([ 
-	"jquery.sap.global", 
-	"sap/ui/core/UIComponent",
+sap.ui.define([  
+ 	"jquery.sap.global",
+ 	"jquery.sap.storage",
+    "sap/ui/core/UIComponent",
 	"sap/ui/Device",
 	"apestech/ui/erp/model/models",
 	"apestech/ui/erp/controller/ErrorHandler",
 	"sap/ui/model/json/JSONModel",
 	"apestech/ui/erp/util/ModuleRouter",
 	"apestech/ui/erp/controller/util/ConfigUtil",
-	"apestech/ui/erp/controller/MessageUtils",
+	"apestech/ui/erp/controller/util/MessageUtils",
 	"apestech/ui/erp/model/AuthGuard"
-], function (jQuery, UIComponent, Device, models, ErrorHandler, JSONModel, DocumentationRouter, ConfigUtil, MessageUtils,AuthGuard) {
+], function (jQuery,storage,UIComponent, Device, models, ErrorHandler, JSONModel, ModuleRouter, ConfigUtil, MessageUtils,AuthGuard) {
 	"use strict";
 
 	var aTreeContent = [],
@@ -40,14 +41,16 @@ sap.ui.define([
 		 * @override
 		 */
 		init: function () {
-
-			// This promise will be resolved when the api-based models (libsData, treeData) have been loaded
+            // This promise will be resolved when the api-based models (libsData, treeData) have been loaded
 			this._modelsPromise = null;
 
 			this._oErrorHandler = new ErrorHandler(this);
 			
 			this._MessageUtils = new MessageUtils(this);
-
+			//var store = jQuery.sap.storage(oStorage, sIdPrefix);
+			//this._Storage =  jQuery.sap.storage(oStorage, sIdPrefix);   
+			
+            this._SessionStorage = jQuery.sap.storage(jQuery.sap.storage.Type.session);
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
 
@@ -74,11 +77,11 @@ sap.ui.define([
              // var targets = this.getTargets();
               var routes  = this.getRouter();
               AuthGuard.hasSession(function (err) {
-                    if (err) {
+                  if (err) {
                         routes.navTo("login");
                         return;
-                    }
-                    routes.navTo("home");
+                  }
+                  routes.navTo("home");
              });
                   
 			// Prevents inappropriate focus change which causes ObjectPage to scroll,
@@ -118,7 +121,12 @@ sap.ui.define([
 			}
 			return this._sContentDensityClass;
 		},
-		
+		getSessionStorage: function(){
+			if (!this._SessionStorage) {
+				this._SessionStorage = jQuery.sap.storage(jQuery.sap.storage.Type.session); 
+			}
+			return this._SessionStorage;
+		},
 		/**
 		 * 消息
 		 */

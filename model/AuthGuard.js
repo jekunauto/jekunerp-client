@@ -1,8 +1,7 @@
 sap.ui.define([
-	  "sap/ui/model/json/JSONModel",
-      "jquery.sap.storage",
+	  "sap/ui/model/json/JSONModel", 
        "apestech/ui/erp/model/Api"
-    ], function (JSONModel,storage,Api) {
+    ], function (JSONModel,Api) {
         "use strict";
          var AuthGuard = {
           
@@ -23,18 +22,18 @@ sap.ui.define([
                 cbk(true);
             },
 
-            getCurrentUser: function () {
-                return storage.get("currentUser");
+            getCurrentUser: function (SessionStorage) {
+                return SessionStorage.get("currentUser");
             },
 
-            signOut: function () {
+            signOut: function (SessionStorage) {
                 this.token = null;
-                storage.remove("currentUser");
+                SessionStorage.remove("currentUser");
             },
 
-            getUsername: function () {
-               if (storage.get("currentUser")){
-                  var userObj = new JSONModel(storage.get("currentUser"));
+            getUsername: function (SessionStorage) {
+               if (SessionStorage.get("currentUser")){
+                  var userObj = new JSONModel(SessionStorage.get("currentUser"));
                   return userObj.firstName + " " + userObj.lastName;
                }
                return "no-user";

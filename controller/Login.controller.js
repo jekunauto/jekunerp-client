@@ -17,10 +17,11 @@ sap.ui.define([
             loginPressHandle: function () {
                var router = this.getOwnerComponent().getRouter();
                sap.ui.core.BusyIndicator.show();
-               
-               var currentUser = AuthGuard.authenticateUser(this.model.userid, this.model.password, {
+               var that=this.getOwnerComponent();
+               AuthGuard.authenticateUser(this.model.userid, this.model.password, {
                     onSuccess: function (result) {
                        sap.ui.core.BusyIndicator.hide();
+                       that.getSessionStorage().put("ABC", "SFJSKFJSKJF");
                        router.navTo("home");
                    },
                     onFailure: function (err) {
