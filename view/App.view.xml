@@ -15,7 +15,10 @@
 		class="sapUiDemokit">
 		<content>
 			<tnt:ToolHeader id="headerToolbar">
-				<ToggleButton icon="sap-icon://menu2" type="Transparent" visible="{= ${appView>/bHasMaster} &amp;&amp; ( ${appView>/bPhoneSize} || !${appView>/bLandscape} ) &amp;&amp; !${appView>/bSearchMode} }" press="toggleMaster" pressed="{appView>/bIsShownMaster}">
+				<ToggleButton icon="sap-icon://menu2" type="Transparent" 
+					visible="{= ${appView>/bHasMaster} &amp;&amp; ( ${appView>/bPhoneSize} || !${appView>/bLandscape} ) }" 
+					press="toggleMaster" 
+					pressed="{appView>/bIsShownMaster}">
 					<layoutData>
 						<OverflowToolbarLayoutData priority="NeverOverflow" />
 					</layoutData>
@@ -54,7 +57,8 @@
 				</ToolbarSpacer>
 
 				<ObjectStatus text="Version {versionData>/version} {\
-				= ${versionData>/isDevVersion} ? '- development in progress!' : ''}" state="{= ${versionData>/isDevVersion} ? 'Warning' : 'None'}" visible="{=!${appView>/bPhoneSize}}" />
+				= ${versionData>/isDevVersion} ? '- development in progress!' : ''}" state="{= ${versionData>/isDevVersion} ? 'Warning' : 'None'}" 
+				visible="{=!${appView>/bPhoneSize}}" />
 
 				<Button  icon="sap-icon://comment" type="Transparent" visible="{=!${appView>/bPhoneSize} &amp;&amp; !${appView>/bSearchMode}}">
 					<layoutData>

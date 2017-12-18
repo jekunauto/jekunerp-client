@@ -392,7 +392,6 @@ sap.ui.define([
 			 * 首页加载代办事宜的方法
 			 */
 			onNotificationPress: function(oEvent){
-				debugger;
 				var oBundle = this.getModel("i18n").getResourceBundle();
 				// close message popover
 				var oMessagePopover = this.getView().byId("errorMessagePopover");
@@ -432,7 +431,6 @@ sap.ui.define([
 			 * @private
 			 */
 			_createNotification: function (sId, oBindingContext) {
-				debugger;
 				var oBindingObject = oBindingContext.getObject();
 				var oNotificationItem = new NotificationListItem({
 					title: oBindingObject.title,
@@ -450,6 +448,7 @@ sap.ui.define([
 					datetime: oBindingObject.date,
 					authorPicture: oBindingObject.icon,
 					press: function () {
+						MessageToast.show("删除");
 					},
 					customData : [
 						new CustomData({

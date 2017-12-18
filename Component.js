@@ -13,7 +13,7 @@ sap.ui.define([
 	"sap/ui/model/json/JSONModel",
 	"apestech/ui/erp/util/ModuleRouter",
 	"apestech/ui/erp/controller/util/ConfigUtil",
-	"apestech/ui/erp/controller/MessageUtils"
+	"apestech/ui/erp/controller/util/MessageUtils"
 ], function (jQuery, UIComponent, Device, models, ErrorHandler, JSONModel, DocumentationRouter, ConfigUtil, MessageUtils) {
 	"use strict";
 
