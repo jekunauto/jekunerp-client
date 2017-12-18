@@ -3,6 +3,7 @@
 		{
 			"notifications": [
 				{
+					"orderId" : 1111,
 					"title": "New Order",
 					"description": "John Max has ordered Laptop",
 					"date": "1 hour ago",
@@ -10,6 +11,7 @@
 					"icon": "sap-icon://clinical-order"
 				},
 				{
+					"orderId" : 1112,
 					"title": "Canceled Order",
 					"description": "Sara Rok has canceled her order",
 					"date": "5 hour ago",
@@ -17,6 +19,7 @@
 					"icon": "sap-icon://sys-cancel-2"
 				},
 				{
+					"orderId" : 1113,
 					"title": "Delivery",
 					"description": "Order 112 has delivered to nancy klaus",
 					"date": "2 day ago",
