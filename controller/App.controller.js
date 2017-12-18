@@ -74,8 +74,7 @@ sap.ui.define([
                 
 				ResizeHandler.register(this.oHeader, this.onHeaderResize.bind(this));
 				this.oRouter.attachRouteMatched(this.onRouteChange.bind(this));
-
-				debugger;
+ 
 				//初始化 消息提示
 			    var alertsData = $.sap.sjax({
 			        url: $.sap.getModulePath("apestech.ui.erp.mockdata", "/alerts.json"),

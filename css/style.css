@@ -1588,9 +1588,9 @@ html[data-sap-ui-os="mac"] pre.prettyprint.prettyprinted {
 
 .loginForm {
     background-color: #F2F2F2 !important;
-    position: absolute;
     width: 250px;
     height: 250px;
+    margin:0px auto
 }
 
 .bg {
