@@ -390,7 +390,6 @@ sap.ui.define([
 			},
 			
 			onComment: function(oEvent){
-				debugger;
 				var oComponent = this.getOwnerComponent();
 
 				var bTreeContent = [{
