@@ -22,6 +22,14 @@ sap.ui.define([
         	var oProductJson = this.initSampleDataModel();
         	// oData = $.extend(oData, oProductJson);
       		this.getView().setModel(oProductJson);
+      		
+      		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.getRoute("demo1").attachPatternMatched(this._onObjectMatched, this);
+		},
+		
+		_onObjectMatched: function(oEvent){
+			var oParam = oEvent.getParameter("arguments");
+			this.getView().setModel(oParam, "Params");
 		},
 		
 		initSampleDataModel : function() {
@@ -69,6 +77,8 @@ sap.ui.define([
 				this._oSplitContainer.setMode("HideMode");
 				this._oSplitContainer.hideMaster();
 			}
+			
+			console.log(this.getView().getModel("Params"));
 		},
 		handleLink1Press: function (oEvent) {
 			 this.getMessagesBox().showDefaultMessage("Page 1 a very long link clicked");

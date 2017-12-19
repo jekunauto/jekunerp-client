@@ -60,7 +60,8 @@
 				= ${versionData>/isDevVersion} ? '- development in progress!' : ''}" state="{= ${versionData>/isDevVersion} ? 'Warning' : 'None'}" 
 				visible="{=!${appView>/bPhoneSize}}" />
 
-				<Button  icon="sap-icon://comment" type="Transparent" visible="{=!${appView>/bPhoneSize} &amp;&amp; !${appView>/bSearchMode}}">
+				<Button  icon="sap-icon://comment" type="Transparent" press="onComment"
+					visible="{=!${appView>/bPhoneSize} &amp;&amp; !${appView>/bSearchMode}}">
 					<layoutData>
 						<OverflowToolbarLayoutData priority="NeverOverflow" />
 					</layoutData>

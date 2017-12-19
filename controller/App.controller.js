@@ -389,6 +389,30 @@ sap.ui.define([
 				}
 			},
 			
+			onComment: function(oEvent){
+				debugger;
+				var oComponent = this.getOwnerComponent();
+
+				var bTreeContent = [{
+				    "text": "会员管理",
+				    "name": "CRM",
+				    "isSelected": false,
+				    "icon": "sap-icon://employee",
+				    "nodes": [{
+				        "text": "会员信息录入",
+				        "name": "vipInfoEntry",
+				        "icon": "sap-icon://add-employee",
+				        "isSelected": false
+				     }]
+				}];
+
+				var treeModel = oComponent.getModel("treeData");
+				treeModel.setSizeLimit(1000000);
+				treeModel.setData(bTreeContent, false);
+				oComponent.setModel(treeModel, "treeData");
+
+			},
+			
 			/**
 			 * 首页加载代办事宜的方法
 			 */
