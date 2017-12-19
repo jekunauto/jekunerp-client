@@ -1,9 +1,9 @@
 {"routes":[ {
-				"pattern": "demo1/{id}",
+				"pattern": "demo1:?OptionalQueryString:",
 				"name": "demo1",
 				"target": ["apiMaster", "demo1"]
 			}, {
-				"pattern": "demo2",
+				"pattern": "demo2/{id}",
 				"name": "demo2",
 				"target": ["apiMaster", "demo2"]
 			}, {
