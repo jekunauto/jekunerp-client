@@ -14,7 +14,7 @@
 		showNavButton="false"
 		class="sapUiDemokit">
 		<content>
-			<tnt:ToolHeader id="headerToolbar">
+			<tnt:ToolHeader id="headerToolbar" visible="{appView>/bHasHeader}">
 				<ToggleButton icon="sap-icon://menu2" type="Transparent" 
 					visible="{= ${appView>/bHasMaster} &amp;&amp; ( ${appView>/bPhoneSize} || !${appView>/bLandscape} ) }" 
 					press="toggleMaster" 
