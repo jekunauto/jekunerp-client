@@ -21,7 +21,7 @@ sap.ui.define([
                AuthGuard.authenticateUser(this.model.userid, this.model.password, {
                     onSuccess: function (result) {
                        sap.ui.core.BusyIndicator.hide();
-                       that.getSessionStorage().put("ABC", "SFJSKFJSKJF");
+                       that.getSessionStorage().put("currentUser", "SFJSKFJSKJF");
                        router.navTo("home");
                    },
                     onFailure: function (err) {
