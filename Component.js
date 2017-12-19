@@ -50,7 +50,7 @@ sap.ui.define([
 			//var store = jQuery.sap.storage(oStorage, sIdPrefix);
 			//this._Storage =  jQuery.sap.storage(oStorage, sIdPrefix);   
 			
-            this._SessionStorage = jQuery.sap.storage(jQuery.sap.storage.Type.session);
+            this._SessionStorage = jQuery.sap.storage(jQuery.sap.storage.Type.session,'jekun');
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
 
@@ -123,7 +123,7 @@ sap.ui.define([
 		},
 		getSessionStorage: function(){
 			if (!this._SessionStorage) {
-				this._SessionStorage = jQuery.sap.storage(jQuery.sap.storage.Type.session); 
+				this._SessionStorage = jQuery.sap.storage(jQuery.sap.storage.Type.session,'jekun'); 
 			}
 			return this._SessionStorage;
 		},

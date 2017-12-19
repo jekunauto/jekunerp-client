@@ -21,7 +21,9 @@ sap.ui.define([
 				bIsSplitView = oRouteConfig && oRouteConfig.target.length === 2;
 			return !!bIsSplitView;
 		},
-
+        hasHeaderView: function(sRouteName) {
+			 return sRouteName==="login"?false:true;
+		},
 		getMasterView: function(sRouteName) {
 			var sMasterTargetName = this._getMasterTargetName(sRouteName),
 				sTargetConfig = this._getTargetConfig(sMasterTargetName),

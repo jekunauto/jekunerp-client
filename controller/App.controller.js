@@ -26,22 +26,13 @@ sap.ui.define([
 		return BaseController.extend("apestech.ui.erp.controller.App", {
 			onInit : function () {
 				BaseController.prototype.onInit.call(this);
-				
-				// this.post("user.save", {"body":'{"hello":"eeewe"}'}).done(function (resp) {
-				// 	// 当result为true的回调
-				// 	console.log(resp);
-					
-				// }).fail(function (err) {
-				//   // 当result为false的回调
-				// 	console.error(err);
-				// });
-
 				var oViewModel = new JSONModel({
 					busy : false,
 					delay : 0,
 					bPhoneSize: false,
 					bLandscape: Device.orientation.landscape,
 					bHasMaster: false,
+					bHasHeader: false,
 					bSearchMode: false
 				});
 			
@@ -113,13 +104,14 @@ sap.ui.define([
 					bPhone = Device.system.phone,
 					oViewModel = this.getModel("appView"),
 					bHasMaster = this.getOwnerComponent().getConfigUtil().hasMasterView(sRouteName),
+					bHasHeader = this.getOwnerComponent().getConfigUtil().hasHeaderView(sRouteName),
 					oMasterView,
 					sMasterViewId;
 
 				this.oTabNavigation.setSelectedKey(sKey);
 
 				oViewModel.setProperty("/bHasMaster", bHasMaster);
-
+                oViewModel.setProperty("/bHasHeader", bHasHeader);
 				this._toggleTabHeaderClass();
 
 				if (bPhone && bHasMaster) { // on phone we need the id of the master view (for mavigation)
