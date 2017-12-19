@@ -17,11 +17,9 @@ sap.ui.define([
             loginPressHandle: function () {
                var router = this.getOwnerComponent().getRouter();
                sap.ui.core.BusyIndicator.show();
-               var that=this.getOwnerComponent();
-               AuthGuard.authenticateUser(this.model.userid, this.model.password, {
-                    onSuccess: function (result) {
+                AuthGuard.authenticateUser(this.model.userid, this.model.password, {
+                    onSuccess: function () {
                        sap.ui.core.BusyIndicator.hide();
-                       that.getSessionStorage().put("currentUser", "SFJSKFJSKJF");
                        router.navTo("home");
                    },
                     onFailure: function (err) {
@@ -31,7 +29,6 @@ sap.ui.define([
                         //         that.getModel().setProperty("/flow", "PasswordReset");
                         //         break;
                         //     default:
-                        console.log(err.body);
                         MessageToast.show(err.body);
                     }
                 

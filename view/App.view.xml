@@ -79,17 +79,25 @@
 					</layoutData>
 				</Button>
 				
-				<MenuButton icon="sap-icon://hint" type="Transparent" text="管理員">
-					<layoutData>
-						<OverflowToolbarLayoutData priority="NeverOverflow" />
+				<!--<MenuButton icon="sap-icon://hint" type="Transparent" text="管理員">-->
+				<!--	<layoutData>-->
+				<!--		<OverflowToolbarLayoutData priority="NeverOverflow" />-->
+				<!--	</layoutData>-->
+				<!--	<Menu class="sapContrast sapContrastPlus" itemSelected="handleMenuItemClick">-->
+				<!--		<items>-->
+				<!--			<MenuItem icon="sap-icon://hint" text="Logout" type="Transparent"/>-->
+				<!--			<MenuItem icon="sap-icon://hint" text="Message" type="Transparent"/>-->
+				<!--		</items>-->
+				<!--	</Menu>-->
+				<!--</MenuButton>-->
+				 <Button id="signOut" 
+				    	press="onSignOutPress"
+				    	icon="sap-icon://log"
+				    	type="Transparent">
+				 	<layoutData>
+						<OverflowToolbarLayoutData closeOverflowOnInteraction="false"/>
 					</layoutData>
-					<Menu class="sapContrast sapContrastPlus" itemSelected="handleMenuItemClick">
-						<items>
-							<MenuItem icon="sap-icon://hint" text="Logout" type="Transparent"/>
-							<MenuItem icon="sap-icon://hint" text="Message" type="Transparent"/>
-						</items>
-					</Menu>
-				</MenuButton>
+				 </Button>
 				<core:ExtensionPoint name="customLinks" />
 			</tnt:ToolHeader>
 

@@ -67,22 +67,14 @@ sap.ui.define([
 				// Preload API Info on desktop for faster startup
 				this.fetchMenuInfoAndBindModels.bind(this);
 			}
-   //         this.getRouter().navTo("login",{
-			    
-			// });
-			
-		    // var targets=this.getTargets();
-      //      targets.display("login");
-      //      return;
-             // var targets = this.getTargets();
-              var routes  = this.getRouter();
-              AuthGuard.hasSession(function (err) {
-                  if (err) {
-                        routes.navTo("login");
-                        return;
-                  }
-                  routes.navTo("home");
-             });
+            // var routes  = this.getRouter();
+            // AuthGuard.hasSession(function (err) {
+            //       if (err) {
+            //             routes.navTo("login");
+            //             return;
+            //       }
+            //       routes.navTo("home");
+            //  });
                   
 			// Prevents inappropriate focus change which causes ObjectPage to scroll,
 			// thus text can be selected and copied
@@ -147,7 +139,7 @@ sap.ui.define([
 				this._oConfigUtil = new ConfigUtil(this);
 			}
 			return this._oConfigUtil;
-		},
+		} ,
 		
 		 hasLogin: function () {
 			return new Promise(function (resolve) {

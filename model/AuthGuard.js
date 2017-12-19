@@ -3,32 +3,32 @@ sap.ui.define([
        "apestech/ui/erp/model/Api"
     ], function (JSONModel,Api) {
         "use strict";
+        
          var AuthGuard = {
-          
             hasSession: function (cbk) {
-                // var currentUser = AuthGuard.getCurrentUser();
-                // if (currentUser != null) {
-                //     var session="";
-                //     /*session判断*/
-                //     if (session.isValid()) {
-                //             //jwt = session.idToken.getJwtToken();
-                //             cbk(false, session);
-                //         } else {
-                //             cbk(true);
-                //     }
-                // } else {
-                //     cbk(true);
-                // }
-                cbk(true);
+                var currentUser = AuthGuard.getCurrentUser()!=undefined?AuthGuard.getCurrentUser():null;
+                if (currentUser != null) {
+                     cbk(false);
+                } else {
+                    cbk(true);
+                }
+             },
+
+            getCurrentUser: function () {
+                return Api.getSessionSotrage().get("currentUser");
             },
 
-            getCurrentUser: function (SessionStorage) {
-                return SessionStorage.get("currentUser");
-            },
-
-            signOut: function (SessionStorage) {
-                this.token = null;
-                SessionStorage.remove("currentUser");
+            signOut: function (SessionStorage,cdk) {
+                var posts = { "id":1 };
+                Api.post("aut.user.logout", {"body":JSON.stringify(posts)}).done(function () {
+					// 当result为true的回调
+                    SessionStorage.remove("currentUser");
+                    cdk.onSuccess();
+				}).fail(function (err) {
+				  // 当result为false的回调
+				    
+				    cdk.onFailure(err);
+				});
             },
 
             getUsername: function (SessionStorage) {
@@ -39,18 +39,16 @@ sap.ui.define([
                return "no-user";
             },
             authenticateUser: function (user, pass, cdk) {
-                var userJSON={};
-            	userJSON["userid"]=user;
-            	userJSON["password"]=pass;
-              	Api.post("aut.user.login", {"body":JSON.stringify(userJSON)}).done(function (resp) {
+                var userJSON={"userid":user,"password":pass};
+             	Api.post("aut.user.login", {"body":JSON.stringify(userJSON)}).done(function (resp) {
 					// 当result为true的回调
-                    //storage.put("currentUser",resp);
-                    cdk.onSuccess(true);
+                    Api.getSessionSotrage().put("currentUser",resp);
+                    cdk.onSuccess();
 				}).fail(function (err) {
 				  // 当result为false的回调
 				   cdk.onFailure(err);
 				});
-            }
+            } 
         };
 
         return AuthGuard;

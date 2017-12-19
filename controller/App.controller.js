@@ -18,11 +18,13 @@ sap.ui.define([
 		'sap/m/Button',
 		'sap/m/NotificationListItem',
 		'sap/ui/core/CustomData',
+		"apestech/ui/erp/model/AuthGuard",
 		'sap/ui/core/UIComponent'
 	], function (BaseController, JSONModel, ResizeHandler, Device, Component, Fragment, library, IconPool, SplitAppMode,
-		MessageToast, ResponsivePopover, Button, NotificationListItem, CustomData, UIComponent) {
+		MessageToast, ResponsivePopover, Button, NotificationListItem, CustomData,AuthGuard, UIComponent) {
 		"use strict";
-
+       
+			    
 		return BaseController.extend("apestech.ui.erp.controller.App", {
 			onInit : function () {
 				BaseController.prototype.onInit.call(this);
@@ -96,7 +98,7 @@ sap.ui.define([
 				if (!this.oRouter.getRoute(oEvent.getParameter("name"))._oConfig.target) {
 					return;
 				}
-				
+			
 				var sRouteName = oEvent.getParameter("name"),
 					sTabId = this.oRouter.getRoute(sRouteName)._oConfig.target[0] + "Tab",
 					oTabToSelect = this._oView.byId(sTabId),
@@ -107,6 +109,17 @@ sap.ui.define([
 					bHasHeader = this.getOwnerComponent().getConfigUtil().hasHeaderView(sRouteName),
 					oMasterView,
 					sMasterViewId;
+		         
+			   	 if (bHasHeader){
+			   	       var Router=this.oRouter;
+			   	 	   AuthGuard.hasSession(function (err) {
+		                  if (err) {
+		                        Router.navTo("login");
+		                        return;
+		                  }
+		             });	
+			   	 }
+				
 
 				this.oTabNavigation.setSelectedKey(sKey);
 
@@ -162,14 +175,16 @@ sap.ui.define([
 				}
 			},
 
-			handleMenuItemClick: function (oEvent) {
-				var sTargetText = oEvent.getParameter("item").getText();
+			// handleMenuItemClick: function (oEvent) {
+			// 	var sTargetText = oEvent.getParameter("item").getText();
 
-				if (sTargetText === "About") {
-					this.aboutDialogOpen();
-					// sap.m.URLHelper.redirect(sTarget, true);    实现界面跳转
-				}
-			},
+			// 	if (sTargetText === "About") {
+			// 		this.aboutDialogOpen();
+			// 		// sap.m.URLHelper.redirect(sTarget, true);    实现界面跳转
+			// 	}else if (sTargetText === "Logout"){
+					
+			// 	}
+			// },
 
 			aboutDialogOpen: function () {
 				if (!this._oAboutDialog) {
@@ -395,7 +410,55 @@ sap.ui.define([
 				        "icon": "sap-icon://add-employee",
 				        "isSelected": false
 				     }]
+				}, {
+				    "text": "服务管理",
+				    "name": "SER",
+				    "isSelected": false,
+				    "icon": "sap-icon://attachment-audio",
+				    "nodes": [{
+				        "text": "服务单",
+				        "name": "serviceOrders",
+				        "icon": "sap-icon://building",
+				        "isSelected": false
+				     }]
+				}, {
+				    "text": "模版界面",
+				    "name": "DEMO",
+				    "isSelected": false,
+				    "icon": "sap-icon://attachment-html",
+				    "nodes": [{
+				        "text": "模版界面1",
+				        "name": "demo1",
+				        "icon": "sap-icon://attachment-html",
+				        "isSelected": false
+				     }, {
+				        "text": "模版界面2",
+				        "name": "demo2",
+				        "icon": "sap-icon://attachment-html",
+				        "isSelected": false
+				     }, {
+				        "text": "模版界面3",
+				        "name": "demo3",
+				        "icon": "sap-icon://attachment-html",
+				        "isSelected": false
+				     }, {
+				        "text": "模版界面4",
+				        "name": "demo4",
+				        "icon": "sap-icon://attachment-html",
+				        "isSelected": false
+				     }, {
+				        "text": "模版界面5",
+				        "name": "demo5",
+				        "icon": "sap-icon://attachment-html",
+				        "isSelected": false
+				     }, {
+				        "text": "模版界面6",
+				        "name": "demo6",
+				        "icon": "sap-icon://attachment-html",
+				        "isSelected": false
+				     }]
 				}];
+
 
 				var treeModel = oComponent.getModel("treeData");
 				treeModel.setSizeLimit(1000000);
@@ -438,7 +501,28 @@ sap.ui.define([
 				jQuery.sap.syncStyleClass(this.getView().getController().getOwnerComponent().getContentDensityClass(), this.getView(), oNotificationPopover);
 				oNotificationPopover.openBy(oEvent.getSource());
 			},
-			
+			onSignOutPress: function(oEvent){
+			    var oBundle = this.getModel("i18n").getResourceBundle();
+			    var that = this.getOwnerComponent();
+			    var router = that.getRouter();
+			    this.getMessagesBox().showConfirmMessage({
+				text :oBundle.getText("signOut"),
+				confirm: function(){
+				   AuthGuard.signOut(that.getSessionStorage(),{
+                    onSuccess: function () {
+                       router.navTo("login");
+                    },
+                    onFailure: function (err) {
+                        MessageToast.show(err.body);
+                    }
+                
+               });
+				},
+				cancel: function(){
+				   //	
+				}
+			});
+			},
 			/**
 			 * Factory function for the notification items
 			 * @param {string} sId The id for the item

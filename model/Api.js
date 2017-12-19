@@ -1,74 +1,10 @@
 sap.ui.define([
-    "sap/m/MessageToast"
-   // "apestech/ui/erp/model/AuthGuard", AuthGuard
-], function (MessageToast) {
+    	"apestech/ui/erp/model/Config"
+	], function (Config) {
     "use strict";
-     var Config = {
-        	 "appServerUrl": "http://10.2.5.37:8060",
-			 "appKey":"00001",
-		     "appSecret":"abcdeabcdeabcdeabcdeabcde"
-        };
+   
      return {
-        // post: function (uri, params, cb) {
-        //     params = params || {};
-        //     params._jwt = AuthGuard.getJwt();
-        //     sap.ui.core.BusyIndicator.show(1000);
-
-        //     jQuery.ajax({
-        //         type: "POST",
-        //         contentType: "application/json",
-        //         data: JSON.stringify(params),
-        //         url: backend + uri,
-        //         cache: false,
-        //         dataType: "json",
-        //         async: true,
-        //         success: function (data, textStatus, jqXHR) {
-        //             sap.ui.core.BusyIndicator.hide();
-        //             cb(data);
-        //         },
-        //         error: function (data, textStatus, jqXHR) {
-        //             sap.ui.core.BusyIndicator.hide();
-        //             switch (data.status) {
-        //                 case 403: // Forbidden
-        //                     MessageToast.show('Auth error');
-        //                     break;
-        //                 default:
-        //                     console.log('Error', data);
-        //             }
-        //         }
-        //     });
-        // },
-
-        // get: function (uri, params, cb) {
-        //     params = params || {};
-        //     params._jwt = AuthGuard.getJwt();
-        //     sap.ui.core.BusyIndicator.show(1000);
-
-        //     jQuery.ajax({
-        //         type: "GET",
-        //         contentType: "application/json",
-        //         data: params,
-        //         url: backend + uri,
-        //         cache: false,
-        //         dataType: "json",
-        //         async: true,
-        //         success: function (data, textStatus, jqXHR) {
-        //             sap.ui.core.BusyIndicator.hide();
-        //             cb(data);
-        //         },
-        //         error: function (data, textStatus, jqXHR) {
-        //             sap.ui.core.BusyIndicator.hide();
-        //             switch (data.status) {
-        //                 case 403: // Forbidden
-        //                     MessageToast.show('Auth error');
-        //                     break;
-        //                 default:
-        //                     console.log('Error', data);
-        //             }
-        //         }
-        //     });
-        // }
-        /**
+            /**
 			 * 功能：url转换.
 			 * @public
 			 * @param {string} url 输入url
@@ -125,6 +61,7 @@ sap.ui.define([
 			},
 		
 			request: function (url, data, async, type) {
+			 
 			    data = data || {};
 				// 定义申请获得的appKey和appSecret    
 				var appKey = Config.appKey;
@@ -132,8 +69,13 @@ sap.ui.define([
 				data.appKey = appKey;
 				//data.messageFormat = "json";
 				data.version = "1.0";
-				data.sign = this.sign(data, secret);
-	            //data.session = AuthGuard.getCurrentUser();
+				var strMethod=data.method;
+			 	if (strMethod.indexOf("login")==-1){
+				   var sessionId= this.getSessionSotrage().get("currentUser").sessionId;
+	               data.sessionId =  sessionId!=undefined?sessionId:"";	
+				}
+			    data.sign = this.sign(data, secret);
+			    
 				return this.ajax(url, data, async, type).then(function (resp) {
 					// 成功回调
 					if (resp.header.code === "success") {
@@ -170,6 +112,9 @@ sap.ui.define([
 				data = data || {};
 				data.method = method;
 				return this.httpGet(url, data, async || true);
-			} 
+			},
+			getSessionSotrage:function(){
+				 return jQuery.sap.storage(jQuery.sap.storage.Type.session,'jekun');
+			}
     };
 });
