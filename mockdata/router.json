@@ -1,5 +1,5 @@
 {"routes":[ {
-				"pattern": "demo1/:id",
+				"pattern": "demo1/{id}",
 				"name": "demo1",
 				"target": ["apiMaster", "demo1"]
 			}, {
