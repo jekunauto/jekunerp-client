@@ -72,7 +72,7 @@ sap.ui.define([
 			 */
 			onGetStarted: function () {
 				var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-				oRouter.navTo("demo1", {id: 1111 }, true);
+				oRouter.navTo("demo1", 	{"OptionalQueryString":{"category":"notebook","price":"desc"}}, true);
 			},
 
 			/**
