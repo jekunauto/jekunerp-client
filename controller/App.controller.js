@@ -17,9 +17,10 @@ sap.ui.define([
 		'sap/m/ResponsivePopover',
 		'sap/m/Button',
 		'sap/m/NotificationListItem',
-		'sap/ui/core/CustomData'
+		'sap/ui/core/CustomData',
+		'sap/ui/core/UIComponent'
 	], function (BaseController, JSONModel, ResizeHandler, Device, Component, Fragment, library, IconPool, SplitAppMode,
-		MessageToast, ResponsivePopover, Button, NotificationListItem, CustomData) {
+		MessageToast, ResponsivePopover, Button, NotificationListItem, CustomData, UIComponent) {
 		"use strict";
 
 		return BaseController.extend("apestech.ui.erp.controller.App", {
@@ -105,7 +106,6 @@ sap.ui.define([
 					return;
 				}
 				
-
 				var sRouteName = oEvent.getParameter("name"),
 					sTabId = this.oRouter.getRoute(sRouteName)._oConfig.target[0] + "Tab",
 					oTabToSelect = this._oView.byId(sTabId),
@@ -448,8 +448,14 @@ sap.ui.define([
 					},
 					datetime: oBindingObject.date,
 					authorPicture: oBindingObject.icon,
-					press: function () {
-						MessageToast.show("删除");
+					press: function (oEvent) {
+						var sBindingPath = oEvent.getSource().getCustomData()[0].getValue();
+						var sIndex = sBindingPath.split("/").pop();
+						var aItems = oEvent.getSource().getModel("alerts").getProperty("/alerts/notifications");
+						
+						var oSelected = aItems[sIndex];
+						var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+						oRouter.navTo(oSelected.sRouter, {"id" : aItems});
 					},
 					customData : [
 						new CustomData({
