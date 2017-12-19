@@ -71,7 +71,8 @@ sap.ui.define([
 			 * Navigates to the tutorial overview
 			 */
 			onGetStarted: function () {
-				mobileLibrary.URLHelper.redirect("#/topic/8b49fc198bf04b2d9800fc37fecbb218");
+				var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+				oRouter.navTo("demo1", {id: 1111 }, true);
 			},
 
 			/**

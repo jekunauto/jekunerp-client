@@ -4,6 +4,7 @@
 			"notifications": [
 				{
 					"orderId" : 1111,
+					"router":"demo1",
 					"title": "New Order",
 					"description": "John Max has ordered Laptop",
 					"date": "1 hour ago",
@@ -12,6 +13,7 @@
 				},
 				{
 					"orderId" : 1112,
+					"router":"demo2",
 					"title": "Canceled Order",
 					"description": "Sara Rok has canceled her order",
 					"date": "5 hour ago",
@@ -20,6 +22,7 @@
 				},
 				{
 					"orderId" : 1113,
+					"router":"demo3",
 					"title": "Delivery",
 					"description": "Order 112 has delivered to nancy klaus",
 					"date": "2 day ago",

@@ -35,11 +35,11 @@
 							text="Discover New Enterprise YYERP"
 							width="100%"
 							textAlign="Center"/>
-						<!--<Button-->
-						<!--	text="YYERP"-->
-						<!--	type="Emphasized"-->
-						<!--	press="onGetStarted"-->
-						<!--	class="actionButton"/>-->
+						<Button
+							text="YYERP"
+							type="Emphasized"
+							press="onGetStarted"
+							class="actionButton"/>
 					</l:VerticalLayout>
 				</l:BlockLayoutCell>
 			</l:BlockLayoutRow>
