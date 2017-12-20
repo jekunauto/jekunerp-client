@@ -20,7 +20,7 @@ sap.ui.define([
 			onInit : function () {
 				var oComponent = this.getOwnerComponent();
 
-				var bTreeContent = [{
+				/*var bTreeContent = [{
 				    "text": "服务管理",
 				    "name": "SER",
 				    "isSelected": false,
@@ -36,10 +36,10 @@ sap.ui.define([
 				var treeModel = oComponent.getModel("treeData");
 				treeModel.setSizeLimit(1000000);
 				treeModel.setData(bTreeContent, false);
-				oComponent.setModel(treeModel, "treeData");
+				oComponent.setModel(treeModel, "treeData");*/
 
 				oComponent.hasLogin()
-			//		.then(oComponent.fetchMenuInfoAndBindModels.bind(oComponent))
+					.then(oComponent.fetchMenuInfoAndBindModels.bind(oComponent))
 					.then(function () {
 						this._expandTreeToNode(this._topicId, this.getOwnerComponent().getModel("treeData"));
 					}.bind(this));
