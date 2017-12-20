@@ -43,14 +43,14 @@ sap.ui.define([
 		
 		handleTableSelectDialogPress: function(oEvent){
 			if (!this._oDialog) {
-				this._oDialog = sap.ui.xmlfragment("apestech.ui.erp.view.dialog.SelectDialog", this);
+				this._oDialog = sap.ui.xmlfragment("apestech.ui.erp.view.dialog.ExtendDialog", this);
 			}
 
 			// Multi-select
-			this._oDialog.setMultiSelect(true);
+			// this._oDialog.setMultiSelect(true);
 
 			// Remember selections
-			this._oDialog.setRememberSelections(true);
+			// this._oDialog.setRememberSelections(true);
 
 			this.getView().addDependent(this._oDialog);
 
@@ -58,6 +58,15 @@ sap.ui.define([
 			jQuery.sap.syncStyleClass("sapUiSizeCompact", this.getView(), this._oDialog);
 			this._oDialog.open();
 		},
+		
+		onPress:function(){
+			var oData = this.getView().getModel().getData();
+		   	MessageToast.show(JSON.stringify(oData));
+		},
+		
+	    onCloseDialog:function(){
+	        this._oDialog.close();
+	    },
 		
 		handleSearch: function(oEvent) {
 			var sValue = oEvent.getParameter("value");
