@@ -26,25 +26,25 @@
 	   "targets":[
 				{  
 					"target":"demo1",
-					"viewName": "demo/demo1",
+					"viewName": "demo.demo1",
 					"viewId": "demo1",
 					"viewLevel": 2
 			    },
 				{   
 					"target":"demo2",
-					"viewName": "demo/demo2",
+					"viewName": "demo.demo2",
 					"viewId": "demo2",
 					"viewLevel": 2
 				},
 				{ 
 					"target":"demo3",
-					"viewName": "demo/demo3",
+					"viewName": "demo.demo3",
 					"viewId": "demo3",
 					"viewLevel": 2
 				},
 				{ 
 					"target":"demo4",
-					"viewName": "demo/demo4",
+					"viewName": "demo.demo4",
 					"viewId": "demo4",
 					"viewLevel": 2
 				},
