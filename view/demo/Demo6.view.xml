@@ -179,6 +179,11 @@
 					<Button type="Reject" text="Reject" icon="sap-icon://delete"/>
 					<Button text="Delete" icon="sap-icon://delete"/>
 					<Button text="Edit" icon="sap-icon://edit"/>
+				    <Button
+							text="Dialog"
+							width="230px"
+							press="onDialogPress"
+							class="sapUiSmallMarginBottom" />
 				</contentLeft>
 
 			</Bar>

@@ -1,0 +1,49 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:m="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog title="Dialog with Search" class="sapUiContentPadding">
+		<!--<subHeader>-->
+		<!--	<Toolbar>-->
+		<!--		<SearchField width="100%" />-->
+		<!--	</Toolbar>-->
+		<!--</subHeader>-->
+		<content>
+		    <Button text="Default"
+						press="onPress"
+						ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+			 
+		    </Button>
+			<f:Form id="FormToolbar" editable="true" ariaLabelledBy="Title1">
+				<f:layout>
+					<f:ResponsiveGridLayout adjustLabelSpan="false" labelSpanXL="2" labelSpanL="2" labelSpanM="2" labelSpanS="2" emptySpanXL="0" emptySpanL="0"
+						emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"/>
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer name="testOne" title="Online">
+						<f:formElements>
+							<f:FormElement label="Date Time">
+								<m:DateTimePicker valueFormat="yyyy-MM-dd-HH-mm-ss" displayFormat="short" change="handleChange" value="{/checkedTime1}"/>
+								<m:DateTimePicker valueFormat="yyyy-MM-dd HH-mm-ss" displayFormat="yyyy-MM-dd HH-mm-ss" change="handleChange" value="{/checkedTime2}"/>
+							</f:FormElement>
+							<f:FormElement label="Country">
+								<f:fields>
+									<m:Select width="100%" selectedKey="{/Country}">
+										<m:items>
+											<core:Item text="" key=""/>
+											<core:Item text="Germany" key="Germany"/>
+											<core:Item text="USA" key="USA"/>
+											<core:Item text="England" key="England"/>
+										</m:items>
+									</m:Select>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+			
+			<Table></Table>
+		</content>
+		<beginButton>
+			<Button text="Close" press="onCloseDialog"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

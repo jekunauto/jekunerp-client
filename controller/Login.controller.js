@@ -29,7 +29,7 @@ sap.ui.define([
                         //         that.getModel().setProperty("/flow", "PasswordReset");
                         //         break;
                         //     default:
-                        MessageToast.show(err.body);
+                        MessageToast.show(JSON.stringify(err.header.message));
                     }
                 
                });

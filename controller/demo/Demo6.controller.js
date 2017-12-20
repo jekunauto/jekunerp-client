@@ -3,10 +3,11 @@ sap.ui.define([
 	"apestech/ui/erp/controller/BaseController",
 	"sap/ui/Device",
 	"sap/m/MessageToast",
+	"sap/m/Dialog",
 	"sap/m/SplitContainer",
 	"sap/ui/core/format/DateFormat",
 	'sap/m/GroupHeaderListItem'
-], function(JSONModel, BaseController, Device, MessageToast, SplitContainer, DateFormat, GroupHeaderListItem) {
+], function(JSONModel, BaseController, Device, MessageToast,Dialog, SplitContainer, DateFormat, GroupHeaderListItem) {
 	"use strict";
 
 	return BaseController.extend("apestech.ui.erp.controller.demo.demo6", {
@@ -71,6 +72,23 @@ sap.ui.define([
 				upperCase: false
 			} );
 		},
+		onDialogPress: function(){
+		    if (!this._oDialog) {
+			 	this._oDialog = sap.ui.xmlfragment("apestech.ui.erp.view..dialog.TestDialog", this);
+			}
+ 
+			this.getView().addDependent(this._oDialog);
+
+			// toggle compact style
+			jQuery.sap.syncStyleClass("sapUiSizeCompact", this.getView(), this._oDialog);
+			this._oDialog.open();
+		},
+		onPress:function(){
+		   console.log("abc"); 
+		},
+	    onCloseDialog:function(){
+	        this._oDialog.close();
+	    },
 		
 		onExit: function() {
 			this.oModel.destroy();
