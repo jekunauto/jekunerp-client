@@ -72,11 +72,18 @@ sap.ui.define([
 				upperCase: false
 			} );
 		},
-		onDialogPress: function(){
+		onDialogPress: function(oEvent){
 		    if (!this._oDialog) {
-			 	this._oDialog = sap.ui.xmlfragment("apestech.ui.erp.view..dialog.TestDialog", this);
+			 	this._oDialog = sap.ui.xmlfragment("apestech.ui.erp.view..dialog.MyDialog", this);
 			}
- 
+			// Multi-select if required
+			var bMultiSelect = !!oEvent.getSource().data("multi");
+			this._oDialog.setMultiSelect(bMultiSelect);
+
+			// Remember selections if required
+			var bRemember = !!oEvent.getSource().data("remember");
+			this._oDialog.setRememberSelections(bRemember);
+
 			this.getView().addDependent(this._oDialog);
 
 			// toggle compact style

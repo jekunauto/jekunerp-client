@@ -7,6 +7,7 @@
 		  xmlns:f="sap.ui.layout.form"
 		  controllerName="apestech.ui.erp.controller.demo.demo6">
 	<Page showHeader="true" title="查询模版界面" >
+		
 		<subHeader>
 			<Bar>
 				<contentLeft>
@@ -21,6 +22,7 @@
 		</subHeader>
 		
 		<content>
+			<custom:Rating class="sapUiSmallMarginBeginEnd" change="onRatingChange"></custom:Rating>
 			<f:Form id="FormToolbar"
 				editable="true"
 				ariaLabelledBy="Title1">
@@ -181,6 +183,11 @@
 					<Button text="Edit" icon="sap-icon://edit"/>
 				    <Button
 							text="Dialog"
+							width="230px"
+							press="onDialogPress"
+							class="sapUiSmallMarginBottom" />
+				    <Button
+							text="MyDialog"
 							width="230px"
 							press="onDialogPress"
 							class="sapUiSmallMarginBottom" />
