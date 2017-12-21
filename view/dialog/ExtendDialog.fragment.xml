@@ -43,7 +43,7 @@
 			</f:Form>
 			<Button text="{i18n>query}" press="onPress" ariaDescribedBy="defaultButtonDescription genericButtonDescription"/>
 			
-			<table:Table id="table1"
+			<table:Table id="dialogTable"
 				rows="{/ProductCollection}"
 				selectionMode="MultiToggle"
 				selectionBehavior="RowSelector"
@@ -169,7 +169,10 @@
 		
 		<beginButton>
 			<Button text="confirm" press="onConfirmDialog"/>
-			<Button text="Close" press="onCloseDialog"/>
 		</beginButton>
+		
+		<endButton>
+			<Button text="Close" press="onCloseDialog"/>
+		</endButton>
 	</Dialog>
 </core:FragmentDefinition>

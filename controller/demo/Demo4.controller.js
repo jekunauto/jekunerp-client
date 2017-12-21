@@ -59,9 +59,41 @@ sap.ui.define([
 			this._oDialog.open();
 		},
 		
-		onPress:function(){
-			var oData = this.getView().getModel().getData();
-		   	MessageToast.show(JSON.stringify(oData));
+		onPress:function(oEvent){
+			var oThisView = this.getView(); 
+			var oPageData = oThisView.getModel().getData();
+		   	MessageToast.show(JSON.stringify(oPageData));
+		   	
+		   	var oModel = new JSONModel();
+		   	jQuery.ajax(jQuery.sap.getModulePath("apestech.ui.erp.mockdata", "/products.json"), {
+				dataType: "json",
+				success: function (oData) {
+					oModel.setData(oData);
+					
+					oThisView.setModel(oModel);
+				},
+				error: function () {
+					jQuery.sap.log.error("failed to load json");
+				}
+			});
+			
+		},
+		
+		onConfirmDialog: function(oEvent){
+
+			//获取弹出层的数据
+		    var oControls=this._oDialog.getContent();
+		    var oTable= oControls[2];
+			var aIndices = oTable.getSelectedIndices();
+			var sMsg;
+			if (aIndices.length < 1) {
+				sMsg = "no item selected";
+			} else {
+				sMsg = aIndices;
+			}
+			MessageToast.show(sMsg);
+			
+			this._oDialog.close();	
 		},
 		
 	    onCloseDialog:function(){
