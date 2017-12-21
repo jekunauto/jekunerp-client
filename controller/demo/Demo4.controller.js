@@ -45,13 +45,7 @@ sap.ui.define([
 			if (!this._oDialog) {
 				this._oDialog = sap.ui.xmlfragment("apestech.ui.erp.view.dialog.ExtendDialog", this);
 			}
-
-			// Multi-select
-			// this._oDialog.setMultiSelect(true);
-
-			// Remember selections
-			// this._oDialog.setRememberSelections(true);
-
+			
 			this.getView().addDependent(this._oDialog);
 
 			// toggle compact style
