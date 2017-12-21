@@ -165,9 +165,10 @@
 				</table:footer>
 				
 			</table:Table>
-			
 		</content>
+		
 		<beginButton>
+			<Button text="confirm" press="onConfirmDialog"/>
 			<Button text="Close" press="onCloseDialog"/>
 		</beginButton>
 	</Dialog>
