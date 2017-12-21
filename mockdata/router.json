@@ -22,6 +22,10 @@
 				"pattern": "demo6",
 				"name": "demo6",
 				"target": ["apiMaster", "demo6"]
+			}, {
+				"pattern": "test",
+				"name": "test",
+				"target": ["apiMaster", "test"]
 			}],
 	   "targets":[
 				{  
@@ -50,14 +54,20 @@
 				},
 				{   
 					"target":"demo5",
-					"viewName": "demo/demo5",
+					"viewName": "demo.demo5",
 					"viewId": "demo5",
 					"viewLevel": 2
 				},
 				{  
 					"target":"demo6",
-					"viewName": "demo/demo6",
+					"viewName": "demo.demo6",
 					"viewId": "demo6",
+					"viewLevel": 2
+				},
+				{  
+					"target":"test",
+					"viewName": "demo/test",
+					"viewId": "test",
 					"viewLevel": 2
 				}
         ]
