@@ -6,17 +6,19 @@
 	
 	<custom:ApesSelectDialog
 		noDataText="No Products Found"
-		title="Select Product"
+		title="Select Test"
 		search="handleSearch"
-		confirm="handleClose"
-		cancel="handleClose"
+	    confirm="handleClose"
+	    cancel="handleClose"
+	    multiSelect="true"
 		items="{
 			path : '/ProductCollection',
 			sorter : {
 				path : 'Name',
 				descending : false
 			}
-		}">
+		}"
+		>
 		<ColumnListItem>
 			<cells>
 				<ObjectIdentifier
@@ -25,8 +27,8 @@
 				<Text text="{SupplierName}" />
 				 
 			</cells>
-		</ColumnListItem>
-		<columns>
+		</ColumnListItem> 
+		<custom:columns>
 			<Column width="12em">
 				<header>
 					<Text text="Product" />
@@ -39,6 +41,6 @@
 					<Text text="Supplier" />
 				</header>
 			</Column>
-		</columns>
+		</custom:columns>
 	</custom:ApesSelectDialog>
 </core:FragmentDefinition>

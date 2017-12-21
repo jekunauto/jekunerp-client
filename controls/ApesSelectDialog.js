@@ -3,12 +3,14 @@
  */
 
 // Provides control sap.m.ApesSelectDialog.
+
 sap.ui.define([
     "sap/m/Button",
 	"sap/m/Dialog",
 	"sap/m/SearchField",
+    "sap/m/Input",
 	"sap/m/Table",
-    "sap/m/library",
+    'sap/m/library',
     'sap/ui/core/Control',
     'sap/ui/Device', 
     'sap/ui/base/ManagedObject', 
@@ -17,11 +19,10 @@ sap.ui.define([
     'sap/m/BusyIndicator', 
     'sap/m/Bar',
     'sap/ui/core/theming/Parameters'],
-	function(Button, Dialog, SearchField, Table, library, Control, Device, ManagedObject, Toolbar, Label, BusyIndicator, Bar, Parameters) {
+	function(Button, Dialog,Input, SearchField, Table, library, Control, Device, ManagedObject, 
+	Toolbar, Label, BusyIndicator, Bar, Parameters) {
 	"use strict";
-
-
-
+  
 	// shortcut for sap.m.ListMode
 	var ListMode = library.ListMode;
 
@@ -29,7 +30,6 @@ sap.ui.define([
 
 		library : "apestech.ui.erp.controls",
 		properties : {
-
 			/**
 			 * Specifies the title text in the dialog header.
 			 */
@@ -74,6 +74,7 @@ sap.ui.define([
 			/**
 			 * The items of the table.
 			 */
+			
 			items : {type : "sap.m.ColumnListItem", multiple : true, singularName : "item", bindable : "bindable"},
 
 			/**
@@ -84,7 +85,7 @@ sap.ui.define([
 			/**
 			 * The columns bindings.
 			 */
-			columns : {type : "sap.m.Column", multiple : true, singularName : "column", bindable : "bindable"}
+	    	columns : {type : "sap.m.Column", multiple : true, singularName : "column", bindable : "bindable"}
 		},
 		events : {
 
@@ -225,6 +226,22 @@ sap.ui.define([
 		this._oBusyIndicator = new BusyIndicator(this.getId() + "-busyIndicator").addStyleClass("sapMApesSelectDialogBusyIndicator", true);
 
 		// store a reference to the searchField for filtering
+		//
+		this._sf = new sap.ui.layout.form.SimpleForm("simpleForm", {
+				layout: sap.ui.layout.form.SimpleFormLayout.ResponsiveGridLayout,
+				editable: true,
+				title: "Simple Form",
+				content:[
+					new sap.m.Label("requiredTruncated", {text:"Simple Label Simple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple Label"}).addStyleClass("sapMLabelRequired"),
+					new sap.m.Input(),
+					new sap.m.Label("truncated", {text:"Simple Label Simple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple Label"}),
+					new sap.m.Input(),
+					new sap.m.Label("requiredOnly",  {text:"Simple Label"}).addStyleClass("sapMLabelRequired"),
+					new sap.m.Input()
+				]
+			});
+		
+		
 		this._oSearchField = new SearchField(this.getId() + "-searchField", {
 			width: "100%",
 			liveChange: function (oEvent) {
@@ -246,12 +263,12 @@ sap.ui.define([
 			}
 		});
 		this._searchField = this._oSearchField; // for downward compatibility
-
+        var abc=[
+			   this._searchField
+		 ];
 		// store a reference to the subheader for hiding it when data loads
 		this._oSubHeader = new Bar(this.getId() + "-subHeader", {
-			contentMiddle: [
-				this._searchField
-			]
+			contentMiddle: abc
 		});
 
 		// store a reference to the internal dialog
@@ -259,7 +276,7 @@ sap.ui.define([
 			stretch: Device.system.phone,
 			contentHeight: "2000px",
 			subHeader: this._oSubHeader,
-			content: [this._oBusyIndicator, this._oTable],
+			content: [this._oBusyIndicator,this._sf, this._oTable ],
 			leftButton: this._getCancelButton(),
 			initialFocus: ((Device.system.desktop && this._oSearchField) ? this._oSearchField : null)
 		});

@@ -77,8 +77,9 @@ sap.ui.define([
 			 	this._oDialog = sap.ui.xmlfragment("apestech.ui.erp.view..dialog.MyDialog", this);
 			}
 			// Multi-select if required
-			var bMultiSelect = !!oEvent.getSource().data("multi");
-			this._oDialog.setMultiSelect(bMultiSelect);
+		    //var bMultiSelect = !!oEvent.getSource().data("multi");
+		    //bMultiSelect=true;
+		    //this._oDialog.setMultiSelect(bMultiSelect);
 
 			// Remember selections if required
 			var bRemember = !!oEvent.getSource().data("remember");
@@ -89,14 +90,25 @@ sap.ui.define([
 			// toggle compact style
 			jQuery.sap.syncStyleClass("sapUiSizeCompact", this.getView(), this._oDialog);
 			this._oDialog.open();
+		}, 
+		handleClose: function(oEvent) {
+			var aContexts = oEvent.getParameter("selectedContexts");
+			
+			var list=[];
+			if (aContexts && aContexts.length) {
+				list = aContexts.map(function(oContext){
+					var oJson = oContext.getObject();
+					return oJson;
+				});
+				MessageToast.show("You have chosen " + list.join(", "));
+			}
+			oEvent.getSource().getBinding("items").filter([]);
+			
+			var oModel = this.getView().getModel().getData();
+			oModel.selectDialog = JSON.stringify(list);
+			MessageToast.show("You have chosen1111 " + JSON.stringify(list));
+			this.getModel().setData(oModel);
 		},
-		onPress:function(){
-		   console.log("abc"); 
-		},
-	    onCloseDialog:function(){
-	        this._oDialog.close();
-	    },
-		
 		onExit: function() {
 			this.oModel.destroy();
 		}
