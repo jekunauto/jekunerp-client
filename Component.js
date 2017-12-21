@@ -205,6 +205,11 @@ sap.ui.define([
 				        "name": "demo6",
 				        "icon": "sap-icon://attachment-html",
 				        "isSelected": false
+				     }, {
+				        "text": "测试界面",
+				        "name": "test",
+				        "icon": "sap-icon://attachment-html",
+				        "isSelected": false
 				     }]
 				}];
 
