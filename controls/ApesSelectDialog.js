@@ -443,7 +443,7 @@ sap.ui.define([
 	ApesSelectDialog.prototype.setGrowingThreshold = function (iValue) {
 		this._oTable.setGrowingThreshold(iValue);
 		this.setProperty("growingThreshold", iValue, true);
-
+ 
 		return this;
 	};
 	/**
