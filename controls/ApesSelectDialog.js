@@ -183,7 +183,26 @@ sap.ui.define([
 		this._bInitBusy = false;
 		this._bFirstRender = true;
 		this._oRb = sap.ui.getCore().getLibraryResourceBundle("sap.m");
-
+		this._oButton=new sap.m.Button(this.getId() + "-btnSearch", {text:"查询",press: function (oEvent) {
+			   console.log('search----------------');
+	 	}});
+		
+		//searchForm
+    	this._sf = new sap.ui.layout.form.SimpleForm("simpleForm", {
+				layout: sap.ui.layout.form.SimpleFormLayout.ResponsiveGridLayout,
+				editable: true,
+				title: "Simple Form",
+				content:[
+					new sap.m.Label("requiredTruncated", {text:"Simple Label Simple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple Label"}).addStyleClass("sapMLabelRequired"),
+					new sap.m.Input(),
+					new sap.m.Label("truncated", {text:"Simple Label Simple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple Label"}),
+					new sap.m.Input(),
+					new sap.m.Label("requiredOnly",  {text:"Simple Label"}).addStyleClass("sapMLabelRequired"),
+					new sap.m.Input(),
+			    	this._oButton
+				]
+			});
+		
 		// store a reference to the table for binding management
 		this._oTable = new Table(this.getId() + "-table", {
 			growing: true,
@@ -227,20 +246,7 @@ sap.ui.define([
 
 		// store a reference to the searchField for filtering
 		//
-		this._sf = new sap.ui.layout.form.SimpleForm("simpleForm", {
-				layout: sap.ui.layout.form.SimpleFormLayout.ResponsiveGridLayout,
-				editable: true,
-				title: "Simple Form",
-				content:[
-					new sap.m.Label("requiredTruncated", {text:"Simple Label Simple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple Label"}).addStyleClass("sapMLabelRequired"),
-					new sap.m.Input(),
-					new sap.m.Label("truncated", {text:"Simple Label Simple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple LabelSimple Label"}),
-					new sap.m.Input(),
-					new sap.m.Label("requiredOnly",  {text:"Simple Label"}).addStyleClass("sapMLabelRequired"),
-					new sap.m.Input()
-				]
-			});
-		
+	
 		
 		this._oSearchField = new SearchField(this.getId() + "-searchField", {
 			width: "100%",
@@ -690,7 +696,9 @@ sap.ui.define([
 	 */
 	ApesSelectDialog.prototype._callMethodInManagedObject = function (sFunctionName, sAggregationName) {
 		var aArgs = Array.prototype.slice.call(arguments);
-
+        // if (sAggregationName ==='forms'){
+        // 	return this._oTable[sFunctionName].apply(this._oTable, aArgs.slice(1));
+        // }
 		if (sAggregationName === "items") {
 			// apply to the internal table
 			return this._oTable[sFunctionName].apply(this._oTable, aArgs.slice(1));
