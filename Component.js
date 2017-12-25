@@ -15,8 +15,9 @@ sap.ui.define([
 	"apestech/ui/erp/util/ModuleRouter",
 	"apestech/ui/erp/controller/util/ConfigUtil",
 	"apestech/ui/erp/controller/util/MessageUtils",
-	"apestech/ui/erp/model/AuthGuard"
-], function (jQuery,storage,UIComponent, Device, models, ErrorHandler, JSONModel, ModuleRouter, ConfigUtil, MessageUtils,AuthGuard) {
+	"apestech/ui/erp/model/AuthGuard",
+	"apestech/ui/erp/controller/util/ComponentFactory"
+], function (jQuery,storage,UIComponent, Device, models, ErrorHandler, JSONModel, ModuleRouter, ConfigUtil, MessageUtils,AuthGuard, ComponentFactory) {
 	"use strict";
 
 	var aTreeContent = [],
@@ -47,6 +48,8 @@ sap.ui.define([
 			this._oErrorHandler = new ErrorHandler(this);
 			
 			this._MessageUtils = new MessageUtils(this);
+			
+			this._ComponentFactory = new ComponentFactory(this);
 			//var store = jQuery.sap.storage(oStorage, sIdPrefix);
 			//this._Storage =  jQuery.sap.storage(oStorage, sIdPrefix);   
 			
@@ -85,6 +88,7 @@ sap.ui.define([
 			this._MessageUtils.destroy();
 			this._oConfigUtil.destroy();
 			this._oConfigUtil = null;
+			this._ComponentFactory.destroy();
 			// call the base component's destroy function
 			UIComponent.prototype.destroy.apply(this, arguments);
 		},
@@ -120,6 +124,16 @@ sap.ui.define([
 				this._MessageUtils = new MessageUtils(this);
 			}
 			return this._MessageUtils;
+		},
+		
+		/**
+		 * 组件工厂
+		 */
+		getComponentFactory: function(){
+			if (!this._ComponentFactory) {
+				this._ComponentFactory = new ComponentFactory(this);
+			}
+			return this._ComponentFactory;
 		},
 
 		/**

@@ -81,6 +81,10 @@ sap.ui.define([
 			getMessagesBox : function(){
 				return this.getOwnerComponent().getMessageUtils();
 			},
+			
+			getComponentFactory : function(){
+				return this.getOwnerComponent().getComponentFactory();
+			},
 
 			/**
 			 * Event handler  for navigating back.
