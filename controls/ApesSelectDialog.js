@@ -433,7 +433,7 @@ sap.ui.define([
 		//now return the control for chaining
 		return this;
 	};
-
+ 
 	/**
 	* Sets the growing threshold to the internal table
 	* @public
