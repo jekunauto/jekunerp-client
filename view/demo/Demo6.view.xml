@@ -22,7 +22,7 @@
 		</subHeader>
 		
 		<content>
-			<custom:Rating class="sapUiSmallMarginBeginEnd" change="onRatingChange"></custom:Rating>
+			 <custom:Rating class="sapUiSmallMarginBeginEnd" change="onRatingChange"></custom:Rating>
 			<f:Form id="FormToolbar"
 				editable="true"
 				ariaLabelledBy="Title1">

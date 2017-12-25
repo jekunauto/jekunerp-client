@@ -66,7 +66,7 @@ sap.ui.define([
 			});
 		},
 		renderer : function (oRM, oControl) {
-			oRM.write("<div");
+		 	oRM.write("<div");
 			oRM.writeControlData(oControl);
 			oRM.addClass("myAppDemoWTProductRating");
 			oRM.writeClasses();
